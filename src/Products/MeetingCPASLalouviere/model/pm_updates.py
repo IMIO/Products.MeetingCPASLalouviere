@@ -1,5 +1,6 @@
 from Products.Archetypes.atapi import *
 
+
 def update_group_schema(baseSchema):
     specificSchema = Schema((
 
@@ -29,7 +30,8 @@ def update_item_schema(baseSchema):
     TextField(
         name='itemAssembly',
         widget=TextAreaWidget(
-            condition="python: (member.has_role('MeetingManager') or member.has_role('Manager')) and here.hasMeeting() and here.getMeeting().attributeIsUsed('assembly')",
+            condition="python: (member.has_role('MeetingManager') or member.has_role('Manager')) and here.hasMeeting() \
+                      and here.getMeeting().attributeIsUsed('assembly')",
             description="ItemAssembly",
             description_msgid="MeetingCPASLalouviere_descr_assembly",
             label='Itemassembly',
@@ -54,5 +56,3 @@ MeetingItem.schema = update_item_schema(MeetingItem.schema)
 # example, so this is why we need to do it again now.
 from Products.PloneMeeting.config import registerClasses
 registerClasses()
-
-
