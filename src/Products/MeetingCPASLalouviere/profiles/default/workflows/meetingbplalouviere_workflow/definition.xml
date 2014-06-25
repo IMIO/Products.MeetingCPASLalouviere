@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="meetingcollegelalouviere_workflow"
-             title="meetingcollegelalouviere_workflow"
+<dc-workflow workflow_id="meetingbplalouviere_workflow"
+             title="meetingbplalouviere_workflow"
              state_variable="review_state"
              initial_state="created"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -19,7 +19,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
                   acquired="False">
@@ -38,7 +37,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
  </state>
  <state state_id="created"
@@ -50,7 +48,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
                   acquired="False">
@@ -72,7 +69,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
  </state>
  <state state_id="decided"
@@ -85,7 +81,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
                   acquired="False">
@@ -107,7 +102,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
  </state>
  <state state_id="frozen"
@@ -120,7 +114,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
                   acquired="False">
@@ -142,7 +135,6 @@
    <permission-role>Manager</permission-role>
    <permission-role>MeetingManager</permission-role>
    <permission-role>MeetingObserverGlobal</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
  </state>
  <transition transition_id="backToCreated"
@@ -264,7 +256,5 @@
   <guard>
   </guard>
  </variable>
-<!-- ##code-section FOOT -->
-<!-- ##/code-section FOOT -->
  <!-- We dont use workflow scripts any more, we use subscribers -->
 </dc-workflow>
