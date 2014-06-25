@@ -3,7 +3,7 @@ import os
 
 version = '3.0dev'
 
-setup(name='Products.MeetingLalouviere',
+setup(name='Products.CPASMeetingLalouviere',
       version=version,
       description="PloneMeeting profile for city of La Louviere",
       long_description=open("README.txt").read() + "\n" +
