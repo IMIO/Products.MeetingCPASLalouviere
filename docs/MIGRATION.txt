@@ -1,4 +1,4 @@
-Migration to MeetingLalouviere 3.0
+Migration to MeetingCPASLalouviere 3.0
 ==================================
 
 On Plone 3, before copying Data.fs :

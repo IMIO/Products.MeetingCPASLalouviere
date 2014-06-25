@@ -1,4 +1,4 @@
-Products.MeetingLalouviere Changelog
+Products.MeetingCPASLalouviere Changelog
 ====================================
 
 3.0.3dev (unreleased)

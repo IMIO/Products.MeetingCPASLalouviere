@@ -1,17 +1,6 @@
+/* <dtml-var "enableHTTPCompression(request=REQUEST, debug=1, css=1)"> (this is for http compression) */
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
-
-#portal-logo {
-    margin: 0.3em 0em -2.5em 0.3em !important;
-}
-
-#portal-globalnav {
-    padding-left: 5.5em !important;
-}
-
-#premeetings dd.collapsibleContent {
-    margin-left: 0;
-}
 
 /* Colors on states */
 /* Items */
@@ -21,34 +10,39 @@
 
 .state-itemcreated_waiting_advices, .label-state-itemcreated_waiting_advices {
     color: red !important;
+    background: transparent url(&dtml-portal_url;/ask_advices_by_itemcreator.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
 .state-proposed_to_budgetimpact_reviewer, .label-state-proposed_to_budgetimpact_reviewer {
     color: red !important;
+    background: transparent url(&dtml-portal_url;/proposeToBudgetImpactReviewer.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
-.state-proposed_to_servicehead, .label-state-proposed_to_servicehead {
+
+.state-proposed_to_n1, .label-state-proposed_to_n1 {
     color: #FFA500 !important;
+    background: transparent url(&dtml-portal_url;/proposeToN1.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
-.state-item_in_committee {
-    color: black !important;
-}
-
-.state-item_in_council {
-    color: black !important;
-}
-
-.state-proposed_to_officemanager, .label-state-proposed_to_officemanager {
+.state-proposed_to_n2, .label-state-proposed_to_n2 {
     color: #FFA500 !important;
+    background: transparent url(&dtml-portal_url;/proposeToN2.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
-.state-proposed_to_divisionhead, .label-state-proposed_to_divisionhead {
+.state-proposed_to_secretaire, .label-state-proposed_to_secretaire {
     color: #FFA500 !important;
+    background: transparent url(&dtml-portal_url;/proposeToSecretaire.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
-.state-proposed_to_director, .label-state-proposed_to_director {
+.state-proposed_to_president, .label-state-proposed_to_president {
     color: #FFA500 !important;
+    background: transparent url(&dtml-portal_url;/proposeToPresident.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
 .state-validated, .label-state-validated {
@@ -59,7 +53,7 @@
     color: brown !important;
 }
 
-.state-itemfrozen, .label-state-itemfrozen, .state-returned_to_service {
+.state-itemfrozen, .label-state-itemfrozen {
     color: cornflowerBlue !important;
 }
 
@@ -67,12 +61,16 @@
     color: green !important;
 }
 
-.state-accepted_but_modified, .label-state-accepted_but_modified {
+.state-accepted_but_modified {
     color: green !important;
+    background: transparent url(&dtml-portal_url;/accepted_but_modified.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
-.state-pre_accepted, .label-state-pre_accepted {
+.state-pre_accepted {
     color: green !important;
+    background: transparent url(&dtml-portal_url;/pre_accepted.png) no-repeat scroll 0 1px;
+    padding: 1px 0 1px 18px !important;
 }
 
 .actionMenuHeader .state-accepted_but_modified {
@@ -108,40 +106,15 @@
 }
 
 /* Add a highlight-red style useable in FCKeditor to highlight modified elements */
+/* See ticket #901 on http://trac.communesplone.org */
 .highlight-red {
-    color:red;
-}
-
-/* input used for Title is to big, use "120%" instead of "160%" to put more text into it */
-#archetypes-fieldname-title input, input#form\.title {
-    font-size: 120%;
-}
-
-.follow_up_no {
-background: transparent url(&dtml-portal_url;/follow_up_no.png) no-repeat scroll 0 1px;
-padding: 1px 0 1px 18px;
-color: grey;
-font-weight: bold;
-}
-
-.follow_up_yes {
-background: transparent url(&dtml-portal_url;/follow_up_yes.png) no-repeat scroll 0 1px;
-padding: 1px 0 1px 18px;
-color: red;
-font-weight: bold;
-}
-
-.follow_up_provided, .follow_up_provided_not_printed {
-background: transparent url(&dtml-portal_url;/follow_up_provided.png) no-repeat scroll 0 1px;
-padding: 1px 0 1px 18px;
-color: green;
-font-weight: bold;
+color:red;
 }
 
 /* </dtml-with> */
 /* DOCUMENTATION ON PRE-DEFINED PROPERTIES FROM PLONE */
 
- /* You can insert colors and other variables from Plone's
+ /* You can insert colors and other variables from Plone's 
     base_properties by doing:
 
     & dtml-variableName ; (without the spaces, excluded here to not make it render)
@@ -158,7 +131,7 @@ font-weight: bold;
 
    These are the available properties:
 
-   logoName - the file name of the portal logo.
+   logoName - the file name of the portal logo. 
 
    fontFamily - the font family used for all text that is not headers
 
@@ -166,7 +139,7 @@ font-weight: bold;
 
    fontColor - the main font color
 
-   backgroundColor - the background color
+   backgroundColor - the background color 
 
    linkColor - the color used on normal links
 

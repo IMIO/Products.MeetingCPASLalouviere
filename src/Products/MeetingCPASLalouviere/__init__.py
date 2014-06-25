@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: MeetingLalouviere.py
+# File: MeetingCPASLalouviere.py
 #
 # Copyright (c) 2013 by CommunesPlone
 # Generator: ArchGenXML Version 2.7
@@ -24,7 +24,10 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Gauthier Bastien <g.bastien@imio.be>, Stephan Geulette <s.geulette@imio.be>"""
+__author__ = """Andre Nuyens <anuyens.imio@gmail.com>, Gauthier Bastien
+<gbastien@commune.sambreville.be>, Stephan Geulette
+<stephan.geulette@uvcw.be>"""
+
 __docformat__ = 'plaintext'
 
 
@@ -37,7 +40,7 @@ __docformat__ = 'plaintext'
 #       use the protected code section at the bottom of initialize().
 
 import logging
-logger = logging.getLogger('MeetingLalouviere')
+logger = logging.getLogger('MeetingCPASLalouviere')
 logger.debug('Installing Product')
 
 import os
@@ -70,4 +73,3 @@ def initialize(context):
 
     ##code-section custom-init-bottom #fill in your manual code here
     ##/code-section custom-init-bottom
-

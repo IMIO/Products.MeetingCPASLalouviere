@@ -4,13 +4,20 @@ all: run
 
 .PHONY: bootstrap
 bootstrap:
-	/srv/python273/bin/virtualenv --no-site-packages .
+	virtualenv-2.7 --no-setuptools .
+	bin/python ez_setup.py
+	bin/easy_install -U "distribute==0.6.49"
 	./bin/python bootstrap.py -v 2.1.1
 
 .PHONY: buildout
 buildout:
 	if ! test -f bin/buildout;then make bootstrap;fi
-	bin/buildout -v
+	if ! test -f var/filestorage/Data.fs;then make standard-config; else bin/buildout;fi
+
+.PHONY: standard-config
+standard-config:
+	if ! test -f bin/buildout;then make bootstrap;fi
+	bin/buildout -t 5 -c standard-config.cfg
 
 .PHONY: run
 run:
@@ -19,4 +26,4 @@ run:
 
 .PHONY: cleanall
 cleanall:
-	rm -fr develop-eggs downloads eggs parts .installed.cfg
+	rm -fr lib bin/buildout develop-eggs downloads eggs parts .installed.cfg
