@@ -1,29 +1,12 @@
 # ------------------------------------------------------------------------------
 import logging
-logger = logging.getLogger('MeetingLalouviere')
+logger = logging.getLogger('MeetingCPASLalouviere')
 from Products.PloneMeeting.migrations import Migrator
 from Products.PloneMeeting.config import TOPIC_SEARCH_SCRIPT, POWEROBSERVERS_GROUP_SUFFIX
 
 
 # The migration class ----------------------------------------------------------
 class Migrate_To_3_0(Migrator):
-
-    def _createUsersFromLDAP(self):
-        # get every existing users, look at the Creator index
-        CreatorIndex = self.portal.restrictedTraverse('portal_catalog/Indexes/Creator')
-        source_users = self.portal.acl_users.source_users
-        for userId in CreatorIndex._index:
-            if source_users.getUserById(userId):
-                continue
-            # create the user
-            source_users.addUser(userId, userId, 'unknown_password')
-        # update mutable_properties
-        mutable_properties = self.portal.acl_users.mutable_properties
-
-        # update isGroup key
-        for principal in mutable_properties._storage.items():
-            if not 'isGroup' in principal[1]:
-                principal[1]['isGroup'] = True
 
     def _adaptItemsToValidateTopic(self):
         """
@@ -81,12 +64,12 @@ class Migrate_To_3_0(Migrator):
                 pass
 
     def run(self):
-        logger.info('Migrating to MeetingLalouviere 3.0...')
+        logger.info('Migrating to MeetingCPASLalouviere 3.0...')
         self._adaptItemsToValidateTopic()
         self._removeGlobalPowerObservers()
 
         # reinstall regarding changes in workflows
-        self.reinstall(profiles=[u'profile-Products.MeetingLalouviere:default', ])
+        self.reinstall(profiles=[u'profile-Products.MeetingCPASLalouviere:default', ])
         self.finish()
 
 
@@ -96,7 +79,7 @@ def migrate(context):
 
        1) Adapt itemsToValidate topics;
        2) Remove global PowerObserver role;
-       3) Reinstall MeetingLalouviere
+       3) Reinstall MeetingCPASLalouviere
     '''
     Migrate_To_3_0(context).run()
 # ------------------------------------------------------------------------------

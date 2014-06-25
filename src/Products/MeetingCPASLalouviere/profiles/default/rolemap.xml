@@ -2,16 +2,19 @@
 <rolemap>
   <roles>
     <role name="MeetingBudgetImpactReviewer"/>
-    <role name="MeetingCommissionEditor"/>
     <role name="MeetingDirector"/>
     <role name="MeetingDivisionHead"/>
-    <role name="MeetingFollowUpWriter"/>
     <role name="MeetingManager"/>
     <role name="MeetingMember"/>
+    <role name="MeetingN1"/>
+    <role name="MeetingN2"/>
     <role name="MeetingObserverGlobal"/>
     <role name="MeetingObserverLocal"/>
+    <role name="MeetingObserverLocalCopy"/>
     <role name="MeetingOfficeManager"/>
+    <role name="MeetingPowerObserver"/>
     <role name="MeetingReviewer"/>
+    <role name="MeetingSecretaire"/>
     <role name="MeetingServiceHead"/>
 <!-- ##code-section roles -->
 <!-- ##/code-section roles -->

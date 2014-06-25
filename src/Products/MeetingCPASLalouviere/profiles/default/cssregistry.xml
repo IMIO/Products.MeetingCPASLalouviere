@@ -14,8 +14,8 @@
  -->
 
  <!-- ##code-section cssregistry.xml -->
- <stylesheet title="MeetingLalouviere CSS styles" cacheable="True" compression="safe"
+ <stylesheet title="MeetingCPASLalouviere CSS styles" cacheable="True" compression="safe"
              cookable="True" enabled="1" media="all" rel="stylesheet"
-             rendering="import" expression="" id="meetinglalouviere.css"/>
+             rendering="import" expression="" id="meetingcpaslalouviere.css"/>
  <!-- ##/code-section cssregistry.xml -->
 </object>
