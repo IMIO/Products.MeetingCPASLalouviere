@@ -529,3 +529,51 @@ msgstr "<br /><span class='discreet'>Actions disponibles : </span><a href='confi
 msgid "yes_followup_needed_itemview"
 msgstr "<span class='follow_up_yes'>Un suivi est nécessaire.</span>"
 
+# MeetingItem
+#. Default: "Signatures delegation"
+msgid "MeetingCPASLalouviere_label_signatures"
+msgstr "Délégation de signatures"
+
+# Suffix
+#. Default: "budget impact reviewers"
+msgid "budgetimpactreviewers"
+msgstr "correspondants financier"
+
+# Suffix
+#. Default: "N+1"
+msgid "n1"
+msgstr "N+1"
+
+# Suffix
+#. Default: "N+2"
+msgid "n2"
+msgstr "N+2"
+
+# Suffix
+#. Default: "Secretaire"
+msgid "secretaire"
+msgstr "Secrétaire"
+
+#. Default: "Choose advisers that will have to issue an optional advice for this item"
+msgid "optional_advisers_item_descr"
+msgstr "Sélectionnez les groupes qui pourront remettre un avis sur ce point. Sélectionnez plusieurs groupes à l'aide de CTRL+clic"
+
+# Suffix
+#. Default: "President"
+msgid "reviewers"
+msgstr "Président"
+
+# Suffix
+#. Default: "service heads"
+msgid "serviceheads"
+msgstr "chefs de service"
+
+# import what was done in MeetingCommunes
+# MeetingItem
+#. Default: "Decision"
+msgid "PloneMeeting_label_decision"
+msgstr "Extrait du Procès-verbal"
+
+#. Default: "Decision"
+msgid "decision"
+msgstr "Extrait du Procès-verbal"

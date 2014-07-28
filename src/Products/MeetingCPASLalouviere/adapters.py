@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
-# Copyright (c) 2011 by CommunesPlone.org
+#
+# File: adapters.py
+#
+# Copyright (c) 2014 by Imio.be
 #
 # GNU General Public License (GPL)
 #
@@ -37,6 +40,63 @@ from Products.PloneMeeting.interfaces import IMeetingCustom, IMeetingItemCustom,
 from Products.MeetingCPASLalouviere.interfaces import \
     IMeetingItemPBLalouviereWorkflowConditions, IMeetingItemPBLalouviereWorkflowActions,\
     IMeetingPBLalouviereWorkflowConditions, IMeetingPBLalouviereWorkflowActions
+from Products.PloneMeeting.model import adaptations
+
+# Names of available workflow adaptations.
+customWfAdaptations = ('return_to_proposing_group', )
+MeetingConfig.wfAdaptations = customWfAdaptations
+# configure parameters for the returned_to_proposing_group wfAdaptation
+# we keep also 'itemfrozen' and 'itempublished' in case this should be activated for meeting-config-college...
+RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES = ('presented', 'itemfrozen', )
+adaptations.RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES = RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES
+RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {
+    # view permissions
+    'Access contents information':
+    ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
+     'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
+    'View':
+    ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
+     'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
+    'PloneMeeting: Read decision':
+    ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
+     'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
+    'PloneMeeting: Read optional advisers':
+    ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
+     'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
+    'PloneMeeting: Read decision annex':
+    ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
+     'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
+    'PloneMeeting: Read item observations':
+    ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
+     'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
+    # edit permissions
+    'Modify portal content':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'PloneMeeting: Write decision':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'Review portal content':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'Add portal content':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'PloneMeeting: Add annex':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'PloneMeeting: Add MeetingFile':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'PloneMeeting: Write decision annex':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'PloneMeeting: Write optional advisers':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'PloneMeeting: Write optional advisers':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    # MeetingManagers edit permissions
+    'Delete objects':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    'PloneMeeting: Write item observations':
+    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+}
+
+adaptations.RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS
+
 
 # ------------------------------------------------------------------------------
 
@@ -273,12 +333,6 @@ class CustomMeeting(Meeting):
                     # same macro-group) is already there.
         return res
 
-    security.declarePublic('getStrikedAssembly')
-    def getStrikedAssembly(self):
-        '''The text between [[xxx]] is striked. Used to mark absents.
-           You can define mltAssembly to customize your assembly (bold, italics, ...).'''
-        return self.getStrikedField(self.context.getAssembly())
-
     security.declarePublic('showAllItemsAtOnce')
     def showAllItemsAtOnce(self):
         """
@@ -317,73 +371,13 @@ class CustomMeetingItem(MeetingItem):
         review_state = ['created', 'frozen', ]
         member = self.context.portal_membership.getAuthenticatedMember()
         if member.has_role('MeetingManager') or member.has_role('Manager'):
-            review_state.append('decided')
+            review_state.extend(('decided', 'in_committee', 'in_council', ))
         res = catalogtool.unrestrictedSearchResults(
             portal_type=meetingPortalType,
             review_state=review_state,
             sort_on='getDate')
         # Frozen meetings may still accept "late" items.
         return res
-
-    security.declarePublic('getPredecessors')
-    def getPredecessors(self):
-        '''Adapted method getPredecessors showing informations about every linked items'''
-        pmtool = getToolByName(self.context, "portal_plonemeeting")
-        predecessor = self.context.getPredecessor()
-        predecessors = []
-        #retrieve every predecessors
-        while predecessor:
-            predecessors.append(predecessor)
-            predecessor = predecessor.getPredecessor()
-
-        #keep order
-        predecessors.reverse()
-
-        #retrieve backrefs too
-        brefs = self.context.getBRefs('ItemPredecessor')
-        while brefs:
-            predecessors = predecessors + brefs
-            brefs = brefs[0].getBRefs('ItemPredecessor')
-
-        res = []
-        for predecessor in predecessors:
-            title = predecessor.Title()
-            meeting = predecessor.getMeeting()
-            #display the meeting date if the item is linked to a meeting
-            if meeting:
-                title = "%s (%s)" % (title.strip(), pmtool.formatDate(meeting.getDate()).encode('utf-8'))
-            #show that the linked item is not of the same portal_type
-            if not predecessor.portal_type == self.context.portal_type:
-                title = title + '*'
-            css_class = 'predecessor'
-            #add the css depending on the wf state
-            if pmtool.usedColorSystem == 'state_color':
-                css_class = 'state-%s' % predecessor.queryState()
-
-            res.append({
-                       'url': predecessor.absolute_url(),
-                       'title': title,
-                       'tagtitle': self.context.utranslate(predecessor.portal_type, 'PloneMeeting'),
-                       'class': css_class
-                       })
-        return res
-
-    security.declarePublic('getStrikedField')
-    def getStrikedField(self, plaintext):
-        '''Format the given plaintext to be striked when rendered in HTML.
-           The text between [[xxx]] is striked. Used to mark absents.
-           You can define mltAssembly to customize your assembly (bold, italics, ...).'''
-        return plaintext.replace('[[', '<strike>').replace(']]', '</strike>').replace('<p>', '<p class="mltAssembly">')
-    MeetingItem.getStrikedField = getStrikedField
-    Meeting.getStrikedField = getStrikedField
-
-    security.declarePublic('getStrikedItemAssembly')
-    def getStrikedItemAssembly(self):
-        '''
-            The text between [[xxx]] is striked. Used to mark Absentee
-            You can define mltAssembly to customize your assembly (bold, italics, ...)
-        '''
-        return self.getStrikedField(self.context.getItemAssembly())
 
 
 # ------------------------------------------------------------------------------
@@ -412,20 +406,20 @@ class CustomMeetingConfig(MeetingConfig):
         #and find the different states we have to search for this group (proposingGroup of the item)
         reviewSuffixes = ('_reviewers', '_secretaire', '_n1', '_n2', )
         statesMapping = {
-                        '_reviewers': ('proposed_to_n1','proposed_to_n2','proposed_to_secretaire',
-                                       'proposed_to_president'),
-                        '_secretaire': ('proposed_to_n1','proposed_to_n2','proposed_to_secretaire'),
-                        '_n2': ('proposed_to_n1','proposed_to_n2'),
-                        '_n1': 'proposed_to_servicehead', }
+            '_reviewers': ('proposed_to_n1', 'proposed_to_n2', 'proposed_to_secretaire',
+            'proposed_to_president'),
+            '_secretaire': ('proposed_to_n1', 'proposed_to_n2', 'proposed_to_secretaire'),
+            '_n2': ('proposed_to_n1', 'proposed_to_n2'),
+            '_n1': 'proposed_to_servicehead', }
         foundGroups = {}
         #check that we have a real PM group, not "echevins", or "Administrators"
         for group in groups:
-            isOK = False
+            realPMGroup = False
             for reviewSuffix in reviewSuffixes:
                 if group.endswith(reviewSuffix):
-                    isOK = True
+                    realPMGroup = True
                     break
-            if not isOK:
+            if not realPMGroup:
                 continue
             #remove the suffix
             groupPrefix = '_'.join(group.split('_')[:-1])
@@ -441,7 +435,7 @@ class CustomMeetingConfig(MeetingConfig):
         #now we have in the dict foundGroups the group the user is in in the key and the highest level in the value
         res = []
         for foundGroup in foundGroups:
-            params = {'portal_type': 'MeetingItemPb',
+            params = {'Type': unicode(self.getItemTypeName(), 'utf-8'),
                       'getProposingGroup': foundGroup,
                       'review_state': statesMapping[foundGroups[foundGroup]],
                       'sort_on': sortKey,
@@ -466,23 +460,14 @@ class MeetingPBLalouviereWorkflowActions(MeetingWorkflowActions):
     implements(IMeetingPBLalouviereWorkflowActions)
     security = ClassSecurityInfo()
 
-    security.declarePrivate('doClose')
-    def doClose(self, stateChange):
-        # Every item that is "presented" will be automatically set to "accepted"
+    def _adaptEveryItemsOnMeetingClosure(self):
+        """Helper method for accepting every items."""
+        # Every item that is not decided will be automatically set to "accepted"
         for item in self.context.getAllItems():
             if item.queryState() == 'presented':
                 self.context.portal_workflow.doActionFor(item, 'itemfreeze')
             if item.queryState() in ['itemfrozen', 'pre_accepted', ]:
                 self.context.portal_workflow.doActionFor(item, 'accept')
-        meetingConfig = self.context.portal_plonemeeting.getMeetingConfig(self.context)
-        # Update the item counter which is global to the meeting config
-        meetingConfig.setLastItemNumber(meetingConfig.getLastItemNumber() +
-                                        len(self.context.getItems()) +
-                                        len(self.context.getLateItems()))
-        if self.context.getMeetingNumber() == -1:
-            meetingNumber = meetingConfig.getLastMeetingNumber()+1
-            self.context.setMeetingNumber(meetingNumber)
-            meetingConfig.setLastMeetingNumber(meetingNumber)
 
     security.declarePrivate('doDecide')
     def doDecide(self, stateChange):
@@ -574,12 +559,7 @@ class MeetingItemPBLalouviereWorkflowActions(MeetingItemWorkflowActions):
 
     security.declarePrivate('doAccept_but_modify')
     def doAccept_but_modify(self, stateChange):
-        '''When an item is accepted_but_modified, maybe we have to send it to
-           other meetingConfigs.'''
-        # We send the item to every defined meetingConfigs
-        otherMCs = self.context.getOtherMeetingConfigsClonableTo()
-        for otherMC in otherMCs:
-            self.context.cloneToOtherMeetingConfig(otherMC)
+        pass
 
     security.declarePrivate('doPreAccept')
     def doPreAccept(self, stateChange):
@@ -633,6 +613,13 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
     def __init__(self, item):
         self.context = item  # Implements IMeetingItem
         self.sm = getSecurityManager()
+        self.useHardcodedTransitionsForPresentingAnItem = True
+        self.transitionsForPresentingAnItem = ('proposeToN1',
+                                               'proposeToN2',
+                                               'proposeToSecretaire',
+                                               'proposeToPresident',
+                                               'validate',
+                                               'present')
 
     security.declarePublic('mayDecide')
     def mayDecide(self):
@@ -643,18 +630,6 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
         if checkPermission(ReviewPortalContent, self.context) and \
            meeting and (meeting.queryState() in ['decided', 'closed']):
             res = True
-        return res
-
-    security.declarePublic('isLateFor')
-    def isLateFor(self, meeting):
-        res = False
-        if meeting and (meeting.queryState() in MeetingItem.meetingAlreadyFrozenStates) and \
-           (meeting.UID() == self.context.getPreferredMeeting()):
-            itemValidationDate = self._getDateOfAction(self.context, 'validate')
-            meetingFreezingDate = self._getDateOfAction(meeting, 'freeze')
-            if itemValidationDate and meetingFreezingDate:
-                if itemValidationDate > meetingFreezingDate:
-                    res = True
         return res
 
     security.declarePublic('mayValidate')
@@ -801,6 +776,7 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
 # ------------------------------------------------------------------------------
 InitializeClass(CustomMeetingItem)
 InitializeClass(CustomMeeting)
+InitializeClass(CustomMeetingConfig)
 InitializeClass(MeetingPBLalouviereWorkflowActions)
 InitializeClass(MeetingPBLalouviereWorkflowConditions)
 InitializeClass(MeetingItemPBLalouviereWorkflowActions)

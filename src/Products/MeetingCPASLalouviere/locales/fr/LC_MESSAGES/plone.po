@@ -418,3 +418,68 @@ msgstr "Le point a été validé: il est maintenant visible par le gestionnaire 
 msgid "validated"
 msgstr "Validé"
 
+#types
+#. Default: "MeetingPb"
+msgid "MeetingPb"
+msgstr "Bureau permanent"
+
+#. Default: "MeetingItemPb"
+msgid "MeetingItemPb"
+msgstr "Point du bureau permanent"
+
+#types
+#. Default: "MeetingItem"
+msgid "MeetingItem"
+msgstr "Point"
+
+#. Default: "backToFrozen_done_descr"
+msgid "backToFrozen_done_descr"
+msgstr "Vous ne pouvez plus décider les points pour l'instant."
+
+#. Default: "send back"
+msgid "backToProposedToSecretaire"
+msgstr "renvoyer au Secrétaire"
+
+#. Default: "send back"
+msgid "backToProposedToPresident"
+msgstr "renvoyer au président"
+
+#. Default: "send back"
+msgid "backToProposedToN2"
+msgstr "renvoyer au N+2"
+
+#. Default: "send back"
+msgid "backToProposedToN1"
+msgstr "renvoyer au N+1"
+
+msgid "proposeToN1"
+msgstr "proposer au N+1"
+
+msgid "proposeToN2"
+msgstr "proposer au N+2"
+
+msgid "proposeToSecretaire"
+msgstr "proposer au secrétaire"
+
+msgid "proposeToPresident"
+msgstr "proposer au président"
+
+#. Default: "Proposed to secretaire"
+msgid "proposed_to_secretaire"
+msgstr "proposé au secrétaire"
+
+#. Default: "Proposed to president"
+msgid "proposed_to_president"
+msgstr "proposé au président"
+
+#. Default: "Proposed to N+2"
+msgid "proposed_to_n2"
+msgstr "proposé au N+2"
+
+#. Default: "Proposed to N+1"
+msgid "proposed_to_n1"
+msgstr "proposé au N+1"
+
+#. Default: "send back"
+msgid "backToItemCreated"
+msgstr "renvoyer à l'agent"

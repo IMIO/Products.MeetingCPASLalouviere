@@ -28,19 +28,6 @@ MeetingGroup.schema = update_group_schema(MeetingGroup.schema)
 def update_item_schema(baseSchema):
     specificSchema = Schema((
 
-        # field used to define specific assembly for a MeetingItem
-        TextField(
-            name='itemAssembly',
-            widget=TextAreaWidget(
-                condition="python: (member.has_role('MeetingManager') or member.has_role('Manager')) and \
-                          here.hasMeeting() and here.getMeeting().attributeIsUsed('assembly')",
-                description="ItemAssembly",
-                description_msgid="MeetingCPASLalouviere_descr_assembly",
-                label='Itemassembly',
-                label_msgid='MeetingCPASLalouviere_label_itemAssembly',
-                i18n_domain='PloneMeeting',
-            ),
-        ),
     ),)
 
     completeItemSchema = baseSchema + specificSchema.copy()

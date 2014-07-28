@@ -433,3 +433,66 @@ msgstr ""
 #. Default: "Follow-up provided but still printed in the dashboard"
 msgid "follow_up_provided_icon_title"
 msgstr ""
+
+#types
+msgid "MeetingPb"
+msgstr ""
+
+msgid "MeetingItemPb"
+msgstr ""
+
+#types
+msgid "MeetingItem"
+msgstr ""
+
+#. Default: "backToFrozen_done_descr"
+msgid "backToFrozen_done_descr"
+msgstr ""
+
+#. Default: "send back"
+msgid "backToProposedToSecretaire"
+msgstr ""
+
+#. Default: "send back"
+msgid "backToProposedToPresident"
+msgstr ""
+
+#. Default: "send back"
+msgid "backToProposedToN2"
+msgstr ""
+
+#. Default: "send back"
+msgid "backToProposedToN1"
+msgstr ""
+
+msgid "proposeToN1"
+msgstr ""
+
+msgid "proposeToN2"
+msgstr ""
+
+msgid "proposeToSecretaire"
+msgstr ""
+
+msgid "proposeToPresident"
+msgstr ""
+
+#. Default: "Proposed to secretaire"
+msgid "proposed_to_secretaire"
+msgstr ""
+
+#. Default: "Proposed to president"
+msgid "proposed_to_president"
+msgstr ""
+
+#. Default: "Proposed to N+2"
+msgid "proposed_to_n2"
+msgstr ""
+
+#. Default: "Proposed to N+1"
+msgid "proposed_to_n1"
+msgstr ""
+
+#. Default: "send back"
+msgid "backToItemCreated"
+msgstr ""

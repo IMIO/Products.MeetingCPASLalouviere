@@ -8,7 +8,7 @@
     id="MeetingCPASLalouviere-Update-RoleMappings" 
     handler="Products.MeetingCPASLalouviere.setuphandlers.updateRoleMappings"
     title="Update Workflow role mappings for MeetingCPASLalouviere"
-    version="2014-07-28T11:39:55.032480">
+    version="2014-07-28T11:53:26.514054">
    <dependency step="MeetingCPASLalouviere-QI-dependencies"/>
    updates the workflow role mappings for MeetingCPASLalouviere
  </import-step>
@@ -17,7 +17,7 @@
     id="MeetingCPASLalouviere-postInstall" 
     handler="Products.MeetingCPASLalouviere.setuphandlers.postInstall"
     title="manual coded post-install for MeetingCPASLalouviere"
-    version="2014-07-28T11:39:55.032480">
+    version="2014-07-28T11:53:26.514054">
    <dependency step="MeetingCPASLalouviere-QI-dependencies"/>
    manual coded post-install for MeetingCPASLalouviere
  </import-step>
