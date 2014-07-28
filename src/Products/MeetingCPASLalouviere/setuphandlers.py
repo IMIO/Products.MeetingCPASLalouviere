@@ -2,41 +2,39 @@
 #
 # File: setuphandlers.py
 #
-# Copyright (c) 2013 by CommunesPlone
+# Copyright (c) 2014 by Imio.be
 # Generator: ArchGenXML Version 2.7
 #            http://plone.org/products/archgenxml
 #
 # GNU General Public License (GPL)
 #
 
-__author__ = """Andre Nuyens <anuyens.imio@gmail.com>, Gauthier Bastien
-<gbastien@commune.sambreville.be>, Stephan Geulette
-<stephan.geulette@uvcw.be>"""
+__author__ = """Andre Nuyens <andre@imio.be>"""
 __docformat__ = 'plaintext'
 
 
 import logging
 logger = logging.getLogger('MeetingCPASLalouviere: setuphandlers')
 from Products.MeetingCPASLalouviere.config import PROJECTNAME
+from Products.MeetingCPASLalouviere.config import DEPENDENCIES
 import os
 from Products.CMFCore.utils import getToolByName
+import transaction
 ##code-section HEAD
 from Products.PloneMeeting.exportimport.content import ToolInitializer
 ##/code-section HEAD
-
 
 def isNotMeetingCPASLalouviereProfile(context):
     return context.readDataFile("MeetingCPASLalouviere_marker.txt") is None
 
 
+
 def updateRoleMappings(context):
     """after workflow changed update the roles mapping. this is like pressing
     the button 'Update Security Setting' and portal_workflow"""
-    if isNotMeetingCPASLalouviereProfile(context):
-        return
+    if isNotMeetingCPASLalouviereProfile(context): return
     wft = getToolByName(context.getSite(), 'portal_workflow')
     wft.updateRoleMappings()
-
 
 def postInstall(context):
     """Called as at the end of the setup process. """
@@ -52,6 +50,7 @@ def postInstall(context):
     reinstallPloneMeetingSkin(context, site)
     # reorder skins so we are sure that the meetingCPASlalouviere_xxx skins are just under custom
     reorderSkinsLayers(context, site)
+
 
 
 ##code-section FOOT

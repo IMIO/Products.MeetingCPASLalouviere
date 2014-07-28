@@ -1,4 +1,6 @@
 from Products.Archetypes.atapi import *
+from Products.PloneMeeting.MeetingItem import MeetingItem
+from Products.PloneMeeting.MeetingGroup import MeetingGroup
 
 
 def update_group_schema(baseSchema):
@@ -26,27 +28,27 @@ MeetingGroup.schema = update_group_schema(MeetingGroup.schema)
 def update_item_schema(baseSchema):
     specificSchema = Schema((
 
-    # field used to define specific assembly for a MeetingItem
-    TextField(
-        name='itemAssembly',
-        widget=TextAreaWidget(
-            condition="python: (member.has_role('MeetingManager') or member.has_role('Manager')) and here.hasMeeting() \
-                      and here.getMeeting().attributeIsUsed('assembly')",
-            description="ItemAssembly",
-            description_msgid="MeetingCPASLalouviere_descr_assembly",
-            label='Itemassembly',
-            label_msgid='MeetingCPASLalouviere_label_itemAssembly',
-            i18n_domain='PloneMeeting',
+        # field used to define specific assembly for a MeetingItem
+        TextField(
+            name='itemAssembly',
+            widget=TextAreaWidget(
+                condition="python: (member.has_role('MeetingManager') or member.has_role('Manager')) and \
+                          here.hasMeeting() and here.getMeeting().attributeIsUsed('assembly')",
+                description="ItemAssembly",
+                description_msgid="MeetingCPASLalouviere_descr_assembly",
+                label='Itemassembly',
+                label_msgid='MeetingCPASLalouviere_label_itemAssembly',
+                i18n_domain='PloneMeeting',
+            ),
         ),
-    ),
     ),)
 
     completeItemSchema = baseSchema + specificSchema.copy()
-    completeSchema['budgetInfos'].write_permission = "MeetingCPASLalouviere: Write budget infos"
-    completeSchema['budgetInfos'].read_permission = "MeetingCPASLalouviere: Read budget infos"
-    completeSchema['optionalAdvisers'].widget.size = 10
-    completeSchema['optionalAdvisers'].widget.format = "select"
-    completeSchema['optionalAdvisers'].widget.description_msgid = "optional_advisers_item_descr"
+    completeItemSchema['budgetInfos'].write_permission = "MeetingCPASLalouviere: Write budget infos"
+    completeItemSchema['budgetInfos'].read_permission = "MeetingCPASLalouviere: Read budget infos"
+    completeItemSchema['optionalAdvisers'].widget.size = 10
+    completeItemSchema['optionalAdvisers'].widget.format = "select"
+    completeItemSchema['optionalAdvisers'].widget.description_msgid = "optional_advisers_item_descr"
     return completeItemSchema
 MeetingItem.schema = update_item_schema(MeetingItem.schema)
 

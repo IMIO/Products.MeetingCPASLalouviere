@@ -6,10 +6,10 @@
 <!-- ##/code-section workflowobjects -->
  <bindings>
   <type type_id="MeetingCollege">
-   <bound-workflow workflow_id="meetingbplalouviere_workflow" />
+     <bound-workflow workflow_id="meetingbplalouviere_workflow" />
   </type>
   <type type_id="MeetingItemCollege">
-   <bound-workflow workflow_id="meetingitembplalouviere_workflow" />
+     <bound-workflow workflow_id="meetingitembplalouviere_workflow" />
   </type>
 <!-- ##code-section workflowbindings -->
 <!-- ##/code-section workflowbindings -->

@@ -2,7 +2,7 @@
 #
 # File: MeetingCPASLalouviere.py
 #
-# Copyright (c) 2013 by CommunesPlone
+# Copyright (c) 2014 by Imio.be
 # Generator: ArchGenXML Version 2.7
 #            http://plone.org/products/archgenxml
 #
@@ -24,10 +24,7 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Andre Nuyens <anuyens.imio@gmail.com>, Gauthier Bastien
-<gbastien@commune.sambreville.be>, Stephan Geulette
-<stephan.geulette@uvcw.be>"""
-
+__author__ = """Andre Nuyens <andre@imio.be>"""
 __docformat__ = 'plaintext'
 
 
@@ -73,3 +70,4 @@ def initialize(context):
 
     ##code-section custom-init-bottom #fill in your manual code here
     ##/code-section custom-init-bottom
+
