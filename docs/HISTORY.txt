@@ -1,6 +1,22 @@
 Products.MeetingCPASLalouviere Changelog
 ====================================
 
+3.2.0.1 (2014-03-06)
+--------------------
+- Updated regarding changes in PloneMeeting
+- Moved some translations from the plone domain to the PloneMeeting domain
+
+3.2.0 (2014-02-12)
+------------------
+- Updated regarding changes in PloneMeeting
+- Use getToolByName where necessary
+
+3.1.0 (2013-11-04)
+------------------
+- Simplified overrides now that PloneMeeting manage this correctly
+- Moved 'add_published_state' to PloneMeeting and renamed to 'hide_decisions_when_under_writing'
+- Moved 'searchitemstovalidate' topic to PloneMeeting now that PloneMeeting also manage a 'searchitemstoprevalidate' search
+
 3.0.3dev (unreleased)
 ---------------------
 - Adapted all tests to call PloneMeeting ones
