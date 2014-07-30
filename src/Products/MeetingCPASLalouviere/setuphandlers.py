@@ -28,7 +28,6 @@ def isNotMeetingCPASLalouviereProfile(context):
     return context.readDataFile("MeetingCPASLalouviere_marker.txt") is None
 
 
-
 def updateRoleMappings(context):
     """after workflow changed update the roles mapping. this is like pressing
     the button 'Update Security Setting' and portal_workflow"""
@@ -55,13 +54,14 @@ def logStep(method, context):
                 (method, '/'.join(context._profile_path.split(os.sep)[-3:])))
 
 
-def isNotMeetingCPASLalouviereLalouviereProfile(context):
-    return context.readDataFile("MeetingCPASLalouviere_lalouviere_marker.txt") is None
+def isMeetingCPASllConfigureProfile(context):
+    return context.readDataFile("MeetingCPASll_examples_fr_marker.txt") or \
+           context.readDataFile("MeetingCPASLL_tests_marker.txt")
 
 
 def installMeetingCPASLalouviere(context):
     """ Run the default profile before bing able to run the CPAS lalouviere profile"""
-    if isNotMeetingCPASLalouviereLalouviereProfile(context):
+    if isMeetingCPASllConfigureProfile(context):
         return
 
     logStep("installMeetingCPASLalouviere", context)
@@ -72,7 +72,7 @@ def installMeetingCPASLalouviere(context):
 def initializeTool(context):
     '''Initialises the PloneMeeting tool based on information from the current
        profile.'''
-    if isNotMeetingCPASLalouviereLalouviereProfile(context):
+    if not isMeetingCPASllConfigureProfile(context):
         return
 
     logStep("initializeTool", context)
@@ -121,7 +121,7 @@ def reorderSkinsLayers(context, site):
        Reinstall Products.plonemeetingskin and re-apply MeetingCPASLalouviere skins.xml step
        as the reinstallation of MeetingCPASLalouviere and PloneMeeting changes the portal_skins layers order
     """
-    if isNotMeetingCPASLalouviereProfile(context) and isNotMeetingCPASLalouviereLalouviereProfile(context):
+    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
         return
 
     logStep("reorderSkinsLayers", context)
@@ -148,7 +148,7 @@ def reorderCss(context):
        Make sure CSS are correctly reordered in portal_css so things
        work as expected...
     """
-    if isNotMeetingCPASLalouviereProfile(context) and isNotMeetingCPASLalouviereLalouviereProfile(context):
+    if isNotMeetingCPASLalouviereProfile(context) and isMeetingCPASllConfigureProfile(context):
         return
 
     site = context.getSite()

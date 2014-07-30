@@ -83,6 +83,6 @@ class testCustomMeeting(MeetingCPASLalouviereTestCase):
 
     def test_getAvailableItems(self):
         '''
-          Already tested in MeetingLaouviere.tests.testMeeting.py
+          Already tested in MeetingCPASLalouviere.tests.testMeeting.py
         '''
         pass
