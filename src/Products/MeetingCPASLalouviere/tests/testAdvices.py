@@ -21,11 +21,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
-from Products.MeetingLalouviere.tests.MeetingLalouviereTestCase import MeetingLalouviereTestCase
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testAdvices import testAdvices as mcta
 
 
-class testAdvices(MeetingLalouviereTestCase, mcta):
+class testAdvices(MeetingCPASLalouviereTestCase, mcta):
     '''Tests various aspects of advices management.
        Advices are enabled for PloneGov Assembly, not for PloneMeeting Assembly.'''
 
@@ -33,8 +33,8 @@ class testAdvices(MeetingLalouviereTestCase, mcta):
         """Redefine advices related states."""
         super(mcta, self).setUp()
         self.setMeetingConfig(self.meetingConfig2.getId())
-        self.meetingConfig.setItemAdviceStates(('proposed_to_director', 'validated', ))
-        self.meetingConfig.setItemAdviceEditStates(('proposed_to_director', ))
+        self.meetingConfig.setItemAdviceStates(('proposed_to_president', 'validated', ))
+        self.meetingConfig.setItemAdviceEditStates(('proposed_to_president', ))
         self.meetingConfig.setItemAdviceViewStates(('presented', ))
 
 

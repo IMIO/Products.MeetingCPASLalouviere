@@ -135,12 +135,12 @@ collegeMeeting.xhtmlTransformFields = ('MeetingItem.description',
                                        'MeetingItem.observations',
                                        'Meeting.observations', )
 collegeMeeting.xhtmlTransformTypes = ('removeBlanks',)
-collegeMeeting.itemWorkflow = 'meetingitemcollegelalouviere_workflow'
-collegeMeeting.meetingWorkflow = 'meetingcollegelalouviere_workflow'
-collegeMeeting.itemConditionsInterface = 'Products.MeetingLalouviere.interfaces.IMeetingItemCollegeLalouviereWorkflowConditions'
-collegeMeeting.itemActionsInterface = 'Products.MeetingLalouviere.interfaces.IMeetingItemCollegeLalouviereWorkflowActions'
-collegeMeeting.meetingConditionsInterface = 'Products.MeetingLalouviere.interfaces.IMeetingCollegeLalouviereWorkflowConditions'
-collegeMeeting.meetingActionsInterface = 'Products.MeetingLalouviere.interfaces.IMeetingCollegeLalouviereWorkflowActions'
+collegeMeeting.itemWorkflow = 'meetingitembplalouviere_workflow'
+collegeMeeting.meetingWorkflow = 'meetingbplalouviere_workflow'
+collegeMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
+collegeMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
+collegeMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
+collegeMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
 collegeMeeting.transitionsToConfirm = []
 collegeMeeting.meetingTopicStates = ('created', 'frozen')
 collegeMeeting.decisionTopicStates = ('decided', 'closed')
@@ -241,12 +241,12 @@ councilMeeting.xhtmlTransformFields = ('MeetingItem.description',
                                        'MeetingItem.observations',
                                        'Meeting.observations', )
 councilMeeting.xhtmlTransformTypes = ('removeBlanks',)
-councilMeeting.itemWorkflow = 'meetingitemcouncil_workflow'
-councilMeeting.meetingWorkflow = 'meetingcouncil_workflow'
-councilMeeting.itemConditionsInterface = 'Products.MeetingCommunes.interfaces.IMeetingItemCouncilWorkflowConditions'
-councilMeeting.itemActionsInterface = 'Products.MeetingCommunes.interfaces.IMeetingItemCouncilWorkflowActions'
-councilMeeting.meetingConditionsInterface = 'Products.MeetingCommunes.interfaces.IMeetingCouncilWorkflowConditions'
-councilMeeting.meetingActionsInterface = 'Products.MeetingCommunes.interfaces.IMeetingCouncilWorkflowActions'
+councilMeeting.itemWorkflow = 'meetingitembplalouviere_workflow'
+councilMeeting.meetingWorkflow = 'meetingbplalouviere_workflow'
+cocouncilMeetingllegeMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
+councilMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
+cocouncilMeetingllegeMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
+councilMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
 councilMeeting.transitionsToConfirm = []
 councilMeeting.meetingTopicStates = ('created', 'frozen', 'published')
 councilMeeting.decisionTopicStates = ('decided', 'closed')

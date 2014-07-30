@@ -72,7 +72,7 @@ def installMeetingCPASLalouviere(context):
 def initializeTool(context):
     '''Initialises the PloneMeeting tool based on information from the current
        profile.'''
-    if not isNotMeetingCPASLalouviereLalouviereProfile(context):
+    if isNotMeetingCPASLalouviereLalouviereProfile(context):
         return
 
     logStep("initializeTool", context)

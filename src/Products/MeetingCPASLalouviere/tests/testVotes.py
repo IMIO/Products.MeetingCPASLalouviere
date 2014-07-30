@@ -22,11 +22,11 @@
 # 02110-1301, USA.
 #
 
-from Products.MeetingLalouviere.tests.MeetingLalouviereTestCase import MeetingLalouviereTestCase
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testVotes import testVotes as mctv
 
 
-class testVotes(MeetingLalouviereTestCase, mctv):
+class testVotes(MeetingCPASLalouviereTestCase, mctv):
     '''Tests various aspects of votes management.'''
 
 

@@ -25,10 +25,10 @@
 from DateTime import DateTime
 from zope.annotation import IAnnotations
 from Products.PloneMeeting.MeetingItem import MeetingItem
-from Products.MeetingLalouviere.tests.MeetingLalouviereTestCase import MeetingLalouviereTestCase
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 
 
-class testCustomMeetingItem(MeetingLalouviereTestCase):
+class testCustomMeetingItem(MeetingCPASLalouviereTestCase):
     """
         Tests the MeetingItem adapted methods
     """

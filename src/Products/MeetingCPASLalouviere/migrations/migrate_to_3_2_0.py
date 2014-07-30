@@ -33,7 +33,7 @@ class Migrate_To_3_2_0(Migrator):
         mcProfilePath = [profile for profile in self.context.listProfileInfo() if 'id' in profile
                          and profile['id'] == u'Products.MeetingCPASLalouviere:default'][0]['path']
         # the icon are located in the example_fr/images folder
-        mcProfilePath = mcProfilePath.replace('profiles/default', 'profiles/examples_fr')
+        mcProfilePath = mcProfilePath.replace('profiles/default', 'profiles/lalouvierecpas')
         for cfg in self.portal.portal_plonemeeting.objectValues('MeetingConfig'):
             for mft in mfts:
                 if not hasattr(aq_base(cfg.meetingfiletypes), mft.id):

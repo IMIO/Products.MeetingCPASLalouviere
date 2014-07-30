@@ -21,18 +21,18 @@
 #
 
 from Products.MeetingCommunes.tests.MeetingCommunesTestCase import MeetingCommunesTestCase
-from Products.MeetingLalouviere.testing import MLL_TESTING_PROFILE_FUNCTIONAL
-from Products.MeetingLalouviere.tests.helpers import MeetingLalouviereTestingHelpers
+from Products.MeetingCPASLalouviere.testing import MLL_TESTING_PROFILE_FUNCTIONAL
+from Products.MeetingCPASLalouviere.tests.helpers import MeetingCPASLalouviereTestingHelpers
 
 # monkey patch the MeetingConfig.wfAdaptations again because it is done in
 # adapters.py but overrided by Products.MeetingCommunes here in the tests...
 from Products.PloneMeeting.MeetingConfig import MeetingConfig
-from Products.MeetingLalouviere.adapters import customWfAdaptations
+from Products.MeetingCPASLalouviere.adapters import customWfAdaptations
 MeetingConfig.wfAdaptations = customWfAdaptations
 
 
-class MeetingLalouviereTestCase(MeetingCommunesTestCase, MeetingLalouviereTestingHelpers):
-    """Base class for defining MeetingLalouviere test cases."""
+class MeetingCPASLalouviereTestCase(MeetingCommunesTestCase, MeetingCPASLalouviereTestingHelpers):
+    """Base class for defining MeetingCPASLalouviere test cases."""
 
     layer = MLL_TESTING_PROFILE_FUNCTIONAL
 

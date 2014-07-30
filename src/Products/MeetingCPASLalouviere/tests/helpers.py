@@ -24,34 +24,35 @@ from DateTime import DateTime
 from Products.MeetingCommunes.tests.helpers import MeetingCommunesTestingHelpers
 
 
-class MeetingLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
+class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
     '''Override some values of PloneMeetingTestingHelpers.'''
 
-    TRANSITIONS_FOR_PROPOSING_ITEM_1 = ('proposeToServiceHead',
-                                        'proposeToOfficeManager',
-                                        'proposeToDivisionHead',
-                                        'proposeToDirector', )
-    TRANSITIONS_FOR_PROPOSING_ITEM_2 = ('proposeToDirector', )
-    TRANSITIONS_FOR_VALIDATING_ITEM_1 = ('proposeToServiceHead',
-                                         'proposeToOfficeManager',
-                                         'proposeToDivisionHead',
-                                         'proposeToDirector',
+    TRANSITIONS_FOR_PROPOSING_ITEM_1 = ('proposeToN1',
+                                        'proposeToN2',
+                                        'proposeToSecretaire',
+                                        'proposeToPresident', )
+    TRANSITIONS_FOR_PROPOSING_ITEM_2 = ('proposeToN1',
+                                        'proposeToPresident', )
+    TRANSITIONS_FOR_VALIDATING_ITEM_1 = ('proposeToN1',
+                                         'proposeToN2',
+                                         'proposeToSecretaire',
+                                         'proposeToPresident',
                                          'validate', )
-    TRANSITIONS_FOR_VALIDATING_ITEM_2 = ('proposeToDirector', 'validate', )
-    TRANSITIONS_FOR_PRESENTING_ITEM_1 = ('proposeToServiceHead',
-                                         'proposeToOfficeManager',
-                                         'proposeToDivisionHead',
-                                         'proposeToDirector',
+    TRANSITIONS_FOR_VALIDATING_ITEM_2 = ('validate', )
+    TRANSITIONS_FOR_PRESENTING_ITEM_1 = ('proposeToN1',
+                                         'proposeToN2',
+                                         'proposeToSecretaire',
+                                         'proposeToPresident',
                                          'validate',
                                          'present', )
-    TRANSITIONS_FOR_PRESENTING_ITEM_2 = ('proposeToDirector', 'validate', 'present', )
+    TRANSITIONS_FOR_PRESENTING_ITEM_2 = ('validate', 'present', )
     TRANSITIONS_FOR_ACCEPTING_ITEMS_1 = ('freeze', 'decide', )
-    TRANSITIONS_FOR_ACCEPTING_ITEMS_2 = ('setInCommittee', 'setInCouncil', )
+    TRANSITIONS_FOR_ACCEPTING_ITEMS_2 = ('freeze', 'decide', )
 
     TRANSITIONS_FOR_DECIDING_MEETING_1 = ('freeze', 'decide', )
-    TRANSITIONS_FOR_DECIDING_MEETING_2 = ('setInCommittee', 'setInCouncil', )
+    TRANSITIONS_FOR_DECIDING_MEETING_2 = ('freeze', 'decide', )
     TRANSITIONS_FOR_CLOSING_MEETING_1 = ('freeze', 'decide', 'close', )
-    TRANSITIONS_FOR_CLOSING_MEETING_2 = ('setInCommittee', 'setInCouncil', 'close', )
+    TRANSITIONS_FOR_CLOSING_MEETING_2 = ('freeze', 'decide', 'close', )
     BACK_TO_WF_PATH_1 = {
         # Meeting
         'created': ('backToPublished',
@@ -61,15 +62,15 @@ class MeetingLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
         'itemcreated': ('backToItemFrozen',
                         'backToPresented',
                         'backToValidated',
-                        'backToProposedToDirector',
-                        'backToProposedToDivisionHead',
-                        'backToProposedToOfficeManager',
-                        'backToProposedToServiceHead',
+                        'backToProposedToPresident',
+                        'backToProposedToSecretaire',
+                        'backToProposedToN2',
+                        'backToProposedToN1',
                         'backToItemCreated'),
         'proposed': ('backToItemFrozen',
                      'backToPresented',
                      'backToValidated',
-                     'backToProposedToDirector', ),
+                     'backToProposedToPresident', ),
         'validated': ('backToItemFrozen',
                       'backToPresented',
                       'backToValidated', )}
@@ -77,18 +78,22 @@ class MeetingLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
         'itemcreated': ('backToItemFrozen',
                         'backToPresented',
                         'backToValidated',
-                        'backToProposedToDirector',
+                        'backToProposedToPresident',
+                        'backToProposedToSecretaire',
+                        'backToProposedToN2',
+                        'backToProposedToN1',
                         'backToItemCreated'),
         'proposed': ('backToItemFrozen',
                      'backToPresented',
                      'backToValidated',
-                     'backToProposedToDirector', ),
+                     'backToProposedToPresident', ),
         'validated': ('backToItemFrozen',
                       'backToPresented',
                       'backToValidated', )}
-
-    WF_STATE_NAME_MAPPINGS = {'proposed': 'proposed_to_director',
-                              'validated': 'validated'}
+    WF_STATE_NAME_MAPPINGS = {'itemcreated': 'itemcreated',
+                              'proposed': 'proposed_to_director',
+                              'validated': 'validated',
+                              'presented': 'presented'}
 
     def _createMeetingWithItems(self, withItems=True, meetingDate=DateTime()):
         '''Create a meeting with a bunch of items.
