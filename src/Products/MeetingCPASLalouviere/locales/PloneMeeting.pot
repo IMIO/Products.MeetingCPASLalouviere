@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PloneMeeting\n"
-"POT-Creation-Date: 2011-03-01 09:00-100\n"
+"POT-Creation-Date: 2005-05-17 15:00-100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,8 +11,163 @@ msgstr ""
 "Preferred-encodings: utf-8 latin1\n"
 "Domain: PloneMeeting\n"
 
-#. Default: "Welcome to HubSessions!"
-msgid "hs_welcome_title"
+# MeetingItem
+# Other
+#. Default: "Late items"
+msgid "late_presented_items"
+msgstr ""
+
+#. Default: "Decisions"
+msgid "decisions"
+msgstr ""
+
+#. Default: "Decision"
+msgid "decision"
+msgstr ""
+
+#. Default: "Decision"
+msgid "portletdecisions_title"
+msgstr ""
+
+#. Default: "Meeting"
+msgid "portletmeetings_title"
+msgstr ""
+
+#. Default: "Every decisions"
+msgid "searchalldecisions"
+msgstr ""
+
+#searches
+#. Default: "Proposed items"
+msgid "searchproposeditems"
+msgstr ""
+
+#. Default: "Validated items"
+msgid "searchvalidateditems"
+msgstr ""
+
+#. Default: "Decided items"
+msgid "searchdecideditems"
+msgstr ""
+
+#. Default: "Public"
+msgid "ip_public"
+msgstr ""
+
+#. Default: "Secret"
+msgid "ip_secret"
+msgstr ""
+
+#. Default: "Alderman of the following services (departments)"
+msgid "MeetingCommune_label_echevinServices"
+msgstr ""
+
+#. Default: "If the group is responsible of other groups, select them here above, either do not select any elements of the list."
+msgid "MeetingCommune_descr_echevinServices"
+msgstr ""
+
+#. Default: "If you specify signatures here, it will be used while generating documents of this proposing group.  Either, signatures defined on the meeting will be used."
+msgid "MeetingCommunes_descr_signatures"
+msgstr ""
+
+#. Default: "Signatures delegation"
+msgid "MeetingCommunes_label_signatures"
+msgstr ""
+
+#. Default: "Item created from a college item"
+msgid "create_to_meeting-config-council_from_meeting-config-college_comments"
+msgstr ""
+
+#. Default: "Create an item council from an item college"
+msgid "create_to_meeting-config-council_from_meeting-config-college"
+msgstr ""
+
+#portal_tabs
+#. Default: "Meeting config College"
+msgid "Meeting config College"
+msgstr ""
+
+#. Default: "Meeting config Council"
+msgid "Meeting config Council"
+msgstr ""
+
+#. Default: "Decision used when the item is delayed"
+msgid "PloneMeeting_label_itemDecisionReportText"
+msgstr ""
+
+#. Default: "When an item is delay, the decision will be replace by the text defined here, as a TAL (Tag Attribute Language) expression whose context includes the name 'here' that represents the impacted item. If you don't know TAL, you may learn it <a href=\"http://zope.org/Documentation/Books/ZopeBook/2_6Edition/ZPT.stx\">here</a>."
+msgid "item_decision_report_text_descr"
+msgstr ""
+
+#. Default: "<p>The decision is currently under edit by managers, you can not access it</p>"
+msgid "decision_under_edit"
+msgstr ""
+
+#. Default: "The meeting has been set back to 'created'."
+msgid "backToCreated_done_descr"
+msgstr ""
+
+#. Default: "You can now decide the items and write reports."
+msgid "decide_done_descr"
+msgstr ""
+
+#. Default: "The meeting has been set back to 'decided', it can be edited again."
+msgid "backToDecided_done_descr"
+msgstr ""
+
+#. Default: "The meeting has been set back to 'frozen'."
+msgid "backToFrozen_done_descr"
+msgstr ""
+
+#. Default: "The item has been pre accepted."
+msgid "pre_accept_done_descr"
+msgstr ""
+
+#. Default: "The item has been accepted with modifications."
+msgid "accept_but_modify_done_descr"
+msgstr ""
+
+#. Default: "The meeting is now closed, every items for wich no decisions had been taken, have been automatically accepted."
+msgid "close_done_descr"
+msgstr ""
+
+#. Default: "The meeting has been set back to 'decisions published'."
+msgid "backToDecisionsPublished_done_descr"
+msgstr ""
+
+#. Default: "Decisions have been published and are now visible to relevant proposing groups."
+msgid "publish_decisions_done_descr"
+msgstr ""
+
+#. Default: "Accepted but modified"
+msgid "icon_help_accepted_but_modified"
+msgstr ""
+
+#. Default: "Pre accepted"
+msgid "icon_help_pre_accepted"
+msgstr ""
+
+msgid "front_page_body"
+msgstr ""
+
+#. Default: "The item has been successfully transfered to the council."
+msgid "sendto_meeting-config-council_success"
+msgstr ""
+
+#. Default: "The item has been successfully transfered to the college."
+msgid "sendto_meeting-config-college_success"
+msgstr ""
+
+#. Default: "The item has been successfully transfered to the bp."
+msgid "sendto_meeting-config-bp_success"
+msgstr ""
+
+#. Default: "The item has been successfully transfered to the cas."
+msgid "sendto_meeting-config-cas_success"
+msgstr ""
+
+#. Default: "The item has been successfully transfered to the comitee."
+msgid "sendto_meeting-config-comitee_success"
 msgstr ""
 
 # MeetingGroup
@@ -39,21 +194,6 @@ msgid "reviewers"
 msgstr ""
 
 # Suffix
-#. Default: "service heads"
-msgid "serviceheads"
-msgstr ""
-
-# Suffix
-#. Default: "office managers"
-msgid "officemanagers"
-msgstr ""
-
-# Suffix
-#. Default: "division heads"
-msgid "divisionheads"
-msgstr ""
-
-# Suffix
 #. Default: "directors"
 msgid "directors"
 msgstr ""
@@ -63,472 +203,8 @@ msgstr ""
 msgid "budgetimpactreviewers"
 msgstr ""
 
-# Suffix
-#. Default: "follow-up writers"
-msgid "followupwriters"
-msgstr ""
-
-#import what was done in MeetingCommunes
-
-# MeetingItem
-#. Default: "Decision"
-msgid "PloneMeeting_label_decision"
-msgstr ""
-
-#. Default: "PloneMeeting"
-msgid "app_name"
-msgstr ""
-
-#. Default: "Decision"
-msgid "decision"
-msgstr ""
-
-#. Default: "Decisions"
-msgid "decisions"
-msgstr ""
-
-# Other
-#. Default: "Late items"
-msgid "late_presented_items"
-msgstr ""
-
-#. Default: "Description"
-msgid "meeting_item_description"
-msgstr ""
-
-#. Default: "Decision"
-msgid "portletdecisions_title"
-msgstr ""
-
-#. Default: "Meeting"
-msgid "portletmeetings_title"
-msgstr ""
-
-#. Default: "PowerObservers"
-msgid "powerObserversGroupTitle"
-msgstr ""
-
-#. Default: "Present every selected items"
-msgid "present_several_items"
-msgstr ""
-
-#. Default: "Every decisions"
-msgid "searchalldecisions"
-msgstr ""
-
-#. Default: "decided items"
-msgid "searchdecideditems"
-msgstr ""
-
-#. Default: "Items of my group"
-msgid "searchgroupitems"
-msgstr ""
-
-# searches
-#. Default: "proposed items"
-msgid "searchproposeditems"
-msgstr ""
-
-#. Default: "validated items"
-msgid "searchvalidateditems"
-msgstr ""
-
-#. Default: "items to validate"
-msgid "searchitemstovalidate"
-msgstr ""
-
-#. Default: "items to correct"
-msgid "searchreturnedtoserviceitems"
-msgstr ""
-
-#. Default: "corrected items"
-msgid "searchcorrecteditems"
-msgstr ""
-
-#. Default: "items of my commissions"
-msgid "searchitemsofmycommissions"
-msgstr ""
-
-#. Default: "items of my commissions to edit"
-msgid "searchitemsofmycommissionstoedit"
-msgstr ""
-
-#. Default: "items to follow"
-msgid "searchitemstofollow"
-msgstr ""
-
-#. Default: "items with follow-up provided"
-msgid "searchitemswithfollowupprovided"
-msgstr ""
-
-#. Default: "follow-up dashboard"
-msgid "searchitemsfollowupdashboard"
-msgstr ""
-
-#. Default: "Dashboard"
-msgid "Dashboard"
-msgstr ""
-
-#. Default: "Choose advisers that will have to issue an optional advice for this item"
-msgid "optional_advisers_item_descr"
-msgstr ""
-
-#portal_tabs
-#. Default: "College"
-msgid "Meeting config Lalouviere College"
-msgstr ""
-
-#. Default: "Council"
-msgid "Meeting config Lalouviere Council"
-msgstr ""
-
-#object_buttons
-#. Default: "Send to council"
-msgid "Send to council"
-msgstr ""
-
-#. Default: "Transcript of commission"
-msgid "MeetingCPASLalouviere_label_commissionTranscript"
-msgstr ""
-
-#. Default: "Transcript of commission"
-msgid "MeetingCPASLalouviere_descr_commissionTranscript"
-msgstr ""
-
-#. Default: "Interventions"
-msgid "MeetingCPASLalouviere_label_interventions"
-msgstr ""
-
-#. Default: "Transcription of interventions"
-msgid "MeetingCPASLalouviere_descr_interventions"
-msgstr ""
-
-#. Default: "MeetingItemCollege"
-msgid "predecessor_MeetingItemCollege"
-msgstr ""
-
-#. Default: "MeetingItemCouncil"
-msgid "predecessor_MeetingItemCouncil"
-msgstr ""
-
-#. Default: "Linked items"
-msgid "PloneMeeting_label_predecessor"
-msgstr ""
-
-#. Default: "Sent to council"
-msgid "Sent to council"
-msgstr ""
-
-#. Default: "Item created from a college item"
-msgid "create_to_meeting-config-council_from_meeting-config-college_comments"
-msgstr ""
-
-#. Default: "Explanatory note"
-msgid "MeetingCPASLalouviere_label_councildescription"
-msgstr ""
-
-#. Default: "Commission"
-msgid "MeetingCPASLalouviere_label_councilcategory"
-msgstr ""
-
-#. Default: "Deliberation"
-msgid "MeetingCPASLalouviere_label_councildecision"
-msgstr ""
-
-#. Default: "Premeeting observations"
-msgid "MeetingCPASLalouviere_label_meetingcouncilobservations"
-msgstr ""
-
-#. Default: "Follow-up"
-msgid "MeetingCPASLalouviere_label_followUp"
-msgstr ""
-
-#. Default: "Follow-up"
-msgid "MeetingCPASLalouviere_descr_followUp"
-msgstr ""
-
-#. Default: "Needed follow-up"
-msgid "MeetingCPASLalouviere_label_neededFollowUp"
-msgstr ""
-
-#. Default: "Needed follow-up"
-msgid "MeetingCPASLalouviere_descr_neededFollowUp"
-msgstr ""
-
-#. Default: "Provided follow-up"
-msgid "MeetingCPASLalouviere_label_providedFollowUp"
-msgstr ""
-
-#. Default: "Provided follow-up"
-msgid "MeetingCPASLalouviere_descr_providedFollowUp"
-msgstr ""
-
-#. Default: "A follow up is needed"
-msgid "follow_up_yes"
-msgstr ""
-
-#. Default: "No follow up is needed"
-msgid "follow_up_no"
-msgstr ""
-
-#. Default: "The needed follow up has been provided (printed in dashboard)"
-msgid "follow_up_provided"
-msgstr ""
-
-#. Default: "The needed follow up has been provided (no more printed in dashboard)"
-msgid "follow_up_provided_not_printed"
-msgstr ""
-
-#. Default: "Default date for the pre-meeting"
-msgid "PloneMeeting_label_preMeetingDateDefault"
-msgstr ""
-
-#. Default: "Default value for the item decision field"
-msgid "default_meetingitem_decision"
-msgstr ""
-
-#. Default: "The preparatory meeting must occur before the meeting."
-msgid "pre_date_after_meeting_date"
-msgstr ""
-
-#. Default: "Preparatory meeting"
-msgid "pre_meeting"
-msgstr ""
-
-#. Default: "Specify here the date of the pre-meeting, relative to its meeting, in the same format as fields above.  Leave empty not to use this functionnality."
-msgid "pre_meeting_date_default_descr"
-msgstr ""
-
-#. Default: "Observations for the preparatory meeting"
-msgid "PloneMeeting_label_preObservations"
-msgstr ""
-
-#. Default: "Date"
-msgid "PloneMeeting_label_preMeetingDate"
-msgstr ""
-
-#. Default: "Place"
-msgid "PloneMeeting_label_preMeetingPlace"
-msgstr ""
-
-#. Default: "Premeeting 1 default assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_default"
-msgstr ""
-
-#. Default: "Premeeting 2 default assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_2_default"
-msgstr ""
-
-#. Default: "Premeeting 3 default assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_3_default"
-msgstr ""
-
-#. Default: "Premeeting 4 default assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_4_default"
-msgstr ""
-
-#. Default: "Premeeting 5 default assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_5_default"
-msgstr ""
-
-#. Default: "Premeeting 6 default assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_6_default"
-msgstr ""
-
-#. Default: "Premeeting 7 default assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_7_default"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly"
-msgstr ""
-
-#. Default: "Add [[ ]] around absent people (like [[Mister Sample Peter]])"
-msgid "premeeting_assembly_descr"
-msgstr ""
-
-#. Default: "Date"
-msgid "PloneMeeting_label_preMeetingDate_2"
-msgstr ""
-
-#. Default: "Place"
-msgid "PloneMeeting_label_preMeetingPlace_2"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_2"
-msgstr ""
-
-#. Default: "Add [[ ]] around absent people (like [[Mister Sample Peter]])"
-msgid "premeeting_assembly_2_descr"
-msgstr ""
-
-#. Default: "Date"
-msgid "PloneMeeting_label_preMeetingDate_3"
-msgstr ""
-
-#. Default: "Place"
-msgid "PloneMeeting_label_preMeetingPlace_3"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_3"
-msgstr ""
-
-#. Default: "Add [[ ]] around absent people (like [[Mister Sample Peter]])"
-msgid "premeeting_assembly_3_descr"
-msgstr ""
-
-#. Default: "Date"
-msgid "PloneMeeting_label_preMeetingDate_4"
-msgstr ""
-
-#. Default: "Place"
-msgid "PloneMeeting_label_preMeetingPlace_4"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_4"
-msgstr ""
-
-#. Default: "Add [[ ]] around absent people (like [[Mister Sample Peter]])"
-msgid "premeeting_assembly_4_descr"
-msgstr ""
-
-#. Default: "Date"
-msgid "PloneMeeting_label_preMeetingDate_5"
-msgstr ""
-
-#. Default: "Place"
-msgid "PloneMeeting_label_preMeetingPlace_5"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_5"
-msgstr ""
-
-#. Default: "Add [[ ]] around absent people (like [[Mister Sample Peter]])"
-msgid "premeeting_assembly_5_descr"
-msgstr ""
-
-#. Default: "Date"
-msgid "PloneMeeting_label_preMeetingDate_6"
-msgstr ""
-
-#. Default: "Place"
-msgid "PloneMeeting_label_preMeetingPlace_6"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_6"
-msgstr ""
-
-#. Default: "Add [[ ]] around absent people (like [[Mister Sample Peter]])"
-msgid "premeeting_assembly_6_descr"
-msgstr ""
-
-#. Default: "Date"
-msgid "PloneMeeting_label_preMeetingDate_7"
-msgstr ""
-
-#. Default: "Place"
-msgid "PloneMeeting_label_preMeetingPlace_7"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "MeetingCPASLalouviere_label_preMeetingAssembly_7"
-msgstr ""
-
-#. Default: "Add [[ ]] around absent people (like [[Mister Sample Peter]])"
-msgid "premeeting_assembly_7_descr"
-msgstr ""
-
-#. Default: "Premeeting"
-msgid "listingheader_premeeting_name"
-msgstr ""
-
-#. Default: "Date"
-msgid "listingheader_premeeting_date"
-msgstr ""
-
-#. Default: "Place"
-msgid "listingheader_premeeting_place"
-msgstr ""
-
-#. Default: "Assembly"
-msgid "listingheader_premeeting_assembly"
-msgstr ""
-
-#. Default: "Public meeting"
-msgid "ip_public"
-msgstr ""
-
-#. Default: "Closed session"
-msgid "ip_secret"
-msgstr ""
-
-#. Default: "The comment was : ${comments}.\n\nMore information at ${objectUrl}."
-msgid "returnedToService_mail_body"
-msgstr ""
-
-#. Default: "The item '${itemTitle}' has been send back to you by the secretary"
-msgid "returnedToService_mail_subject"
-msgstr ""
-
-#. Default: "Please as you defined an item initiator, check if the linked category should not be 'Points conseillers'. If not, just ignore this message, it will not be displayed anymore when the item will be validated."
-msgid "check_intitiator_and_category"
-msgstr ""
-
-#. Default: "Please as this item comes from the college, you need to define the 'commission' for it before being able to propose it."
-msgid "check_category"
-msgstr ""
-
-#. Default: "Configure PloneMeeting"
-msgid "hs_configuration"
-msgstr ""
-
-#. Default: "Please enter 12 lines for signatures delegations"
-msgid "signatures_length_error"
-msgstr ""
-
-#. Default: "<span class='follow_up_no'>No follow-up needed.</span>"
-msgid "no_followup_needed_itemview"
-msgstr ""
-
-#. Default: "<span class='activate_follow_up'><a href='activateFollowUp'>Click here</a> if you want to define that a follow-up is needed.</span>"
-msgid "no_followup_needed_actions_itemview"
-msgstr ""
-
-#. Default: "<span class='follow_up_yes'>A follow-up is needed.</span>"
-msgid "yes_followup_needed_itemview"
-msgstr ""
-
-#. Default: "<a href='deactivateFollowUp'>Click here</a> if you want to deactivate the needed follow-up or <a href='confirmFollowUp'>click here</a> if you want to specify that needed follow-up has been provided.</span>"
-msgid "yes_followup_needed_actions_itemview"
-msgstr ""
-
-#. Default: "<span class='follow_up_provided'>The needed follow-up has been provided.</span>"
-msgid "provided_followup_itemview"
-msgstr ""
-
-#. Default: "<a href='activateFollowUp'>Click here</a> if you want to define that a follow-up is still needed or <a href='deactivateFollowUp'>click here</a> to deactivate needed follow-up."
-msgid "provided_followup_actions_itemview"
-msgstr ""
-
-#. Default: "<span class='follow_up_provided'>The needed follow-up has been provided.</span>"
-msgid "provided_followup_not_printed_itemview"
-msgstr ""
-
-#. Default: "<a href='activateFollowUp'>Click here</a> if you want to define that a follow-up is still needed or <a href='deactivateFollowUp'>click here</a> to deactivate needed follow-up."
-msgid "provided_followup_not_printed_actions_itemview"
-msgstr ""
-
 # MeetingItem
 msgid "MeetingCPASLalouviere_label_signatures"
-msgstr ""
-
-# Suffix
-msgid "budgetimpactreviewers"
 msgstr ""
 
 # Suffix
@@ -541,25 +217,4 @@ msgstr ""
 
 # Suffix
 msgid "secretaire"
-msgstr ""
-
-#. Default: "Choose advisers that will have to issue an optional advice for this item"
-msgid "optional_advisers_item_descr"
-msgstr ""
-
-# Suffix
-msgid "reviewers"
-msgstr ""
-
-# Suffix
-msgid "serviceheads"
-msgstr ""
-
-# import what was done in MeetingCommunes
-# MeetingItem
-msgid "PloneMeeting_label_decision"
-msgstr ""
-
-#. Default: "Decision"
-msgid "decision"
 msgstr ""

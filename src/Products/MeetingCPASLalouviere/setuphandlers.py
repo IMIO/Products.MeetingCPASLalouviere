@@ -41,21 +41,18 @@ def postInstall(context):
     # the right place for your custom code
     if isNotMeetingCPASLalouviereProfile(context):
         return
+    logStep("postInstall", context)
     site = context.getSite()
-    # Reinstall PloneMeeting
+    #need to reinstall PloneMeeting after reinstalling MC workflows to re-apply wfAdaptations
     reinstallPloneMeeting(context, site)
-    # Make sure the 'home' tab is shown
     showHomeTab(context, site)
-    # Reinstall the skin
-    reinstallPloneMeetingSkin(context, site)
-    # reorder skins so we are sure that the meetingCPASlalouviere_xxx skins are just under custom
     reorderSkinsLayers(context, site)
-
 
 
 ##code-section FOOT
 def logStep(method, context):
-    logger.info("Applying '%s' in profile '%s'" % (method, '/'.join(context._profile_path.split(os.sep)[-3:])))
+    logger.info("Applying '%s' in profile '%s'" %
+                (method, '/'.join(context._profile_path.split(os.sep)[-3:])))
 
 
 def isNotMeetingCPASLalouviereLalouviereProfile(context):
@@ -72,6 +69,20 @@ def installMeetingCPASLalouviere(context):
     portal.portal_setup.runAllImportStepsFromProfile('profile-Products.MeetingCPASLalouviere:default')
 
 
+def initializeTool(context):
+    '''Initialises the PloneMeeting tool based on information from the current
+       profile.'''
+    if not isNotMeetingCPASLalouviereLalouviereProfile(context):
+        return
+
+    logStep("initializeTool", context)
+    #PloneMeeting is no more a dependency to avoid
+    #magic between quickinstaller and portal_setup
+    #so install it manually
+    _installPloneMeeting(context)
+    return ToolInitializer(context, PROJECTNAME).run()
+
+
 def reinstallPloneMeeting(context, site):
     '''Reinstall PloneMeeting so after install methods are called and applied,
        like performWorkflowAdaptations for example.'''
@@ -81,25 +92,12 @@ def reinstallPloneMeeting(context, site):
 
     logStep("reinstallPloneMeeting", context)
     _installPloneMeeting(context)
-    # launch skins step for MeetingCPASLalouviere so MeetingCPASLalouviere skin layers are before PM ones
-    site.portal_setup.runImportStepFromProfile('profile-Products.MeetingCPASLalouviere:default', 'skins')
 
 
 def _installPloneMeeting(context):
     site = context.getSite()
     profileId = u'profile-Products.PloneMeeting:default'
     site.portal_setup.runAllImportStepsFromProfile(profileId)
-
-
-def initializeTool(context):
-    '''Initialises the PloneMeeting tool based on information from the current
-       profile.'''
-    if isNotMeetingCPASLalouviereLalouviereProfile(context):
-        return
-
-    logStep("initializeTool", context)
-    _installPloneMeeting(context)
-    return ToolInitializer(context, PROJECTNAME).run()
 
 
 def showHomeTab(context, site):
@@ -118,24 +116,6 @@ def showHomeTab(context, site):
         logger.info("The 'Home' tab does not exist !!!")
 
 
-def reinstallPloneMeetingSkin(context, site):
-    """
-       Reinstall Products.plonemeetingskin as the reinstallation of MeetingCommunes
-       change the portal_skins layers order
-    """
-    if isNotMeetingCPASLalouviereProfile(context):
-        return
-
-    logStep("reinstallPloneMeetingSkin", context)
-    try:
-        site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:default')
-        site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:plonemeetingskin')
-    except KeyError:
-        # if the Products.plonemeetingskin profile is not available
-        # (not using plonemeetingskin or in testing?) we pass...
-        pass
-
-
 def reorderSkinsLayers(context, site):
     """
        Reinstall Products.plonemeetingskin and re-apply MeetingCPASLalouviere skins.xml step
@@ -146,9 +126,9 @@ def reorderSkinsLayers(context, site):
 
     logStep("reorderSkinsLayers", context)
     try:
+        site.portal_setup.runImportStepFromProfile(u'profile-Products.MeetingCPASLalouviere:default', 'skins')
         site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:default')
         site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:plonemeetingskin')
-        site.portal_setup.runImportStepFromProfile(u'profile-Products.MeetingCPASLalouviere:default', 'skins')
     except KeyError:
         # if the Products.plonemeetingskin profile is not available
         # (not using plonemeetingskin or in testing?) we pass...

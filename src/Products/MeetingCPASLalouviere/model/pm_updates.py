@@ -1,6 +1,7 @@
 from Products.Archetypes.atapi import *
 from Products.PloneMeeting.MeetingItem import MeetingItem
 from Products.PloneMeeting.MeetingGroup import MeetingGroup
+from Products.PloneMeeting.MeetingConfig import MeetingConfig
 
 
 def update_group_schema(baseSchema):
@@ -23,6 +24,27 @@ def update_group_schema(baseSchema):
 
     return completeGroupSchema
 MeetingGroup.schema = update_group_schema(MeetingGroup.schema)
+
+
+def update_config_schema(baseSchema):
+    specificSchema = Schema((
+        TextField(
+            name='itemDecisionReportText',
+            widget=TextAreaWidget(
+                description="ItemDecisionReportText",
+                description_msgid="item_decision_report_text_descr",
+                label='ItemDecisionReportText',
+                label_msgid='PloneMeeting_label_itemDecisionReportText',
+                i18n_domain='PloneMeeting',
+            ),
+            allowable_content_types=('text/plain', 'text/html', ),
+            default_output_type="text/plain",
+        )
+    ),)
+    completeConfigSchema = baseSchema + specificSchema.copy()
+    completeConfigSchema.moveField('itemDecisionReportText', after='budgetDefault')
+    return completeConfigSchema
+MeetingConfig.schema = update_config_schema(MeetingConfig.schema)
 
 
 def update_item_schema(baseSchema):

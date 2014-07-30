@@ -33,25 +33,25 @@
 
 
 .state-proposed_to_n1, .label-state-proposed_to_n1 {
-    color: #FFA500 !important;
+    color: DarkOrange !important;
     background: transparent url(&dtml-portal_url;/proposeToN1.png) no-repeat scroll 0 1px;
     padding: 1px 0 1px 18px !important;
 }
 
 .state-proposed_to_n2, .label-state-proposed_to_n2 {
-    color: #FFA500 !important;
+    color: DarkOrange !important;
     background: transparent url(&dtml-portal_url;/proposeToN2.png) no-repeat scroll 0 1px;
     padding: 1px 0 1px 18px !important;
 }
 
 .state-proposed_to_secretaire, .label-state-proposed_to_secretaire {
-    color: #FFA500 !important;
+    color: DarkOrange !important;
     background: transparent url(&dtml-portal_url;/proposeToSecretaire.png) no-repeat scroll 0 1px;
     padding: 1px 0 1px 18px !important;
 }
 
 .state-proposed_to_president, .label-state-proposed_to_president {
-    color: #FFA500 !important;
+    color: DarkOrange !important;
     background: transparent url(&dtml-portal_url;/proposeToPresident.png) no-repeat scroll 0 1px;
     padding: 1px 0 1px 18px !important;
 }
