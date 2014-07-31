@@ -71,30 +71,34 @@ RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {
     'PloneMeeting: Read item observations':
     ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
      'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
+    'MeetingCPASLalouviere: Read budget infos':
+    ('Manager', 'MeetingMember', 'Reader', 'MeetingManager', 'MeetingBudgetImpactEditor', 'MeetingBudgetImpactReviewer'),
     # edit permissions
     'Modify portal content':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'PloneMeeting: Write decision':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'Review portal content':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'Add portal content':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'PloneMeeting: Add annex':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'PloneMeeting: Add MeetingFile':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'PloneMeeting: Write decision annex':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'PloneMeeting: Write optional advisers':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'PloneMeeting: Write optional advisers':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
+    'MeetingCPASLalouviere: Write budget infos':
+    ('Manager', 'MeetingMember', 'MeetingBudgetImpactEditor', 'MeetingManager', 'MeetingBudgetImpactReviewer', ),
     # MeetingManagers edit permissions
     'Delete objects':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ['Manager', 'MeetingManager', ],
     'PloneMeeting: Write item observations':
-    ('Manager', 'MeetingMember', 'MeetingN2', 'MeetingManager', ),
+    ('Manager', 'MeetingManager', ),
 }
 
 adaptations.RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS
@@ -442,6 +446,8 @@ class MeetingPBLalouviereWorkflowActions(MeetingWorkflowActions):
         for item in self.context.getAllItems(ordered=True):
             if item.queryState() == 'presented':
                 self.context.portal_workflow.doActionFor(item, 'itemfreeze')
+        #manage meeting number
+        self.initSequenceNumber()
 
     security.declarePrivate('doBackToCreated')
     def doBackToCreated(self, stateChange):
@@ -497,8 +503,8 @@ class MeetingItemPBLalouviereWorkflowActions(MeetingItemWorkflowActions):
     def doAccept_but_modify(self, stateChange):
         pass
 
-    security.declarePrivate('doPreAccept')
-    def doPreAccept(self, stateChange):
+    security.declarePrivate('doPre_accept')
+    def doPre_accept(self, stateChange):
         pass
 
     security.declarePrivate('doRemove')
@@ -574,6 +580,13 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
 
     def __init__(self, item):
         self.context = item  # Implements IMeetingItem
+        self.useHardcodedTransitionsForPresentingAnItem = True
+        self.transitionsForPresentingAnItem = ('proposeToN1',
+                                               'proposeToN2',
+                                               'proposeToSecretaire',
+                                               'proposeToPresident',
+                                               'validate',
+                                               'present')
 
     security.declarePublic('mayDecide')
     def mayDecide(self):

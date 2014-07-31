@@ -59,6 +59,13 @@ pmReviewer1 = UserDescriptor('pmReviewer1', [])
 pmCreator2 = UserDescriptor('pmCreator2', [])
 pmReviewer2 = UserDescriptor('pmReviewer2', [])
 pmAdviser1 = UserDescriptor('pmAdviser1', [])
+pmN1 = UserDescriptor('pmN1', [])
+pmN2 = UserDescriptor('pmN2', [])
+pmSecretaire = UserDescriptor('pmSecretaire', [])
+
+pmCreator2 = UserDescriptor('pmCreator2', [])
+pmReviewer2 = UserDescriptor('pmReviewer2', [])
+
 voter1 = UserDescriptor('voter1', [], fullname='M. Voter One')
 voter2 = UserDescriptor('voter2', [], fullname='M. Voter Two')
 powerobserver1 = UserDescriptor('powerobserver1', [], fullname='M. Power Observer1')
@@ -73,6 +80,9 @@ developers = GroupDescriptor('developers', 'Developers', 'Devel')
 developers.creators.append(pmCreator1)
 developers.creators.append(pmCreator1b)
 developers.creators.append(pmManager)
+developers.n1.append(pmN1)
+developers.n2.append(pmN2)
+developers.secretaire.append(pmSecretaire)
 developers.reviewers.append(pmReviewer1)
 developers.reviewers.append(pmManager)
 developers.observers.append(pmReviewer1)
@@ -151,8 +161,8 @@ collegeMeeting.meetingAppDefaultView = 'topic_searchmyitems'
 collegeMeeting.itemDocFormats = ('odt', 'pdf')
 collegeMeeting.meetingDocFormats = ('odt', 'pdf')
 collegeMeeting.useAdvices = False
-collegeMeeting.itemAdviceStates = ['proposed', ]
-collegeMeeting.itemAdviceEditStates = ['proposed', 'validated']
+collegeMeeting.itemAdviceStates = ['proposed_to_president', ]
+collegeMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 collegeMeeting.itemAdviceViewStates = ['presented', ]
 collegeMeeting.enforceAdviceMandatoriness = False
 collegeMeeting.itemPowerObserversStates = ('itemcreated', 'presented', 'accepted', 'delayed', 'refused')
@@ -260,8 +270,8 @@ councilMeeting.usedItemAttributes = ('toDiscuss', 'associatedGroups', 'itemIsSig
 councilMeeting.sortingMethodOnAddItem = 'on_categories'
 councilMeeting.useGroupsAsCategories = False
 councilMeeting.useAdvices = True
-councilMeeting.itemAdviceStates = ['proposed', ]
-councilMeeting.itemAdviceEditStates = ['proposed', 'validated']
+councilMeeting.itemAdviceStates = ['proposed_to_president', ]
+councilMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 councilMeeting.itemAdviceViewStates = ['presented', ]
 councilMeeting.transitionReinitializingDelays = 'backToItemCreated'
 councilMeeting.enforceAdviceMandatoriness = False

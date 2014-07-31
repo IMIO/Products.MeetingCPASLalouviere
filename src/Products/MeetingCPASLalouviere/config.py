@@ -53,6 +53,9 @@ CPASLALOUVIEREROLES['n2'] = 'MeetingN2'
 CPASLALOUVIEREROLES['secretaire'] = 'MeetingSecretaire'
 PMconfig.MEETINGROLES.update(CPASLALOUVIEREROLES)
 
+PMconfig.ReadBudgetInfos = 'MeetingCPASLalouviere: Read budget infos'
+PMconfig.WriteBudgetInfos = 'MeetingCPASLalouviere: Write budget infos'
+
 PMconfig.MEETING_GROUP_SUFFIXES = PMconfig.MEETINGROLES.keys()
 #the president will use the default 'MeetingReviewer' role
 

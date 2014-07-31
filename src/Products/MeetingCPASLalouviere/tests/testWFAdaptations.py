@@ -36,7 +36,7 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
     def test_subproduct_call_WFA_availableWFAdaptations(self):
         '''Most of wfAdaptations makes no sense, just make sure most are disabled.'''
         self.assertEquals(set(self.meetingConfig.listWorkflowAdaptations()),
-                          set(('archiving', 'local_meeting_managers', 'return_to_proposing_group', )))
+                          set(('return_to_proposing_group', )))
 
     def test_subproduct_call_WFA_no_publication(self):
         '''No sense...'''
@@ -71,6 +71,14 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         pass
 
     def test_subproduct_WFA_add_published_state(self):
+        '''No sense...'''
+        pass
+
+    def test_subproduct_call_WFA_hide_decisions_when_under_writing(self):
+        '''No sense...'''
+        pass
+
+    def test_subproduct_call_WFA_local_meeting_managers(self):
         '''No sense...'''
         pass
 
@@ -139,15 +147,7 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         # send the item back to proposing group, set the meeting in_committee then send the item back to the meeting
         # the item should be now in the item state corresponding to the meeting frozen state, so 'itemfrozen'
         self.do(item, 'return_to_proposing_group')
-        self.do(meeting, 'setInCommittee')
-        self.do(item, 'backTo_item_in_committee_from_returned_to_proposing_group')
-        self.assertEquals(item.queryState(), 'item_in_committee')
-
-    def test_subproduct_call_WFA_hide_decisions_when_under_writing(self):
-        '''Only launch the test for meetingConfig not for meetingConfig2 as no
-           'decided' state exists in meetingConfig2 for the 'Meeting'.'''
-        self.meetingConfig2.setMeetingWorkflow(self.meetingConfig.getMeetingWorkflow())
-        mctwfa.test_pm_WFA_hide_decisions_when_under_writing(self)
+        self.do(meeting, 'freeze')
 
 
 def test_suite():

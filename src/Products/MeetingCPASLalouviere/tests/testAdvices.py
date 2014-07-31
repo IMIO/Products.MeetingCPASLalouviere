@@ -34,8 +34,8 @@ class testAdvices(MeetingCPASLalouviereTestCase, mcta):
         """Redefine advices related states."""
         super(mcta, self).setUp()
         self.setMeetingConfig(self.meetingConfig2.getId())
-        self.meetingConfig.setItemAdviceStates(('proposed_to_president', 'validated', ))
-        self.meetingConfig.setItemAdviceEditStates(('proposed_to_president', ))
+        self.meetingConfig.setItemAdviceStates(('proposed_to_president', ))
+        self.meetingConfig.setItemAdviceEditStates(('proposed_to_president', 'validated',))
         self.meetingConfig.setItemAdviceViewStates(('presented', ))
 
 
