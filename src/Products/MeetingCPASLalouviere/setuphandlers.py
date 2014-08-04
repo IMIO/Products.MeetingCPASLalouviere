@@ -61,7 +61,7 @@ def isMeetingCPASllConfigureProfile(context):
 
 def installMeetingCPASLalouviere(context):
     """ Run the default profile before bing able to run the CPAS lalouviere profile"""
-    if isMeetingCPASllConfigureProfile(context):
+    if not isMeetingCPASllConfigureProfile(context):
         return
 
     logStep("installMeetingCPASLalouviere", context)
