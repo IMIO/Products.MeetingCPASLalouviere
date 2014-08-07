@@ -28,6 +28,7 @@ def isNotMeetingCPASLalouviereProfile(context):
     return context.readDataFile("MeetingCPASLalouviere_marker.txt") is None
 
 
+
 def updateRoleMappings(context):
     """after workflow changed update the roles mapping. this is like pressing
     the button 'Update Security Setting' and portal_workflow"""
@@ -46,6 +47,7 @@ def postInstall(context):
     reinstallPloneMeeting(context, site)
     showHomeTab(context, site)
     reorderSkinsLayers(context, site)
+
 
 
 ##code-section FOOT

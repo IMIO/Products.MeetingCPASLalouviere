@@ -71,7 +71,7 @@ RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {
     'PloneMeeting: Read item observations':
     ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',
      'MeetingSecretaire', 'MeetingReviewer', 'MeetingObserverLocal', 'Reader', ),
-    'MeetingCPASLalouviere: Read budget infos':
+    'PloneMeeting: Read budget infos':
     ('Manager', 'MeetingMember', 'Reader', 'MeetingManager', 'MeetingBudgetImpactEditor', 'MeetingBudgetImpactReviewer'),
     # edit permissions
     'Modify portal content':
@@ -92,7 +92,7 @@ RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {
     ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
     'PloneMeeting: Write optional advisers':
     ('Manager', 'MeetingMember', 'MeetingN1', 'MeetingN2', 'MeetingManager', 'MeetingSecretaire', 'MeetingReviewer', ),
-    'MeetingCPASLalouviere: Write budget infos':
+    'PloneMeeting: Write budget infos':
     ('Manager', 'MeetingMember', 'MeetingBudgetImpactEditor', 'MeetingManager', 'MeetingBudgetImpactReviewer', ),
     # MeetingManagers edit permissions
     'Delete objects':
