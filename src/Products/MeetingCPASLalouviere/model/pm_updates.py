@@ -53,8 +53,6 @@ def update_item_schema(baseSchema):
     ),)
 
     completeItemSchema = baseSchema + specificSchema.copy()
-    completeItemSchema['budgetInfos'].write_permission = "MeetingCPASLalouviere: Write budget infos"
-    completeItemSchema['budgetInfos'].read_permission = "MeetingCPASLalouviere: Read budget infos"
     completeItemSchema['optionalAdvisers'].widget.size = 10
     completeItemSchema['optionalAdvisers'].widget.format = "select"
     completeItemSchema['optionalAdvisers'].widget.description_msgid = "optional_advisers_item_descr"
