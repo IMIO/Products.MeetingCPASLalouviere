@@ -2,7 +2,7 @@
 #
 # File: MeetingCPASLalouviere.py
 #
-# Copyright (c) 2014 by Imio.be
+# Copyright (c) 2015 by Imio.be
 # Generator: ArchGenXML Version 2.7
 #            http://plone.org/products/archgenxml
 #
@@ -24,7 +24,6 @@ __docformat__ = 'plaintext'
 
 from Products.CMFCore.permissions import setDefaultRoles
 ##code-section config-head #fill in your manual code here
-import os
 ##/code-section config-head
 
 

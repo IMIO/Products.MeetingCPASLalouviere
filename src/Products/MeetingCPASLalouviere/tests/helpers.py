@@ -57,7 +57,7 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
     TRANSITIONS_FOR_CLOSING_MEETING_2 = ('freeze', 'decide', 'close', )
     BACK_TO_WF_PATH_1 = {
         # Meeting
-        'created': ('backToPublished',
+        'created': ('backToDecided',
                     'backToFrozen',
                     'backToCreated',),
         # MeetingItem
@@ -96,7 +96,7 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
                       'backToValidated', )}
     BACK_TO_WF_PATH_2 = {
         # Meeting
-        'created': ('backToPublished',
+        'created': ('backToDecided',
                     'backToFrozen',
                     'backToCreated',),
         'itemcreated': ('backToItemFrozen',
@@ -137,6 +137,11 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
                               'proposed': 'proposed_to_president',
                               'validated': 'validated',
                               'presented': 'presented'}
+
+    # in which state an item must be after an particular meeting transition?
+    ITEM_WF_STATE_AFTER_MEETING_TRANSITION = {'publish_decisions': 'accepted',
+                                              'close': 'accepted'}
+    TRANSITIONS_FOR_ACCEPTING_ITEMS_MEETING_1 = TRANSITIONS_FOR_ACCEPTING_ITEMS_MEETING_2 = ('freeze', 'decide', )
 
     def _createMeetingWithItems(self, withItems=True, meetingDate=DateTime()):
         '''Create a meeting with a bunch of items.

@@ -1,22 +1,31 @@
-from Products.Archetypes.atapi import *
-from Products.PloneMeeting.MeetingItem import MeetingItem
+from Products.Archetypes.atapi import MultiSelectionWidget
+from Products.Archetypes.atapi import LinesField
+from Products.Archetypes.atapi import BooleanField
+from Products.Archetypes.atapi import Schema
+from Products.PloneMeeting.config import WriteRiskyConfig
 from Products.PloneMeeting.MeetingGroup import MeetingGroup
+from Products.PloneMeeting.MeetingItem import MeetingItem
 from Products.PloneMeeting.MeetingConfig import MeetingConfig
 
 
 def update_group_schema(baseSchema):
+
     specificSchema = Schema((
 
-        # field used to define specific signatures for a MeetingGroup
-        TextField(
-            name='signatures',
-            widget=TextAreaWidget(
-                label='Signatures',
-                label_msgid='MeetingCPASLalouviere_label_signatures',
-                description='Leave empty to use the signatures defined on the meeting',
-                description_msgid='MeetingCPASLalouviere_descr_signatures',
+        # field used to define list of services for echevin for a MeetingGroup
+        LinesField(
+            name='echevinServices',
+            widget=MultiSelectionWidget(
+                size=10,
+                label='EchevinServices',
+                label_msgid='MeetingMons_label_echevinServices',
+                description='Leave empty if he is not an echevin',
+                description_msgid='MeetingMons_descr_echevinServices',
                 i18n_domain='PloneMeeting',
             ),
+            enforceVocabulary=True,
+            multiValued=1,
+            vocabulary='listEchevinServices',
         ),
     ),)
 
@@ -28,21 +37,37 @@ MeetingGroup.schema = update_group_schema(MeetingGroup.schema)
 
 def update_config_schema(baseSchema):
     specificSchema = Schema((
-        TextField(
-            name='itemDecisionReportText',
-            widget=TextAreaWidget(
-                description="ItemDecisionReportText",
-                description_msgid="item_decision_report_text_descr",
-                label='ItemDecisionReportText',
-                label_msgid='PloneMeeting_label_itemDecisionReportText',
+        BooleanField(
+            name='initItemDecisionIfEmptyOnDecide',
+            default=True,
+            widget=BooleanField._properties['widget'](
+                description="InitItemDecisionIfEmptyOnDecide",
+                description_msgid="init_item_decision_if_empty_on_decide",
+                label='Inititemdecisionifemptyondecide',
+                label_msgid='MeetingCommunes_label_initItemDecisionIfEmptyOnDecide',
+                i18n_domain='PloneMeeting'),
+            write_permission=WriteRiskyConfig,
+        ),
+
+        # field used to define list of services for synthesis document for DF (legality advice)
+        LinesField(
+            name='cdldProposingGroup',
+            widget=MultiSelectionWidget(
+                size=10,
+                label='CdldProposingGroup',
+                label_msgid='MeetingCommunes_label_cdldProposingGroup',
+                description='Choose proposing group for cdld advice',
+                description_msgid='MeetingCommunes_descr_cdldProposingGroup',
                 i18n_domain='PloneMeeting',
             ),
-            allowable_content_types=('text/plain', 'text/html', ),
-            default_output_type="text/plain",
-        )
+            enforceVocabulary=True,
+            multiValued=1,
+            vocabulary='listCdldProposingGroup',
+            write_permission=WriteRiskyConfig,
+        ),
     ),)
+
     completeConfigSchema = baseSchema + specificSchema.copy()
-    completeConfigSchema.moveField('itemDecisionReportText', after='budgetDefault')
     return completeConfigSchema
 MeetingConfig.schema = update_config_schema(MeetingConfig.schema)
 

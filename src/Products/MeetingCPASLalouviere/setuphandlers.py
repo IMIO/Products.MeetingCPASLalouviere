@@ -2,39 +2,39 @@
 #
 # File: setuphandlers.py
 #
-# Copyright (c) 2014 by Imio.be
+# Copyright (c) 2015 by IMIO
 # Generator: ArchGenXML Version 2.7
 #            http://plone.org/products/archgenxml
 #
 # GNU General Public License (GPL)
 #
 
-__author__ = """Andre Nuyens <andre@imio.be>"""
+__author__ = """Andre NUYENS <andre.nuyens@imio.be>"""
 __docformat__ = 'plaintext'
 
 
 import logging
 logger = logging.getLogger('MeetingCPASLalouviere: setuphandlers')
 from Products.MeetingCPASLalouviere.config import PROJECTNAME
-from Products.MeetingCPASLalouviere.config import DEPENDENCIES
 import os
 from Products.CMFCore.utils import getToolByName
-import transaction
 ##code-section HEAD
 from Products.PloneMeeting.exportimport.content import ToolInitializer
 ##/code-section HEAD
+
 
 def isNotMeetingCPASLalouviereProfile(context):
     return context.readDataFile("MeetingCPASLalouviere_marker.txt") is None
 
 
-
 def updateRoleMappings(context):
     """after workflow changed update the roles mapping. this is like pressing
     the button 'Update Security Setting' and portal_workflow"""
-    if isNotMeetingCPASLalouviereProfile(context): return
+    if isNotMeetingCPASLalouviereProfile(context):
+        return
     wft = getToolByName(context.getSite(), 'portal_workflow')
     wft.updateRoleMappings()
+
 
 def postInstall(context):
     """Called as at the end of the setup process. """
@@ -49,8 +49,8 @@ def postInstall(context):
     reorderSkinsLayers(context, site)
 
 
-
 ##code-section FOOT
+
 def logStep(method, context):
     logger.info("Applying '%s' in profile '%s'" %
                 (method, '/'.join(context._profile_path.split(os.sep)[-3:])))
@@ -58,7 +58,7 @@ def logStep(method, context):
 
 def isMeetingCPASllConfigureProfile(context):
     return context.readDataFile("MeetingCPASll_examples_fr_marker.txt") or \
-           context.readDataFile("MeetingCPASLL_tests_marker.txt")
+        context.readDataFile("MeetingCPASLL_tests_marker.txt")
 
 
 def installMeetingCPASLalouviere(context):
@@ -120,7 +120,7 @@ def showHomeTab(context, site):
 
 def reorderSkinsLayers(context, site):
     """
-       Reinstall Products.plonemeetingskin and re-apply MeetingCPASLalouviere skins.xml step
+       Re-apply MeetingCPASLalouviere skins.xml step
        as the reinstallation of MeetingCPASLalouviere and PloneMeeting changes the portal_skins layers order
     """
     if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
@@ -132,8 +132,8 @@ def reorderSkinsLayers(context, site):
         site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:default')
         site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:plonemeetingskin')
     except KeyError:
-        # if the Products.plonemeetingskin profile is not available
-        # (not using plonemeetingskin or in testing?) we pass...
+        # if the plonemeetingskin or imioapps profile is not available
+        # (not using plonemeetingskin, imioapps or in testing?) we pass...
         pass
 
 
