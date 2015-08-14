@@ -157,17 +157,35 @@ developers.creators.append(pmManager)
 developers.n1.append(pmN1)
 developers.n2.append(pmN2)
 developers.secretaire.append(pmSecretaire)
+developers.n1.append(pmManager)
+developers.n2.append(pmManager)
+developers.secretaire.append(pmManager)
 developers.reviewers.append(pmReviewer1)
 developers.reviewers.append(pmManager)
 developers.observers.append(pmReviewer1)
 developers.observers.append(pmManager)
 developers.advisers.append(pmAdviser1)
 developers.advisers.append(pmManager)
-setattr(developers, 'signatures', 'developers signatures')
+developers.budgetimpactreviewers.append(pmManager)
+
+setattr(developers, 'certifiedSignatures', [
+    {'signatureNumber': '1',
+     'name': u'Remplaçant',
+     'function': u'Le Secrétaire communal ff',
+     'date_from': '',
+     'date_to': '',
+     },
+    {'signatureNumber': '2',
+     'name': u'Remplaçant 2',
+     'function': u'Le 1er échevin',
+     'date_from': '',
+     'date_to': '',
+     },
+])
 setattr(developers, 'echevinServices', 'developers')
-# put pmReviewerLevel1 in first level of reviewers from what is in MEETINGREVIEWERS
+# put pmReviewerLevel1 in first level (n1) of reviewers from what is in MEETINGREVIEWERS
 getattr(developers, MEETINGREVIEWERS.keys()[-1]).append(pmReviewerLevel1)
-# put pmReviewerLevel2 in second level of reviewers from what is in MEETINGREVIEWERS
+# put pmReviewerLevel2 in last level (reviewer) of reviewers from what is in MEETINGREVIEWERS
 getattr(developers, MEETINGREVIEWERS.keys()[0]).append(pmReviewerLevel2)
 
 #give an advice on recurring items
@@ -177,7 +195,7 @@ vendors.reviewers.append(pmReviewer2)
 vendors.observers.append(pmReviewer2)
 vendors.advisers.append(pmReviewer2)
 vendors.advisers.append(pmManager)
-setattr(vendors, 'signatures', '')
+setattr(vendors, 'certifiedSignatures', [])
 
 # Do voters able to see items to vote for
 developers.observers.append(voter1)
@@ -225,8 +243,8 @@ collegeMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces
 collegeMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
 collegeMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
 collegeMeeting.transitionsToConfirm = []
-collegeMeeting.transitionsForPresentingAnItem = ['proposeToServiceHead', 'proposeToOfficeManager', 'proposeToDivisionHead',
-                                                 'proposeToDirector', 'validate', 'present']
+collegeMeeting.transitionsForPresentingAnItem = ['proposeToN1', 'proposeToN2', 'proposeToSecretaire',
+                                                 'proposeToPresident', 'validate', 'present']
 collegeMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transition': 'freeze',
                                                               'item_transition': 'itemfreeze'},
 
@@ -306,8 +324,8 @@ councilMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces
 councilMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
 councilMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
 councilMeeting.transitionsToConfirm = []
-councilMeeting.transitionsForPresentingAnItem = ['proposeToServiceHead', 'proposeToOfficeManager', 'proposeToDivisionHead',
-                                                 'proposeToDirector', 'validate', 'present']
+councilMeeting.transitionsForPresentingAnItem = ['proposeToN1', 'proposeToN2', 'proposeToSecretaire',
+                                                 'proposeToPresident', 'validate', 'present']
 councilMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transition': 'freeze',
                                                               'item_transition': 'itemfreeze'},
 

@@ -820,13 +820,16 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
           that is in the state 'itemcreated'
         """
         res = False
+        if not self.context.getCategory():
+            return No(translate('required_category_ko',
+                                domain="PloneMeeting",
+                                context=self.context.REQUEST))
         #first of all, the use must have the 'Review portal content permission'
         if checkPermission(ReviewPortalContent, self.context):
             res = True
             #if the current item state is 'itemcreated', only the MeetingManager can validate
-            member = self.context.portal_membership.getAuthenticatedMember()
-            if self.context.queryState() in ('itemcreated',) and not \
-               (member.has_role('MeetingManager') or member.has_role('Manager')):
+            if self.context.queryState() in ('itemcreated',) and \
+                    not self.context.portal_plonemeeting.isManager(self.context):
                 res = False
         return res
 
@@ -834,9 +837,13 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
 
     def mayWaitAdvices(self):
         """
-          Check that the user has the 'Review portal content'
+          Check that the user has the 'Review portal content' and item have category
         """
         res = False
+        if not self.context.getCategory():
+            return No(translate('required_category_ko',
+                                domain="PloneMeeting",
+                                context=self.context.REQUEST))
         if checkPermission(ReviewPortalContent, self.context):
                 res = True
         return res
@@ -845,9 +852,13 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
 
     def mayProposeToN1(self):
         """
-          Check that the user has the 'Review portal content'
+          Check that the user has the 'Review portal content' and item have category
         """
         res = False
+        if not self.context.getCategory():
+            return No(translate('required_category_ko',
+                                domain="PloneMeeting",
+                                context=self.context.REQUEST))
         if checkPermission(ReviewPortalContent, self.context):
                 res = True
         return res
@@ -919,9 +930,13 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemWorkflowConditions):
 
     def mayProposeToBudgetImpactReviewer(self):
         """
-          Check that the user has the 'Review portal content'
+          Check that the user has the 'Review portal content' and item have category
         """
         res = False
+        if not self.context.getCategory():
+            return No(translate('required_category_ko',
+                                domain="PloneMeeting",
+                                context=self.context.REQUEST))
         if checkPermission(ReviewPortalContent, self.context):
                 res = True
         return res

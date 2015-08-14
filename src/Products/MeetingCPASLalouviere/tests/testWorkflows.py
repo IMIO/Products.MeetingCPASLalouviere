@@ -44,10 +44,9 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         """
             This test covers the whole decision workflow. It begins with the
             creation of some items, and ends by closing a meeting.
-            This call 2 sub tests for each process : college and council
+            This call sub test for each process : BP and CAS (same wf)
         """
         self._testWholeDecisionProcessCollege()
-        self.setMeetingConfig(self.meetingConfig2.getId())
 
     def _testWholeDecisionProcessCollege(self):
         '''This test covers the whole decision workflow. It begins with the
@@ -56,43 +55,43 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.changeUser('pmCreator1')
         item1 = self.create('MeetingItem', title='The first item')
         annex1 = self.addAnnex(item1)
-        self.addAnnex(item1, decisionRelated=True)
+        self.addAnnex(item1, relatedTo='item_decision')
         self.do(item1, 'proposeToN1')
-        self.assertRaises(Unauthorized, self.addAnnex, item1, decisionRelated=True)
+        self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the N1 validation level
         self.changeUser('pmN1')
         self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
         self.do(item1, 'proposeToN2')
-        self.assertRaises(Unauthorized, self.addAnnex, item1, decisionRelated=True)
+        self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the N2 validation level
         self.changeUser('pmN2')
         self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
         self.do(item1, 'proposeToSecretaire')
-        self.assertRaises(Unauthorized, self.addAnnex, item1, decisionRelated=True)
+        self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the secretariat validation level
         self.changeUser('pmSecretaire')
         self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
         self.do(item1, 'proposeToPresident')
-        self.assertRaises(Unauthorized, self.addAnnex, item1, decisionRelated=True)
+        self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the president validation level
         self.changeUser('pmReviewer1')
         self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
         self.do(item1, 'validate')
-        self.assertRaises(Unauthorized, self.addAnnex, item1, decisionRelated=True)
+        self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # pmManager creates a meeting
         self.changeUser('pmManager')
         meeting = self.create('Meeting', date='2007/12/11 09:00:00')
-        self.addAnnex(item1, decisionRelated=True)
+        self.addAnnex(item1, relatedTo='item_decision')
         # pmCreator2 creates and proposes an item
         self.changeUser('pmCreator2')
         item2 = self.create('MeetingItem', title='The second item',
@@ -126,8 +125,8 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.changeUser('pmManager')
         self.do(item2, 'present')
         self.addAnnex(item2)
-        # So now we should have 1 normal item (no recurring items) and one late item in the meeting
-        self.failUnless(len(meeting.getItems()) == 1)
+        # So now we should have 1 normal item and 2 recurring items; 1 late item in the meeting
+        self.failUnless(len(meeting.getItems()) == 3)
         self.failUnless(len(meeting.getLateItems()) == 1)
         self.do(meeting, 'decide')
         self.do(item1, 'refuse')
@@ -165,10 +164,9 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         #when correcting the meeting back to created, the items must be corrected
         #back to "presented"
         self.do(meeting, 'backToCreated')
-        #when a point is in 'itemfrozen' it's must rest in this state
-        #because normally we backToCreated for add new point
-        self.assertEquals('itemfrozen', wftool.getInfoFor(item1, 'review_state'))
-        self.assertEquals('itemfrozen', wftool.getInfoFor(item2, 'review_state'))
+        #when a point is in 'itemfrozen' it's must place in presented state
+        self.assertEquals('presented', wftool.getInfoFor(item1, 'review_state'))
+        self.assertEquals('presented', wftool.getInfoFor(item2, 'review_state'))
 
     def test_subproduct_CloseMeeting(self):
         """

@@ -24,6 +24,7 @@ __docformat__ = 'plaintext'
 
 from Products.CMFCore.permissions import setDefaultRoles
 ##code-section config-head #fill in your manual code here
+from collections import OrderedDict
 ##/code-section config-head
 
 
@@ -54,6 +55,12 @@ PMconfig.MEETINGROLES.update(CPASLALOUVIEREROLES)
 
 PMconfig.MEETING_GROUP_SUFFIXES = PMconfig.MEETINGROLES.keys()
 #the president will use the default 'MeetingReviewer' role
+
+CPASLALOUVIEREMEETINGREVIEWERS = OrderedDict([('reviewers', 'proposed_to_president'),
+                                            ('secretaire', 'proposed_to_secretaire'),
+                                            ('n2', 'proposed_to_n2'),
+                                            ('n1', 'proposed_to_n1'), ])
+PMconfig.MEETINGREVIEWERS = CPASLALOUVIEREMEETINGREVIEWERS
 
 ##/code-section config-bottom
 

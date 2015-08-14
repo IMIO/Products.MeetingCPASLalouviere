@@ -35,7 +35,7 @@
       description=""
       source="3.2.0"
       destination="3.3.0"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_3_3_0.migrate"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_3_3.migrate"
       profile="Products.MeetingCPASLalouviere:default" />
 
   <!-- ##/code-section profiles.zcml-bottom -->
