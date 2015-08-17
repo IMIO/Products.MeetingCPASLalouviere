@@ -144,3 +144,15 @@ msgstr "Groupes proposants à garder pour la synthèse des avis pour le CDLD (av
 #. Default: "Choose proposing group for cdld advice" 
 msgid "MeetingCommunes_descr_cdldProposingGroup" 
 msgstr "Choisir les groupes donneurs d'avis qui seront repris dans la synthèse CDLD (avis DF)"
+
+#. Default: "Default value for the 'motivation' field"
+msgid "PloneMeeting_label_defaultMeetingItemMotivation"
+msgstr "Valeur par défaut du champ 'Motivation de l'urgence'"
+
+#. Default: "Emergency Motivation"
+msgid "PloneMeeting_label_motivation"
+msgstr "Motivation de l'urgence"
+
+#. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
+msgid "config_default_meetingitem_motivation_descr"
+msgstr "Définissez ici le texte prédéfini qui sera présent dans le champ 'Motivation de l'urgence' chaque fois qu'un utilisateur crée un nouveau point."
