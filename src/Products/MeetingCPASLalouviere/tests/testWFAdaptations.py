@@ -33,40 +33,40 @@ from Products.MeetingCommunes.tests.testWFAdaptations import testWFAdaptations a
 class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
     '''Tests various aspects of votes management.'''
 
-    def test_pm_call_WFA_availableWFAdaptations(self):
+    def test_pm_WFA_availableWFAdaptations(self):
         '''Most of wfAdaptations makes no sense, just make sure most are disabled.'''
         self.assertEquals(set(self.meetingConfig.listWorkflowAdaptations()),
                           set(('return_to_proposing_group', )))
 
-    def test_pm_call_WFA_no_publication(self):
+    def test_pm_WFA_no_publication(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_no_proposal(self):
+    def test_pm_WFA_no_proposal(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_pre_validation(self):
+    def test_pm_WFA_pre_validation(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_items_come_validated(self):
+    def test_pm_WFA_items_come_validated(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_only_creator_may_delete(self):
+    def test_pm_WFA_only_creator_may_delete(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_no_global_observation(self):
+    def test_pm_WFA_no_global_observation(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_everyone_reads_all(self):
+    def test_pm_WFA_everyone_reads_all(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_creator_edits_unless_closed(self):
+    def test_pm_WFA_creator_edits_unless_closed(self):
         '''No sense...'''
         pass
 
@@ -74,11 +74,27 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_hide_decisions_when_under_writing(self):
+    def test_pm_WFA_return_to_proposing_group_with_hide_decisions_when_under_writing(self):
         '''No sense...'''
         pass
 
-    def test_pm_call_WFA_local_meeting_managers(self):
+    def test_pm_WFA_return_to_proposing_group_with_all_validations(self):
+        '''Not used yet...'''
+        pass
+
+    def test_pm_WFA_return_to_proposing_group_with_last_validation(self):
+        '''Not used yet...'''
+        pass
+
+    def test_pm_WFA_return_to_proposing_group(self):
+        '''See doc in PloneMeeting/tests/testWFAdaptations.py'''
+        mctwfa.test_pm_WFA_return_to_proposing_group(self)
+
+    def test_pm_WFA_hide_decisions_when_under_writing(self):
+        '''No sense...'''
+        pass
+
+    def test_pm_WFA_local_meeting_managers(self):
         '''No sense...'''
         pass
 
@@ -98,11 +114,11 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
            RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS defined value.
            In our use case, just test that permissions of 'returned_to_proposing_group' state
            are the one defined in RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS.'''
-        itemWF = getattr(self.wfTool, self.meetingConfig.getItemWorkflow())
+        itemWF = self.wfTool.getWorkflowsFor(self.meetingConfig.getItemTypeName())[0]
         returned_to_proposing_group_state_permissions = itemWF.states['returned_to_proposing_group'].permission_roles
         for permission in returned_to_proposing_group_state_permissions:
             self.assertEquals(returned_to_proposing_group_state_permissions[permission],
-                              RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS[permission])
+                              RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS[self.meetingConfig.getItemWorkflow()][permission])
 
     def _return_to_proposing_group_active_wf_functionality(self):
         '''Tests the workflow functionality of using the 'return_to_proposing_group' wfAdaptation.

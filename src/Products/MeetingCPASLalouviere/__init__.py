@@ -41,7 +41,7 @@ logger = logging.getLogger('MeetingCPASLalouviere')
 logger.debug('Installing Product')
 
 from Products.CMFCore import DirectoryView
-from Products.MeetingCommunes.config import product_globals
+from config import product_globals
 
 DirectoryView.registerDirectory('skins', product_globals)
 

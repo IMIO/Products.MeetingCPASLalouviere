@@ -40,7 +40,7 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
        (self.assertRaise). Instead, we check that the user has the permission
        to do so (getSecurityManager().checkPermission)."""
 
-    def test_pm_call_WholeDecisionProcess(self):
+    def test_pm_WholeDecisionProcess(self):
         """
             This test covers the whole decision workflow. It begins with the
             creation of some items, and ends by closing a meeting.
@@ -125,9 +125,9 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.changeUser('pmManager')
         self.do(item2, 'present')
         self.addAnnex(item2)
-        # So now we should have 1 normal item and 2 recurring items; 1 late item in the meeting
-        self.failUnless(len(meeting.getItems()) == 3)
-        self.failUnless(len(meeting.getLateItems()) == 1)
+        # So now we should have 3 normal item (2 recurring + 1) and one late item in the meeting
+        self.failUnless(len(meeting.getItems()) == 4)
+        self.failUnless(len(meeting.getItems(listTypes='late')) == 1)
         self.do(meeting, 'decide')
         self.do(item1, 'refuse')
         self.assertEquals(item1.queryState(), 'refused')
@@ -228,7 +228,7 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         #presented change into accepted
         self.assertEquals('accepted', wftool.getInfoFor(item7, 'review_state'))
 
-    def test_pm_call_RecurringItemsRespectSortingMethodOnAddItemPrivacy(self):
+    def test_pm_RecurringItemsRespectSortingMethodOnAddItemPrivacy(self):
             '''No sense...'''
             pass
 

@@ -33,8 +33,12 @@ from Products.CMFCore.utils import _checkPermission
 from Products.PloneMeeting.MeetingConfig import MeetingConfig
 from Products.PloneMeeting.adapters import ItemPrettyLinkAdapter
 from Products.PloneMeeting.model import adaptations
+from Products.MeetingCommunes.adapters import MeetingCollegeWorkflowActions
+from Products.MeetingCommunes.adapters import MeetingCollegeWorkflowConditions
 from Products.MeetingCommunes.adapters import MeetingItemCollegeWorkflowActions
 from Products.MeetingCommunes.adapters import MeetingItemCollegeWorkflowConditions
+from Products.MeetingCPASLalouviere.interfaces import IMeetingPBLalouviereWorkflowConditions
+from Products.MeetingCPASLalouviere.interfaces import IMeetingPBLalouviereWorkflowActions
 from Products.MeetingCPASLalouviere.interfaces import IMeetingItemPBLalouviereWorkflowConditions
 from Products.MeetingCPASLalouviere.interfaces import IMeetingItemPBLalouviereWorkflowActions
 
@@ -98,6 +102,24 @@ RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {'meetingitembplalouviere_workflo
 }
 
 adaptations.RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS
+
+
+# ------------------------------------------------------------------------------
+class MeetingPBLalouviereWorkflowActions(MeetingCollegeWorkflowActions):
+    """Adapter that adapts a meeting item implementing IMeetingItem to the
+       interface IMeetingItemPBWorkflowActions"""
+
+    implements(IMeetingPBLalouviereWorkflowActions)
+    security = ClassSecurityInfo()
+
+
+# ------------------------------------------------------------------------------
+class MeetingPBLalouviereWorkflowConditions(MeetingCollegeWorkflowConditions):
+    """Adapter that adapts a meeting item implementing IMeetingItem to the
+       interface IMeetingItemPBWorkflowActions"""
+
+    implements(IMeetingPBLalouviereWorkflowConditions)
+    security = ClassSecurityInfo()
 
 
 # ------------------------------------------------------------------------------
@@ -303,6 +325,8 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCollegeWorkflowCondit
 
 
 # ------------------------------------------------------------------------------
+InitializeClass(MeetingPBLalouviereWorkflowActions)
+InitializeClass(MeetingPBLalouviereWorkflowConditions)
 InitializeClass(MeetingItemPBLalouviereWorkflowActions)
 InitializeClass(MeetingItemPBLalouviereWorkflowConditions)
 # ------------------------------------------------------------------------------

@@ -28,6 +28,9 @@ from Products.MeetingCommunes.tests.testVotes import testVotes as mctv
 
 class testVotes(MeetingCPASLalouviereTestCase, mctv):
     '''Tests various aspects of votes management.'''
+    def setUp(self):
+        """ """
+        mctv.setUp(self)
 
 
 def test_suite():

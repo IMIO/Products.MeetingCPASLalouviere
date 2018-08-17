@@ -303,11 +303,6 @@ collegeMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transitio
                                                              {'meeting_transition': 'decide',
                                                               'item_transition': 'itemfreeze'},
 
-                                                             {'meeting_transition': 'publish_decisions',
-                                                              'item_transition': 'itemfreeze'},
-                                                             {'meeting_transition': 'publish_decisions',
-                                                              'item_transition': 'accept'},
-
                                                              {'meeting_transition': 'close',
                                                               'item_transition': 'itemfreeze'},
                                                              {'meeting_transition': 'close',
@@ -335,7 +330,7 @@ collegeMeeting.itemDecidedStates = ['accepted', 'refused', 'delayed', 'accepted_
 collegeMeeting.insertingMethodsOnAddItem = ({'insertingMethod': 'on_proposing_groups',
                                              'reverse': '0'}, )
 collegeMeeting.useGroupsAsCategories = True
-collegeMeeting.meetingPowerObserversStates = ('frozen', 'published', 'decided', 'closed')
+collegeMeeting.meetingPowerObserversStates = ('frozen', 'decided', 'closed')
 collegeMeeting.useCopies = True
 collegeMeeting.selectableCopyGroups = [developers.getIdSuffixed('reviewers'), vendors.getIdSuffixed('reviewers'), ]
 collegeMeeting.podTemplates = [agendaTemplate, decisionsTemplate, itemTemplate]
@@ -386,33 +381,18 @@ councilMeeting.transitionsForPresentingAnItem = ['proposeToN1', 'proposeToN2', '
 councilMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transition': 'freeze',
                                                               'item_transition': 'itemfreeze'},
 
-                                                             {'meeting_transition': 'publish',
-                                                              'item_transition': 'itemfreeze'},
-                                                             {'meeting_transition': 'publish',
-                                                              'item_transition': 'itempublish'},
-
                                                              {'meeting_transition': 'decide',
                                                               'item_transition': 'itemfreeze'},
-                                                             {'meeting_transition': 'decide',
-                                                              'item_transition': 'itempublish'},
-
-                                                             {'meeting_transition': 'publish_decisions',
-                                                              'item_transition': 'itemfreeze'},
-                                                             {'meeting_transition': 'publish_decisions',
-                                                              'item_transition': 'itempublish'},
-                                                             {'meeting_transition': 'publish_decisions',
-                                                              'item_transition': 'accept'},
 
                                                              {'meeting_transition': 'close',
                                                               'item_transition': 'itemfreeze'},
-                                                             {'meeting_transition': 'close',
-                                                              'item_transition': 'itempublish'},
+
                                                              {'meeting_transition': 'close',
                                                               'item_transition': 'accept'},
 
                                                              {'meeting_transition': 'backToCreated',
                                                               'item_transition': 'backToPresented'},)
-councilMeeting.meetingTopicStates = ('created', 'frozen', 'published')
+councilMeeting.meetingTopicStates = ('created', 'frozen')
 councilMeeting.decisionTopicStates = ('decided', 'closed')
 councilMeeting.itemAdviceStates = ('validated',)
 councilMeeting.recordItemHistoryStates = []

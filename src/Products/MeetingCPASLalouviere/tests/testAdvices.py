@@ -27,12 +27,8 @@ from Products.MeetingCommunes.tests.testAdvices import testAdvices as mcta
 
 
 class testAdvices(MeetingCPASLalouviereTestCase, mcta):
-    '''Tests various aspects of advices management.
-       Advices are enabled for PloneGov Assembly, not for PloneMeeting Assembly.'''
-
-    def test_subproduct_call_MayTriggerGiveAdviceWhenItemIsBackToANotViewableState(self):
-        '''Run the test_pm_MayTriggerGiveAdviceWhenItemIsBackToANotViewableState from PloneMeeting.'''
-        self.test_pm_MayTriggerGiveAdviceWhenItemIsBackToANotViewableState()
+    """Tests various aspects of advices management.
+       Advices are enabled for PloneGov Assembly, not for PloneMeeting Assembly."""
 
 
 def test_suite():

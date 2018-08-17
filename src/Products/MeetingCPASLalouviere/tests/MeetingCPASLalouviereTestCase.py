@@ -28,8 +28,8 @@ from Products.MeetingCPASLalouviere.tests.helpers import MeetingCPASLalouviereTe
 # adapters.py but overrided by Products.MeetingCommunes here in the tests...
 from Products.PloneMeeting.MeetingConfig import MeetingConfig
 from Products.MeetingCPASLalouviere.adapters import customWfAdaptations
-MeetingConfig.wfAdaptations = customWfAdaptations
 
+MeetingConfig.wfAdaptations = customWfAdaptations
 
 class MeetingCPASLalouviereTestCase(PloneMeetingTestCase, MeetingCPASLalouviereTestingHelpers):
     """Base class for defining MeetingCPASLalouviere test cases."""

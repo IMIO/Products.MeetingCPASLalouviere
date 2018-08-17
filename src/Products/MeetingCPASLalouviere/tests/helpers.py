@@ -20,10 +20,10 @@
 # 02110-1301, USA.
 #
 
-from Products.MeetingCommunes.tests.helpers import MeetingCommunesTestingHelpers
+from Products.PloneMeeting.tests.helpers import PloneMeetingTestingHelpers
 
 
-class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
+class MeetingCPASLalouviereTestingHelpers(PloneMeetingTestingHelpers):
     '''Override some values of PloneMeetingTestingHelpers.'''
 
     TRANSITIONS_FOR_PROPOSING_ITEM_1 = ('proposeToN1',
@@ -93,8 +93,7 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
         'validated': ('backToItemFrozen',
                       'backToPresented',
                       'backToValidated',),
-        'presented': ('backToItemPublished',
-                      'backToItemFrozen',
+        'presented': ('backToItemFrozen',
                       'backToPresented',)}
 
     WF_STATE_NAME_MAPPINGS = {'itemcreated': 'itemcreated',
@@ -102,3 +101,11 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
                               'proposed': 'proposed_to_president',
                               'validated': 'validated',
                               'presented': 'presented'}
+
+
+    WF_ITEM_STATE_NAME_MAPPINGS_1 = WF_ITEM_STATE_NAME_MAPPINGS_2 = {
+        'itemcreated': 'itemcreated',
+        'proposed': 'proposed_to_president',
+        'validated': 'validated',
+        'presented': 'presented',
+        'itemfrozen': 'itemfrozen'}
