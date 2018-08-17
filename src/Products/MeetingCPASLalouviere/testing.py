@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from plone.testing import z2, zca
+from plone.app.testing import PloneWithPackageLayer
 from plone.app.testing import FunctionalTesting
-from Products.PloneMeeting.testing import PloneMeetingLayer
 import Products.MeetingCPASLalouviere
-from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 
 
 MLL_ZCML = zca.ZCMLSandbox(filename="testing.zcml",
@@ -13,11 +12,11 @@ MLL_ZCML = zca.ZCMLSandbox(filename="testing.zcml",
 MLL_Z2 = z2.IntegrationTesting(bases=(z2.STARTUP, MLL_ZCML),
                                name='MLL_Z2')
 
-MLL_TESTING_PROFILE = PloneMeetingLayer(
+MLL_TESTING_PROFILE = PloneWithPackageLayer(
     zcml_filename="testing.zcml",
     zcml_package=Products.MeetingCPASLalouviere,
-    additional_z2_products=('Products.MeetingCPASLalouviere',
-                            'Products.MeetingCommunes',
+    additional_z2_products=('imio.dashboard',
+                            'Products.MeetingCPASLalouviere',
                             'Products.PloneMeeting',
                             'Products.CMFPlacefulWorkflow',
                             'Products.PasswordStrength'),
@@ -26,13 +25,3 @@ MLL_TESTING_PROFILE = PloneMeetingLayer(
 
 MLL_TESTING_PROFILE_FUNCTIONAL = FunctionalTesting(
     bases=(MLL_TESTING_PROFILE,), name="MLL_TESTING_PROFILE_FUNCTIONAL")
-
-
-MLL_TESTING_ROBOT = FunctionalTesting(
-    bases=(
-        MLL_TESTING_PROFILE,
-        REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE,
-    ),
-    name="MLL_TESTING_ROBOT",
-)

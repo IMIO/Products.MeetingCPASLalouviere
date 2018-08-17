@@ -28,10 +28,11 @@ from Products.PloneMeeting.interfaces import \
     IMeetingItemWorkflowConditions, IMeetingItemWorkflowActions, \
     IMeetingWorkflowActions, IMeetingWorkflowConditions
 
+
 # ------------------------------------------------------------------------------
 class IMeetingItemPBLalouviereWorkflowActions(IMeetingItemWorkflowActions):
-    '''This interface represents a meeting item as viewed by the specific
-       item workflow that is defined in this MeetingCommunes product.'''
+    """This interface represents a meeting item as viewed by the specific
+       item workflow that is defined in this MeetingCommunes product."""
     def doPresent():
         """
           Triggered while doing the 'present' transition
@@ -44,9 +45,11 @@ class IMeetingItemPBLalouviereWorkflowActions(IMeetingItemWorkflowActions):
         """
           Triggered while doing the 'pre_accept' transition
         """
+
+
 class IMeetingItemPBLalouviereWorkflowConditions(IMeetingItemWorkflowConditions):
-    '''This interface represents a meeting item as viewed by the specific
-       item workflow that is defined in this MeetingCommunes product.'''
+    """This interface represents a meeting item as viewed by the specific
+       item workflow that is defined in this MeetingCommunes product."""
     def mayDecide():
         """
           Guard for the 'decide' transition
@@ -59,13 +62,11 @@ class IMeetingItemPBLalouviereWorkflowConditions(IMeetingItemWorkflowConditions)
         """
           Guard for the 'freeze' transition
         """
-    def mayCorrect():
-        """
-          Guard for the 'backToXXX' transitions
-        """
+
+
 class IMeetingPBLalouviereWorkflowActions(IMeetingWorkflowActions):
-    '''This interface represents a meeting as viewed by the specific meeting
-       workflow that is defined in this MeetingCommunes product.'''
+    """This interface represents a meeting as viewed by the specific meeting
+       workflow that is defined in this MeetingCommunes product."""
     def doClose():
         """
           Triggered while doing the 'close' transition
@@ -82,9 +83,11 @@ class IMeetingPBLalouviereWorkflowActions(IMeetingWorkflowActions):
         """
           Triggered while doing the 'doBackToCreated' transition
         """
+
+
 class IMeetingPBLalouviereWorkflowConditions(IMeetingWorkflowConditions):
-    '''This interface represents a meeting as viewed by the specific meeting
-       workflow that is defined in this MeetingCommunes product.'''
+    """This interface represents a meeting as viewed by the specific meeting
+       workflow that is defined in this MeetingCommunes product."""
     def mayFreeze():
         """
           Guard for the 'freeze' transition
@@ -100,9 +103,5 @@ class IMeetingPBLalouviereWorkflowConditions(IMeetingWorkflowConditions):
     def mayChangeItemsOrder():
         """
           Check if the user may or not changes the order of the items on the meeting
-        """
-    def mayCorrect():
-        """
-          Guard for the 'backToXXX' transitions
         """
 # ------------------------------------------------------------------------------

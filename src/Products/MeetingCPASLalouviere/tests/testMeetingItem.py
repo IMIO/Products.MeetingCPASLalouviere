@@ -31,7 +31,7 @@ class testMeetingItem(MeetingCPASLalouviereTestCase, mctmi):
         Tests the MeetingItem class methods.
     """
 
-    def test_subproduct_call_PowerObserversLocalRoles(self):
+    def test_pm_call_PowerObserversLocalRoles(self):
         '''See doc string in PloneMeeting.'''
         self.test_pm_PowerObserversLocalRoles()
 
@@ -40,5 +40,5 @@ def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
     # launch only tests prefixed by 'test_mc_' to avoid launching the tests coming from pmtmi
-    suite.addTest(makeSuite(testMeetingItem, prefix='test_subproduct_'))
+    suite.addTest(makeSuite(testMeetingItem, prefix='test_pm_'))
     return suite

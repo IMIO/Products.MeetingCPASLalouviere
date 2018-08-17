@@ -18,96 +18,15 @@ msgstr ""
 "Preferred-encodings: utf-8 latin1\n"
 "X-is-fallback-for: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
-# portal_tabs
-#. Default: "Meeting config College"
-msgid "Meeting config College"
-msgstr "Collège Communal"
-
-#. Default: "Meeting config Council"
-msgid "Meeting config Council"
-msgstr "Conseil Communal"
-
-#. Default: "If the group is responsible of other groups, select them here above, either do not select any elements of the list."
-msgid "MeetingCommunes_descr_echevinServices"
-msgstr "Si ce groupe est responsable d'autres groupes, selectionnez les ci-dessous."
-
-#. Default: "Alderman of the following services (departments)"
-msgid "MeetingCommunes_label_echevinServices"
-msgstr "Echevin des services suivants"
-
-# MeetingItem
-
-#. Default: "Item created from a college item"
-msgid "create_to_meeting-config-council_from_meeting-config-college_comments"
-msgstr "Point Conseil Communal créé depuis un point Collège Communal"
-
-#. Default: "Decision"
-msgid "decision"
-msgstr "Extrait du Procès-verbal"
-
-#. Default: "Decisions"
-msgid "decisions"
-msgstr "Procès-verbal"
-
-#. Default: "Accepted but modified"
-msgid "icon_help_accepted_but_modified"
-msgstr "Accepté avec modifications"
-
-#. Default: "Pre accepted"
-msgid "icon_help_pre_accepted"
-msgstr "Accepté provisoirement"
-
-#. Default: "The item has been pre accepted."
-msgid "pre_accept_done_descr"
-msgstr "Le point a été accepté provisoirement."
-
-#. Default: "Decisions have been published and are now visible to relevant proposing groups."
-msgid "publish_decisions_done_descr"
-msgstr "Les décisions ont été publiées et sont maintenant visibles par les personnes pouvant voir le point."
-
-# searches
-#. Default: "Proposed items"
-msgid "searchproposeditems"
-msgstr "Points proposés"
-
-#. Default: "Validated items"
-msgid "searchvalidateditems"
-msgstr "Points validés"
-
-#. Default: "The item has been successfully transfered to the bp."
-msgid "sendto_meeting-config-bp_success"
-msgstr "Le point a été envoyé au Bureau permanent."
-
-#. Default: "The item has been successfully transfered to the cas."
-msgid "sendto_meeting-config-cas_success"
-msgstr "Le point a été envoyé au Conseil de l'Action Sociale."
-
-#. Default: "The item has been successfully transfered to the college."
-msgid "sendto_meeting-config-college_success"
-msgstr "Le point a été envoyé au Collège."
-
-#. Default: "The item has been successfully transfered to the comitee."
-msgid "sendto_meeting-config-comitee_success"
-msgstr "Le point a été envoyé au Comité de concertation."
-
-#. Default: "The item has been successfully transfered to the council."
-msgid "sendto_meeting-config-council_success"
-msgstr "Le point a été envoyé au Conseil communal."
-
 # Suffix
-#. Default: "reviewers"
-msgid "reviewers"
-msgstr "Président"
+#. Default: "budget impact reviewers"
+msgid "budgetimpactreviewers"
+msgstr "correspondants financier"
 
 # Suffix
 #. Default: "directors"
 msgid "directors"
 msgstr "directeur"
-
-# Suffix
-#. Default: "budget impact reviewers"
-msgid "budgetimpactreviewers"
-msgstr "correspondants financier"
 
 # Suffix
 #. Default: "N+1"
@@ -120,39 +39,11 @@ msgid "n2"
 msgstr "N+2"
 
 # Suffix
+#. Default: "reviewers"
+msgid "reviewers"
+msgstr "Président"
+
+# Suffix
 #. Default: "Secretaire"
 msgid "secretaire"
 msgstr "Secrétaire"
-
-#. Default: "Initialize the item decision when deciding meeting" 
-msgid "MeetingCommunes_label_initItemDecisionIfEmptyOnDecide" 
-msgstr "" 
- 
-#. Default: "If you check this box, when a meeting will be decided, if an item does not have a decision defined, this decision will be automatically filled with title and description of the item" 
-msgid "init_item_decision_if_empty_on_decide" 
-msgstr "Si cette case est cochée, lorsqu'une séance passera 'En rédaction du PV', pour tous les points dont le champ 'Décision' est vide, ce champ sera automatiquement rempli avec une concaténation de ce qui est défini dans le titre et la description du point"
- 
-#searches 
-#. Default: "cdld synthesis" 
-msgid "searchcdlditems" 
-msgstr "Synthèse Avis DF"
-
-#. Default: "Proposing group to keep for CDLD synthesis" 
-msgid "MeetingCommunes_label_cdldProposingGroup" 
-msgstr "Groupes proposants à garder pour la synthèse des avis pour le CDLD (avis DF)"
-
-#. Default: "Choose proposing group for cdld advice" 
-msgid "MeetingCommunes_descr_cdldProposingGroup" 
-msgstr "Choisir les groupes donneurs d'avis qui seront repris dans la synthèse CDLD (avis DF)"
-
-#. Default: "Default value for the 'motivation' field"
-msgid "PloneMeeting_label_defaultMeetingItemMotivation"
-msgstr "Valeur par défaut du champ 'Motivation de l'urgence'"
-
-#. Default: "Emergency Motivation"
-msgid "PloneMeeting_label_motivation"
-msgstr "Motivation de l'urgence"
-
-#. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
-msgid "config_default_meetingitem_motivation_descr"
-msgstr "Définissez ici le texte prédéfini qui sera présent dans le champ 'Motivation de l'urgence' chaque fois qu'un utilisateur crée un nouveau point."

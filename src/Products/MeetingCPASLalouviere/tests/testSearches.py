@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# File: testMeetingFileType.py
+# File: testMeetingConfig.py
 #
-# Copyright (c) 2007-2013 by Imio.be
+# Copyright (c) 2015 by Imio.be
 #
 # GNU General Public License (GPL)
 #
@@ -23,15 +23,31 @@
 #
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testMeetingFileType import testMeetingFileType as mctmft
+from Products.PloneMeeting.tests.testSearches import testSearches as pmts
 
 
-class testMeetingFileType(MeetingCPASLalouviereTestCase, mctmft):
-    '''Tests the MeetingFileType class methods.'''
+class testSearches(MeetingCPASLalouviereTestCase, pmts):
+    """Test searches."""
+
+    def test_pm_SearchItemsToCorrectToValidateHighestHierarchicLevel(self):
+        '''Not used yet...'''
+        pass
+
+    def test_pm_SearchItemsToCorrectToValidateOfEveryReviewerGroups(self):
+        '''Not used yet...'''
+        pass
+
+    def test_pm_SearchItemsToValidateOfHighestHierarchicLevel(self):
+        """Not sense, only one level of validation"""
+        pass
+
+    def test_pm_SearchItemsToValidateOfMyReviewerGroups(self):
+        """Not sense, only one level of validation"""
+        pass
 
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testMeetingFileType, prefix='test_subproduct_'))
+    suite.addTest(makeSuite(testSearches, prefix='test_pm_'))
     return suite

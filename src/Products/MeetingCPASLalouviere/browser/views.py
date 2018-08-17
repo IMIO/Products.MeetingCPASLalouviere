@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: testMeetingCategory.py
-#
-# Copyright (c) 2007-2013 by Imio.be
+# Copyright (c) 2017 by Imio.be
 #
 # GNU General Public License (GPL)
 #
@@ -21,17 +19,3 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
-
-from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testMeetingCategory import testMeetingCategory as mctmc
-
-
-class testMeetingCategory(MeetingCPASLalouviereTestCase, mctmc):
-    '''Tests the MeetingCategory class methods.'''
-
-
-def test_suite():
-    from unittest import TestSuite, makeSuite
-    suite = TestSuite()
-    suite.addTest(makeSuite(testMeetingCategory, prefix='test_pm_'))
-    return suite

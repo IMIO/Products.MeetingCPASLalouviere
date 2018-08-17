@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# File: testCustomMeetingItem.py
+# File: testFaceted.py
 #
-# Copyright (c) 2007-2012 by CommunesPlone.org
+# Copyright (c) 2007-2015 by imio.be
 #
 # GNU General Public License (GPL)
 #
@@ -23,9 +23,15 @@
 #
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
+from Products.PloneMeeting.tests.testFaceted import testFaceted as pmtf
 
 
-class testCustomMeetingItem(MeetingCPASLalouviereTestCase):
-    """
-        Tests the MeetingItem adapted methods
-    """
+class testFaceted(MeetingCPASLalouviereTestCase, pmtf):
+    '''Tests the faceted navigation.'''
+
+
+def test_suite():
+    from unittest import TestSuite, makeSuite
+    suite = TestSuite()
+    suite.addTest(makeSuite(testFaceted, prefix='test_pm_'))
+    return suite

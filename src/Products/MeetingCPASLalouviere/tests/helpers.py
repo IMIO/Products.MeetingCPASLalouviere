@@ -20,7 +20,6 @@
 # 02110-1301, USA.
 #
 
-from DateTime import DateTime
 from Products.MeetingCommunes.tests.helpers import MeetingCommunesTestingHelpers
 
 
@@ -55,7 +54,7 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
     TRANSITIONS_FOR_DECIDING_MEETING_2 = ('freeze', 'decide', )
     TRANSITIONS_FOR_CLOSING_MEETING_1 = ('freeze', 'decide', 'close', )
     TRANSITIONS_FOR_CLOSING_MEETING_2 = ('freeze', 'decide', 'close', )
-    BACK_TO_WF_PATH_1 = {
+    BACK_TO_WF_PATH_1 = BACK_TO_WF_PATH_2 = {
         # Meeting
         'created': ('backToDecided',
                     'backToFrozen',
@@ -93,66 +92,13 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
                                   'backToProposedToPresident', ),
         'validated': ('backToItemFrozen',
                       'backToPresented',
-                      'backToValidated', )}
-    BACK_TO_WF_PATH_2 = {
-        # Meeting
-        'created': ('backToDecided',
-                    'backToFrozen',
-                    'backToCreated',),
-        'itemcreated': ('backToItemFrozen',
-                        'backToPresented',
-                        'backToValidated',
-                        'backToProposedToPresident',
-                        'backToProposedToSecretaire',
-                        'backToProposedToN2',
-                        'backToProposedToN1',
-                        'backToItemCreated'),
-        'proposed_to_n1': ('backToItemFrozen',
-                           'backToPresented',
-                           'backToValidated',
-                           'backToProposedToPresident',
-                           'backToProposedToSecretaire',
-                           'backToProposedToN2',
-                           'backToProposedToN1'),
-        'proposed_to_n2': ('backToItemFrozen',
-                           'backToPresented',
-                           'backToValidated',
-                           'backToProposedToPresident',
-                           'backToProposedToSecretaire',
-                           'backToProposedToN2'),
-        'proposed_to_secretaire': ('backToItemFrozen',
-                                   'backToPresented',
-                                   'backToValidated',
-                                   'backToProposedToPresident',
-                                   'backToProposedToSecretaire'),
-        'proposed_to_president': ('backToItemFrozen',
-                                  'backToPresented',
-                                  'backToValidated',
-                                  'backToProposedToPresident', ),
-        'validated': ('backToItemFrozen',
-                      'backToPresented',
-                      'backToValidated', )}
+                      'backToValidated',),
+        'presented': ('backToItemPublished',
+                      'backToItemFrozen',
+                      'backToPresented',)}
+
     WF_STATE_NAME_MAPPINGS = {'itemcreated': 'itemcreated',
                               'proposed_to_president': 'proposed_to_president',
                               'proposed': 'proposed_to_president',
                               'validated': 'validated',
                               'presented': 'presented'}
-
-    # in which state an item must be after an particular meeting transition?
-    ITEM_WF_STATE_AFTER_MEETING_TRANSITION = {'publish_decisions': 'accepted',
-                                              'close': 'accepted'}
-    TRANSITIONS_FOR_ACCEPTING_ITEMS_MEETING_1 = TRANSITIONS_FOR_ACCEPTING_ITEMS_MEETING_2 = ('freeze', 'decide', )
-
-    def _createMeetingWithItems(self, withItems=True, meetingDate=DateTime()):
-        '''Create a meeting with a bunch of items.
-           Overrided to do it as 'Manager' to be able
-           to add recurring items.'''
-        from plone.app.testing.helpers import setRoles
-        currentMember = self.portal.portal_membership.getAuthenticatedMember()
-        currentMemberRoles = currentMember.getRoles()
-        setRoles(self.portal, currentMember.getId(), currentMemberRoles + ['Manager', ])
-        meeting = MeetingCommunesTestingHelpers._createMeetingWithItems(self,
-                                                                        withItems=withItems,
-                                                                        meetingDate=meetingDate)
-        setRoles(self.portal, currentMember.getId(), currentMemberRoles)
-        return meeting

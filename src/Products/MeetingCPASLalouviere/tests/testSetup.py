@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# File: testCustomMeetingCategory.py
+# File: testSetup.py
 #
-# Copyright (c) 2007-2012 by CommunesPlone.org
+# Copyright (c) 2016 by Imio.be
 #
 # GNU General Public License (GPL)
 #
@@ -22,9 +22,16 @@
 # 02110-1301, USA.
 #
 
-from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import \
-    MeetingCPASLalouviereTestCase
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
+from Products.PloneMeeting.tests.testSetup import testSetup as pmts
 
 
-class testCustomMeetingCategory(MeetingCPASLalouviereTestCase):
-    '''Tests the MeetingGroup adapted methods.'''
+class testSetup(MeetingCPASLalouviereTestCase, pmts):
+    '''Tests the setup, especially registered profiles.'''
+
+
+def test_suite():
+    from unittest import TestSuite, makeSuite
+    suite = TestSuite()
+    suite.addTest(makeSuite(testSetup, prefix='test_pm_'))
+    return suite

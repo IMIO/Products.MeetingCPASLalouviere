@@ -31,11 +31,11 @@
    for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
 
   <genericsetup:upgradeStep
-      title="Go to MeetingCPASLalouviere 3.3"
+      title="Go to MeetingCPASLalouviere 4.0.1"
       description=""
-      source="3.2.0"
-      destination="3.3.0"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_3_3.migrate"
+      source="3.3.0"
+      destination="4.0.1"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate"
       profile="Products.MeetingCPASLalouviere:default" />
 
   <!-- ##/code-section profiles.zcml-bottom -->

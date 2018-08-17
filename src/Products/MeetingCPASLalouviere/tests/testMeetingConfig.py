@@ -30,7 +30,7 @@ from Products.PloneMeeting.model.adaptations import performWorkflowAdaptations
 class testMeetingConfig(MeetingCPASLalouviereTestCase, mctmc):
     '''Call testMeetingConfig tests.'''
 
-    def test_subproduct_call_searchItemsToPrevalidate(self):
+    def test_pm_call_searchItemsToPrevalidate(self):
         '''No sense...'''
         pass
 

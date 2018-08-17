@@ -13,68 +13,6 @@ msgstr ""
 
 # MeetingItem
 
-#searches
-#. Default: "Proposed items"
-msgid "searchproposeditems"
-msgstr ""
-
-#. Default: "Validated items"
-msgid "searchvalidateditems"
-msgstr ""
-
-#. Default: "Alderman of the following services (departments)"
-msgid "MeetingCommunes_label_echevinServices"
-msgstr ""
-
-#. Default: "If the group is responsible of other groups, select them here above, either do not select any elements of the list."
-msgid "MeetingCommunes_descr_echevinServices"
-msgstr ""
-
-#. Default: "Item created from a college item"
-msgid "create_to_meeting-config-council_from_meeting-config-college_comments"
-msgstr ""
-
-#portal_tabs
-#. Default: "Meeting config College"
-msgid "Meeting config College"
-msgstr ""
-
-#. Default: "Meeting config Council"
-msgid "Meeting config Council"
-msgstr ""
-
-#. Default: "Decisions have been published and are now visible to relevant proposing groups."
-msgid "publish_decisions_done_descr"
-msgstr ""
-
-#. Default: "Accepted but modified"
-msgid "icon_help_accepted_but_modified"
-msgstr ""
-
-#. Default: "Pre accepted"
-msgid "icon_help_pre_accepted"
-msgstr ""
-
-#. Default: "The item has been successfully transfered to the council."
-msgid "sendto_meeting-config-council_success"
-msgstr ""
-
-#. Default: "The item has been successfully transfered to the college."
-msgid "sendto_meeting-config-college_success"
-msgstr ""
-
-#. Default: "The item has been successfully transfered to the bp."
-msgid "sendto_meeting-config-bp_success"
-msgstr ""
-
-#. Default: "The item has been successfully transfered to the cas."
-msgid "sendto_meeting-config-cas_success"
-msgstr ""
-
-#. Default: "The item has been successfully transfered to the comitee."
-msgid "sendto_meeting-config-comitee_success"
-msgstr ""
-
 # Suffix
 #. Default: "reviewers"
 msgid "reviewers"
@@ -90,10 +28,6 @@ msgstr ""
 msgid "budgetimpactreviewers"
 msgstr ""
 
-# MeetingItem
-msgid "MeetingCPASLalouviere_label_signatures"
-msgstr ""
-
 # Suffix
 msgid "n1"
 msgstr ""
@@ -104,37 +38,4 @@ msgstr ""
 
 # Suffix
 msgid "secretaire"
-msgstr ""
-
-#. Default: "Initialize the item decision when deciding meeting" 
-msgid "MeetingCommunes_label_initItemDecisionIfEmptyOnDecide" 
-msgstr "" 
- 
-#. Default: "If you check this box, when a meeting will be decided, if an item does not have a decision defined, this decision will be automatically filled with title and description of the item" 
-msgid "init_item_decision_if_empty_on_decide" 
-msgstr "" 
-
-#searches 
-#. Default: "cdld synthesis" 
-msgid "searchcdlditems" 
-msgstr "" 
-
-#. Default: "Proposing group to keep for CDLD synthesis" 
-msgid "MeetingCommunes_label_cdldProposingGroup" 
-msgstr "" 
-
-#. Default: "Choose proposing group for cdld advice" 
-msgid "MeetingCommunes_descr_cdldProposingGroup" 
-msgstr ""
-
-#. Default: "Default value for the 'motivation' field"
-msgid "PloneMeeting_label_defaultMeetingItemMotivation"
-msgstr ""
-
-#. Default: "Motivation"
-msgid "PloneMeeting_label_motivation"
-msgstr ""
-
-#. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
-msgid "config_default_meetingitem_motivation_descr"
 msgstr ""

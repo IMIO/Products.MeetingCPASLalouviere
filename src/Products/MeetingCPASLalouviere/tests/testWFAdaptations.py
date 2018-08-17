@@ -33,52 +33,52 @@ from Products.MeetingCommunes.tests.testWFAdaptations import testWFAdaptations a
 class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
     '''Tests various aspects of votes management.'''
 
-    def test_subproduct_call_WFA_availableWFAdaptations(self):
+    def test_pm_call_WFA_availableWFAdaptations(self):
         '''Most of wfAdaptations makes no sense, just make sure most are disabled.'''
         self.assertEquals(set(self.meetingConfig.listWorkflowAdaptations()),
                           set(('return_to_proposing_group', )))
 
-    def test_subproduct_call_WFA_no_publication(self):
+    def test_pm_call_WFA_no_publication(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_no_proposal(self):
+    def test_pm_call_WFA_no_proposal(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_pre_validation(self):
+    def test_pm_call_WFA_pre_validation(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_items_come_validated(self):
+    def test_pm_call_WFA_items_come_validated(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_only_creator_may_delete(self):
+    def test_pm_call_WFA_only_creator_may_delete(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_no_global_observation(self):
+    def test_pm_call_WFA_no_global_observation(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_everyone_reads_all(self):
+    def test_pm_call_WFA_everyone_reads_all(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_creator_edits_unless_closed(self):
+    def test_pm_call_WFA_creator_edits_unless_closed(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_WFA_add_published_state(self):
+    def test_pm_WFA_add_published_state(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_hide_decisions_when_under_writing(self):
+    def test_pm_call_WFA_hide_decisions_when_under_writing(self):
         '''No sense...'''
         pass
 
-    def test_subproduct_call_WFA_local_meeting_managers(self):
+    def test_pm_call_WFA_local_meeting_managers(self):
         '''No sense...'''
         pass
 
@@ -153,5 +153,5 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testWFAdaptations, prefix='test_subproduct_'))
+    suite.addTest(makeSuite(testWFAdaptations, prefix='test_pm_'))
     return suite
