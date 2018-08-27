@@ -58,11 +58,12 @@ def logStep(method, context):
 
 def isMeetingCPASllConfigureProfile(context):
     return context.readDataFile("MeetingCPASll_examples_fr_marker.txt") or \
-        context.readDataFile("MeetingCPASLL_tests_marker.txt")
+           context.readDataFile("MeetingCPASLL_tests_marker.txt")
 
 
 def installMeetingCPASLalouviere(context):
     """ Run the default profile before bing able to run the CPAS lalouviere profile"""
+    import ipdb; ipdb.set_trace()
     if not isMeetingCPASllConfigureProfile(context):
         return
 
@@ -150,7 +151,7 @@ def reorderCss(context):
        Make sure CSS are correctly reordered in portal_css so things
        work as expected...
     """
-    if isNotMeetingCPASLalouviereProfile(context) and isMeetingCPASllConfigureProfile(context):
+    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
         return
 
     site = context.getSite()

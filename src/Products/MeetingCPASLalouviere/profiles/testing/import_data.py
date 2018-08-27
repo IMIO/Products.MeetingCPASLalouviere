@@ -214,6 +214,7 @@ developers.n2.append(pmManager)
 developers.secretaire.append(pmManager)
 developers.reviewers.append(pmReviewer1)
 developers.reviewers.append(pmManager)
+developers.observers.append(pmObserver1)
 developers.observers.append(pmReviewer1)
 developers.observers.append(pmManager)
 developers.advisers.append(pmAdviser1)
@@ -323,7 +324,7 @@ collegeMeeting.selectableAdvisers = ['developers', 'vendors']
 collegeMeeting.itemAdviceStates = ['proposed_to_president', ]
 collegeMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 collegeMeeting.itemAdviceViewStates = ['presented', ]
-collegeMeeting.transitionReinitializingDelays = 'backToItemCreated'
+collegeMeeting.transitionsReinitializingDelays = ('backToItemCreated', )
 collegeMeeting.enforceAdviceMandatoriness = False
 collegeMeeting.itemPowerObserversStates = ('itemcreated', 'presented', 'accepted', 'delayed', 'refused')
 collegeMeeting.itemDecidedStates = ['accepted', 'refused', 'delayed', 'accepted_but_modified', 'pre_accepted']
@@ -408,7 +409,7 @@ councilMeeting.selectableAdvisers = []
 councilMeeting.itemAdviceStates = ['proposed_to_president', ]
 councilMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 councilMeeting.itemAdviceViewStates = ['presented', ]
-councilMeeting.transitionReinitializingDelays = 'backToItemCreated'
+councilMeeting.transitionsReinitializingDelays = ('backToItemCreated',)
 councilMeeting.enforceAdviceMandatoriness = False
 councilMeeting.itemDecidedStates = ['accepted', 'refused', 'delayed', 'accepted_but_modified', 'pre_accepted']
 councilMeeting.itemPowerObserversStates = collegeMeeting.itemPowerObserversStates

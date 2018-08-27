@@ -1,6 +1,10 @@
 Products.MeetingCPASLalouviere Changelog
 ====================================
 
+4.0 (2018-08-14)
+----------------
+- Now MeetingCPASLalouviere using MeetingCommunes who using PloneMeeting
+
 3.3 (2015-02-27)
 ----------------
 - Updated regarding changes in PloneMeeting

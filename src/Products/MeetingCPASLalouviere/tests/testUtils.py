@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# File: testMeeting.py
+# File: testUtils.py
 #
-# Copyright (c) 2007-2012 by CommunesPlone.org
+# Copyright (c) 2017 by Imio.be
 #
 # GNU General Public License (GPL)
 #
@@ -23,15 +23,15 @@
 #
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testMeeting import testMeeting as mctm
+from Products.MeetingCommunes.tests.testUtils import testUtils as mctu
 
 
-class testMeeting(MeetingCPASLalouviereTestCase, mctm):
-    """Tests the Meeting class methods."""
+class testUtils(MeetingCPASLalouviereTestCase, mctu):
+    ''' '''
 
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testMeeting, prefix='test_pm_'))
+    suite.addTest(makeSuite(testUtils, prefix='test_pm_'))
     return suite

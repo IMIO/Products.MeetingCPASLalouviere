@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '3.3.0-dev'
+version = '4.0.1-dev'
 
 setup(name='Products.MeetingCPASLalouviere',
       version=version,
@@ -29,7 +29,6 @@ setup(name='Products.MeetingCPASLalouviere',
                   'plone.app.robotframework',
                   'Products.CMFPlacefulWorkflow',
                   'zope.testing',
-                  'Products.MeetingCommunes',
                   'Products.PloneTestCase'],
               templates=['Genshi',
                          ]),
@@ -37,6 +36,7 @@ setup(name='Products.MeetingCPASLalouviere',
           'setuptools',
           'Products.CMFPlone',
           'Pillow',
-          'Products.PloneMeeting', ],
+          'Products.PloneMeeting',
+          'Products.MeetingCommunes'],
       entry_points={},
       )
