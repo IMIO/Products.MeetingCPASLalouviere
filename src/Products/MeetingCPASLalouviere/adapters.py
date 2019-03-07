@@ -52,7 +52,7 @@ MeetingConfig.wfAdaptations = customWfAdaptations
 # we keep also 'itemfrozen' and 'itempublished' in case this should be activated for meeting-config-college...
 RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES = ('presented', 'itemfrozen', )
 adaptations.RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES = RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES
-RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {'meetingitembplalouviere_workflow':
+RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {'meetingitemcpaslalouviere_workflow':
     # view permissions
     {'Access contents information':
     ('Manager', 'MeetingManager', 'MeetingMember', 'MeetingN1', 'MeetingN2',

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="meetingitembplalouviere_workflow"
-             title="meetingitembplalouviere_workflow"
+<dc-workflow workflow_id="meetingitemcpaslalouviere_workflow"
+             title="meetingitemcpaslalouviere_workflow"
              state_variable="review_state"
              initial_state="itemcreated"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"

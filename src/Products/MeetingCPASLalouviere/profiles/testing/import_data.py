@@ -289,8 +289,8 @@ collegeMeeting.annexTypes = [financialAnalysis, budgetAnalysisCfg1, overheadAnal
                              adviceAnnex, adviceLegalAnalysis, meetingAnnex]
 collegeMeeting.usedItemAttributes = ('toDiscuss', 'associatedGroups', 'itemIsSigned',)
 collegeMeeting.maxShownListings = '100'
-collegeMeeting.itemWorkflow = 'meetingitembplalouviere_workflow'
-collegeMeeting.meetingWorkflow = 'meetingbplalouviere_workflow'
+collegeMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
+collegeMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
 collegeMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
 collegeMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
 collegeMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
@@ -370,8 +370,8 @@ councilMeeting.shortName = 'Council'
 councilMeeting.annexTypes = [financialAnalysis, legalAnalysis,
                              budgetAnalysisCfg2, itemAnnex, decisionAnnex,
                              adviceAnnex, adviceLegalAnalysis, meetingAnnex]
-councilMeeting.itemWorkflow = 'meetingitembplalouviere_workflow'
-councilMeeting.meetingWorkflow = 'meetingbplalouviere_workflow'
+councilMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
+councilMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
 councilMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
 councilMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
 councilMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
