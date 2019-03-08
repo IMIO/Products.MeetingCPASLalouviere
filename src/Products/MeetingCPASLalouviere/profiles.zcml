@@ -33,9 +33,41 @@
   <genericsetup:upgradeStep
       title="Go to MeetingCPASLalouviere 4.0.1"
       description=""
-      source="3.3.0"
+      source="*"
       destination="4.0.1"
       handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate"
+      profile="Products.MeetingCPASLalouviere:default" />
+
+  <genericsetup:upgradeStep
+      title="Go to MeetingCPASLalouviere 4.0 (Step 1)"
+      description=""
+      source="*"
+      destination="3.4"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step1"
+      profile="Products.MeetingCPASLalouviere:default" />
+
+  <genericsetup:upgradeStep
+      title="Go to MeetingCPASLalouviere 4.0 (Step 2)"
+      description=""
+      source="3.5"
+      destination="4.0"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step2"
+      profile="Products.MeetingCPASLalouviere:default" />
+
+  <genericsetup:upgradeStep
+      title="Go to MeetingCPASLalouviere 4.0 (Step 3)"
+      description=""
+      source="*"
+      destination="4.0"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step3"
+      profile="Products.MeetingCPASLalouviere:default" />
+
+  <genericsetup:upgradeStep
+      title="Go to MeetingCPASLalouviere 4.0 (Step 4)"
+      description=""
+      source="*"
+      destination="4.0.1"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step4"
       profile="Products.MeetingCPASLalouviere:default" />
 
   <!-- ##/code-section profiles.zcml-bottom -->
