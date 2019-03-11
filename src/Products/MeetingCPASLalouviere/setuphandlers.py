@@ -46,7 +46,6 @@ def postInstall(context):
     #need to reinstall PloneMeeting after reinstalling MC workflows to re-apply wfAdaptations
     reinstallPloneMeeting(context, site)
     showHomeTab(context, site)
-    reorderSkinsLayers(context, site)
 
 
 ##code-section FOOT
@@ -129,9 +128,9 @@ def reorderSkinsLayers(context, site):
 
     logStep("reorderSkinsLayers", context)
     try:
-        site.portal_setup.runImportStepFromProfile(u'profile-Products.MeetingCPASLalouviere:default', 'skins')
         site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:default')
         site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:plonemeetingskin')
+        site.portal_setup.runImportStepFromProfile(u'profile-Products.MeetingCPASLalouviere:default', 'skins')
     except KeyError:
         # if the plonemeetingskin or imioapps profile is not available
         # (not using plonemeetingskin, imioapps or in testing?) we pass...
@@ -142,6 +141,9 @@ def finalizeInstance(context):
     """
       Called at the very end of the installation process (after PloneMeeting).
     """
+    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
+        return
+
     reorderSkinsLayers(context, context.getSite())
     reorderCss(context)
 
@@ -151,20 +153,16 @@ def reorderCss(context):
        Make sure CSS are correctly reordered in portal_css so things
        work as expected...
     """
-    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
-        return
-
     site = context.getSite()
-
     logStep("reorderCss", context)
     portal_css = site.portal_css
     css = ['plonemeeting.css',
            'meeting.css',
            'meetingitem.css',
-           'meetingCPASlalouviere.css',
            'imioapps.css',
            'plonemeetingskin.css',
            'imioapps_IEFixes.css',
+           'meetingcpaslalouviere.css',
            'ploneCustom.css']
     for resource in css:
         portal_css.moveResourceToBottom(resource)
