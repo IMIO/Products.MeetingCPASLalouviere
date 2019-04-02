@@ -39,7 +39,6 @@
 
 #portal-globalnav a:hover, #portal-header #portal-globalnav .selected a {
     color: #1DBADF;
-    border: 0px;
 }
 
 /* </dtml-with> */
