@@ -18,10 +18,22 @@ msgstr ""
 "Preferred-encodings: utf-8 latin1\n"
 "X-is-fallback-for: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
+#. Default: "Default value for the 'motivation' field"
+msgid "PloneMeeting_label_defaultMeetingItemMotivation"
+msgstr "Valeur par défaut du champ 'Motivation de l'urgence'"
+
+#. Default: "Motivation"
+msgid "PloneMeeting_label_motivation"
+msgstr "Motivation de l'urgence"
+
 # Suffix
 #. Default: "budget impact reviewers"
 msgid "budgetimpactreviewers"
 msgstr "correspondants financier"
+
+#. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
+msgid "config_default_meetingitem_motivation_descr"
+msgstr "Définissez ici le texte prédéfini qui sera présent dans le champ 'Motivation de l'urgence' chaque fois qu'un utilisateur crée un nouveau point."
 
 # Suffix
 #. Default: "directors"

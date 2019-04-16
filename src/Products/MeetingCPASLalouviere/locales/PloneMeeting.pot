@@ -39,3 +39,15 @@ msgstr ""
 # Suffix
 msgid "secretaire"
 msgstr ""
+
+#. Default: "Default value for the 'motivation' field"
+msgid "PloneMeeting_label_defaultMeetingItemMotivation"
+msgstr ""
+
+#. Default: "Motivation"
+msgid "PloneMeeting_label_motivation"
+msgstr ""
+
+#. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
+msgid "config_default_meetingitem_motivation_descr"
+msgstr ""
