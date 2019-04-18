@@ -353,54 +353,25 @@ class MLItemPrettyLinkAdapter(ItemPrettyLinkAdapter):
         tool = api.portal.get_tool('portal_plonemeeting')
         cfg = tool.getMeetingConfig(item)
 
-        # add some icons specific for dashboard if we are actually on the dashboard...
-        if itemState in cfg.itemDecidedStates and \
-                item.REQUEST.form.get('topicId', '') == 'searchitemsfollowupdashboard':
-            itemFollowUp = item.getFollowUp()
-            if itemFollowUp == 'follow_up_yes':
-                icons.append(('follow_up_yes.png', 'icon_help_follow_up_needed'))
-            elif itemFollowUp == 'follow_up_provided':
-                icons.append(('follow_up_provided.png', 'icon_help_follow_up_provided'))
-
         # Add our icons for wf states
-        if itemState == 'proposed_to_director':
-            icons.append(('proposeToDirector.png',
-                          translate('icon_help_proposed_to_director',
-                                    domain="PloneMeeting",
+        if itemState == 'proposed_to_n1':
+            icons.append(('proposeToN1.png',
+                          translate('proposed_to_n1',
+                                    domain="plone",
                                     context=self.request)))
-        elif itemState == 'proposed_to_divisionhead':
-            icons.append(('proposeToDivisionHead.png',
-                          translate('icon_help_proposed_to_divisionhead',
-                                    domain="PloneMeeting",
+        elif itemState == 'proposed_to_n2':
+            icons.append(('proposeToN2.png',
+                          translate('proposed_to_n2',
+                                    domain="plone",
                                     context=self.request)))
-        elif itemState == 'proposed_to_officemanager':
-            icons.append(('proposeToOfficeManager.png',
-                          translate('icon_help_proposed_to_officemanager',
-                                    domain="PloneMeeting",
+        elif itemState == 'proposed_to_president':
+            icons.append(('proposeToPresident.png',
+                          translate('proposed_to_president',
+                                    domain="plone",
                                     context=self.request)))
-        elif itemState == 'item_in_council':
-            icons.append(('item_in_council.png',
-                          translate('icon_help_item_in_council',
-                                    domain="PloneMeeting",
-                                    context=self.request)))
-        elif itemState == 'proposed_to_servicehead':
-            icons.append(('proposeToServiceHead.png',
-                          translate('icon_help_proposed_to_servicehead',
-                                    domain="PloneMeeting",
-                                    context=self.request)))
-        elif itemState == 'item_in_committee':
-            icons.append(('item_in_committee.png',
-                          translate('icon_help_item_in_committee',
-                                    domain="PloneMeeting",
-                                    context=self.request)))
-        elif itemState == 'proposed_to_budgetimpact_reviewer':
-            icons.append(('proposed_to_budgetimpact_reviewer.png',
-                          translate('icon_help_proposed_to_budgetimpact_reviewer',
-                                    domain="PloneMeeting",
-                                    context=self.request)))
-        elif itemState == 'itemcreated_waiting_advices':
-            icons.append(('itemcreated_waiting_advices.png',
-                          translate('icon_help_itemcreated_waiting_advices  ',
-                                    domain="PloneMeeting",
+        elif itemState == 'proposed_to_secretaire':
+            icons.append(('proposeToSecretaire.png',
+                          translate('proposed_to_secretaire',
+                                    domain="plone",
                                     context=self.request)))
         return icons
