@@ -84,7 +84,7 @@ def reinstallPloneMeeting(context, site):
 
     logStep("reinstallPloneMeeting", context)
     _installPloneMeeting(context)
-    # launch skins step for MeetingNamur so MeetingNamur skin layers are before PM ones
+    # launch skins step for MeetingCPASLalouviere so MeetingCPASLalouviere skin layers are before PM ones
     site.portal_setup.runImportStepFromProfile('profile-Products.MeetingCPASLalouviere:default', 'skins')
 
 def _installPloneMeeting(context):

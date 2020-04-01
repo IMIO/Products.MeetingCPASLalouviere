@@ -22,11 +22,11 @@
 # 02110-1301, USA.
 #
 
-from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import \
-    MeetingCPASLalouviereTestCase
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
+from Products.MeetingCommunes.tests.testCustomMeeting import testCustomMeeting as mctcm
 
 
-class testCustomMeeting(MeetingCPASLalouviereTestCase):
+class testCustomMeeting(MeetingCPASLalouviereTestCase, mctcm):
     """
         Tests the Meeting adapted methods
     """
@@ -36,3 +36,9 @@ class testCustomMeeting(MeetingCPASLalouviereTestCase):
           Already tested in MeetingCPASLalouviere.tests.testMeeting.py
         '''
         pass
+
+def test_suite():
+    from unittest import TestSuite, makeSuite
+    suite = TestSuite()
+    suite.addTest(makeSuite(testCustomMeeting, prefix='test_pm_'))
+    return suite
