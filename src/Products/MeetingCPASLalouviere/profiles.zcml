@@ -24,50 +24,12 @@
    provides="Products.GenericSetup.interfaces.EXTENSION"
    for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
 
-  <genericsetup:registerProfile
-   name="testing"
-   title="PloneMeeting / Unit testing profile for CPAS La Louviere"
-   description="MeetingCPASLalouviere unit testing profile"
-   for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
-
   <genericsetup:upgradeStep
-      title="Go to MeetingCPASLalouviere 4.0.1"
+      title="Go to MeetingCPASLalouviere 4.1"
       description=""
-      source="*"
-      destination="4.0.1"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate"
-      profile="Products.MeetingCPASLalouviere:default" />
-
-  <genericsetup:upgradeStep
-      title="Go to MeetingCPASLalouviere 4.0.1 (Step 1)"
-      description=""
-      source="*"
-      destination="3.5"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step1"
-      profile="Products.MeetingCPASLalouviere:default" />
-
-  <genericsetup:upgradeStep
-      title="Go to MeetingCPASLalouviere 4.0.1 (Step 2)"
-      description=""
-      source="3.5"
-      destination="4.0.1"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step2"
-      profile="Products.MeetingCPASLalouviere:default" />
-
-  <genericsetup:upgradeStep
-      title="Go to MeetingCPASLalouviere 4.0.1 (Step 3)"
-      description=""
-      source="*"
-      destination="4.0.1"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step3"
-      profile="Products.MeetingCPASLalouviere:default" />
-
-  <genericsetup:upgradeStep
-      title="Go to MeetingCPASLalouviere 4.0.1 (Step 4)"
-      description=""
-      source="*"
-      destination="4.0.1"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_0.migrate_step4"
+      source="4.0"
+      destination="4.1"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_1.migrate"
       profile="Products.MeetingCPASLalouviere:default" />
 
   <!-- ##/code-section profiles.zcml-bottom -->

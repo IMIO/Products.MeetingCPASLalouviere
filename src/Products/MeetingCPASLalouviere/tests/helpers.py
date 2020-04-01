@@ -20,11 +20,10 @@
 # 02110-1301, USA.
 #
 
-from Products.PloneMeeting.tests.helpers import PloneMeetingTestingHelpers
+from Products.MeetingCommunes.tests.helpers import MeetingCommunesTestingHelpers
 
-
-class MeetingCPASLalouviereTestingHelpers(PloneMeetingTestingHelpers):
-    '''Override some values of PloneMeetingTestingHelpers.'''
+class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
+    '''Override some values of MeetingCommunesTestingHelpers.'''
 
     TRANSITIONS_FOR_PROPOSING_ITEM_1 = ('proposeToN1',
                                         'proposeToN2',

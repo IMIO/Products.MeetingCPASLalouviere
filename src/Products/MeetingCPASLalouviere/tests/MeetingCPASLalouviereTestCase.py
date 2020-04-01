@@ -20,7 +20,7 @@
 # 02110-1301, USA.
 #
 
-from Products.PloneMeeting.tests.PloneMeetingTestCase import PloneMeetingTestCase
+from Products.MeetingCommunes.tests.MeetingCommunesTestCase import MeetingCommunesTestCase
 from Products.MeetingCPASLalouviere.testing import MLL_TESTING_PROFILE_FUNCTIONAL
 from Products.MeetingCPASLalouviere.tests.helpers import MeetingCPASLalouviereTestingHelpers
 
@@ -31,12 +31,12 @@ from Products.MeetingCPASLalouviere.adapters import customWfAdaptations
 
 MeetingConfig.wfAdaptations = customWfAdaptations
 
-class MeetingCPASLalouviereTestCase(PloneMeetingTestCase, MeetingCPASLalouviereTestingHelpers):
+class MeetingCPASLalouviereTestCase(MeetingCommunesTestCase, MeetingCPASLalouviereTestingHelpers):
     """Base class for defining MeetingCPASLalouviere test cases."""
 
     layer = MLL_TESTING_PROFILE_FUNCTIONAL
 
     def setUp(self):
-        PloneMeetingTestCase.setUp(self)
+        MeetingCommunesTestCase.setUp(self)
         self.meetingConfig = getattr(self.tool, 'meeting-config-college')
         self.meetingConfig2 = getattr(self.tool, 'meeting-config-council')

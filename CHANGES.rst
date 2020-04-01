@@ -1,5 +1,9 @@
 Products.MeetingCPASLalouviere Changelog
-====================================
+========================================
+
+4.1 (unreleased)
+----------------
+- Compatible for PloneMeeting 4.1
 
 4.0 (2018-08-14)
 ----------------

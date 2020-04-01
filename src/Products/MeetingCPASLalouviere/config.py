@@ -1,36 +1,10 @@
 # -*- coding: utf-8 -*-
-#
-# File: MeetingCPASLalouviere.py
-#
-# Copyright (c) 2015 by Imio.be
-# Generator: ArchGenXML Version 2.7
-#            http://plone.org/products/archgenxml
-#
-# GNU General Public License (GPL)
-#
 
-__author__ = """Andre Nuyens <andre@imio.be>"""
-__docformat__ = 'plaintext'
-
-
-# Product configuration.
-#
-# The contents of this module will be imported into __init__.py, the
-# workflow configuration and every content type module.
-#
-# If you wish to perform custom configuration, you may put a file
-# AppConfig.py in your product's root directory. The items in there
-# will be included (by importing) in this file if found.
-
-from Products.CMFCore.permissions import setDefaultRoles
 from collections import OrderedDict
+from Products.PloneMeeting import config as PMconfig
 
 
 PROJECTNAME = "MeetingCPASLalouviere"
-
-# Permissions
-DEFAULT_ADD_CONTENT_PERMISSION = "Add portal content"
-setDefaultRoles(DEFAULT_ADD_CONTENT_PERMISSION, ('Manager', 'Owner', 'Contributor'))
 
 product_globals = globals()
 
@@ -42,10 +16,6 @@ DEPENDENCIES = []
 # override in custom configuration
 PRODUCT_DEPENDENCIES = []
 
-# the id of the collection querying finance advices
-FINANCE_ADVICES_COLLECTION_ID = 'searchitemswithfinanceadvice'
-
-from Products.PloneMeeting import config as PMconfig
 CPASLALOUVIEREROLES = {}
 CPASLALOUVIEREROLES['budgetimpactreviewers'] = 'MeetingBudgetImpactReviewer'
 CPASLALOUVIEREROLES['n1'] = 'MeetingN1'

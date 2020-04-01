@@ -12,15 +12,12 @@
 __author__ = """Andre NUYENS <andre.nuyens@imio.be>"""
 __docformat__ = 'plaintext'
 
-
+import os
 import logging
 logger = logging.getLogger('MeetingCPASLalouviere: setuphandlers')
-from Products.MeetingCPASLalouviere.config import PROJECTNAME
-import os
-from Products.CMFCore.utils import getToolByName
-##code-section HEAD
+from plone import api
 from Products.PloneMeeting.exportimport.content import ToolInitializer
-##/code-section HEAD
+from Products.MeetingCPASLalouviere.config import PROJECTNAME
 
 
 def isNotMeetingCPASLalouviereProfile(context):
@@ -32,7 +29,7 @@ def updateRoleMappings(context):
     the button 'Update Security Setting' and portal_workflow"""
     if isNotMeetingCPASLalouviereProfile(context):
         return
-    wft = getToolByName(context.getSite(), 'portal_workflow')
+    wft = api.portal.get_tool('portal_workflow')
     wft.updateRoleMappings()
 
 
@@ -41,14 +38,12 @@ def postInstall(context):
     # the right place for your custom code
     if isNotMeetingCPASLalouviereProfile(context):
         return
-    logStep("postInstall", context)
     site = context.getSite()
     #need to reinstall PloneMeeting after reinstalling MC workflows to re-apply wfAdaptations
     reinstallPloneMeeting(context, site)
     showHomeTab(context, site)
+    reorderSkinsLayers(context, site)
 
-
-##code-section FOOT
 
 def logStep(method, context):
     logger.info("Applying '%s' in profile '%s'" %
@@ -61,11 +56,9 @@ def isMeetingCPASllConfigureProfile(context):
 
 
 def installMeetingCPASLalouviere(context):
-    """ Run the default profile before bing able to run the CPAS lalouviere profile"""
-    import ipdb; ipdb.set_trace()
+    """ Run the default profile"""
     if not isMeetingCPASllConfigureProfile(context):
         return
-
     logStep("installMeetingCPASLalouviere", context)
     portal = context.getSite()
     portal.portal_setup.runAllImportStepsFromProfile('profile-Products.MeetingCPASLalouviere:default')
@@ -78,9 +71,6 @@ def initializeTool(context):
         return
 
     logStep("initializeTool", context)
-    #PloneMeeting is no more a dependency to avoid
-    #magic between quickinstaller and portal_setup
-    #so install it manually
     _installPloneMeeting(context)
     return ToolInitializer(context, PROJECTNAME).run()
 
@@ -94,7 +84,8 @@ def reinstallPloneMeeting(context, site):
 
     logStep("reinstallPloneMeeting", context)
     _installPloneMeeting(context)
-
+    # launch skins step for MeetingNamur so MeetingNamur skin layers are before PM ones
+    site.portal_setup.runImportStepFromProfile('profile-Products.MeetingCPASLalouviere:default', 'skins')
 
 def _installPloneMeeting(context):
     site = context.getSite()
@@ -127,14 +118,7 @@ def reorderSkinsLayers(context, site):
         return
 
     logStep("reorderSkinsLayers", context)
-    try:
-        site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:default')
-        site.portal_setup.runAllImportStepsFromProfile(u'profile-plonetheme.imioapps:plonemeetingskin')
-        site.portal_setup.runImportStepFromProfile(u'profile-Products.MeetingCPASLalouviere:default', 'skins')
-    except KeyError:
-        # if the plonemeetingskin or imioapps profile is not available
-        # (not using plonemeetingskin, imioapps or in testing?) we pass...
-        pass
+    site.portal_setup.runImportStepFromProfile(u'profile-Products.MeetingCPASLalouviere:default', 'skins')
 
 
 def finalizeInstance(context):
@@ -156,15 +140,12 @@ def reorderCss(context):
     site = context.getSite()
     logStep("reorderCss", context)
     portal_css = site.portal_css
-    css = ['plonemeeting.css',
-           'meeting.css',
-           'meetingitem.css',
+    css = ['imio.dashboard.css',
+           'plonemeeting.css',
+           'meetingcpaslalouviere.css',
            'imioapps.css',
            'plonemeetingskin.css',
            'imioapps_IEFixes.css',
-           'meetingcpaslalouviere.css',
            'ploneCustom.css']
     for resource in css:
         portal_css.moveResourceToBottom(resource)
-
-##/code-section FOOT

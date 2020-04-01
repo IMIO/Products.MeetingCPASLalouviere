@@ -25,7 +25,7 @@
 # ------------------------------------------------------------------------------
 from appy.gen import No
 from AccessControl import ClassSecurityInfo
-from Globals import InitializeClass
+from AccessControl.class_init import InitializeClass
 from plone import api
 from Products.CMFCore.permissions import ReviewPortalContent
 from Products.CMFCore.utils import _checkPermission
@@ -33,10 +33,10 @@ from Products.CMFCore.utils import _checkPermission
 from Products.PloneMeeting.MeetingConfig import MeetingConfig
 from Products.PloneMeeting.adapters import ItemPrettyLinkAdapter
 from Products.PloneMeeting.model import adaptations
-from Products.MeetingCommunes.adapters import MeetingCollegeWorkflowActions
-from Products.MeetingCommunes.adapters import MeetingCollegeWorkflowConditions
-from Products.MeetingCommunes.adapters import MeetingItemCollegeWorkflowActions
-from Products.MeetingCommunes.adapters import MeetingItemCollegeWorkflowConditions
+from Products.MeetingCommunes.adapters import MeetingCommunesWorkflowActions
+from Products.MeetingCommunes.adapters import MeetingCommunesWorkflowConditions
+from Products.MeetingCommunes.adapters import MeetingItemCommunesWorkflowActions
+from Products.MeetingCommunes.adapters import MeetingItemCommunesWorkflowConditions
 from Products.MeetingCPASLalouviere.interfaces import IMeetingPBLalouviereWorkflowConditions
 from Products.MeetingCPASLalouviere.interfaces import IMeetingPBLalouviereWorkflowActions
 from Products.MeetingCPASLalouviere.interfaces import IMeetingItemPBLalouviereWorkflowConditions
@@ -105,7 +105,7 @@ adaptations.RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = RETURN_TO_PROPOSING_G
 
 
 # ------------------------------------------------------------------------------
-class MeetingPBLalouviereWorkflowActions(MeetingCollegeWorkflowActions):
+class MeetingPBLalouviereWorkflowActions(MeetingCommunesWorkflowActions):
     """Adapter that adapts a meeting item implementing IMeetingItem to the
        interface IMeetingItemPBWorkflowActions"""
 
@@ -114,7 +114,7 @@ class MeetingPBLalouviereWorkflowActions(MeetingCollegeWorkflowActions):
 
 
 # ------------------------------------------------------------------------------
-class MeetingPBLalouviereWorkflowConditions(MeetingCollegeWorkflowConditions):
+class MeetingPBLalouviereWorkflowConditions(MeetingCommunesWorkflowConditions):
     """Adapter that adapts a meeting item implementing IMeetingItem to the
        interface IMeetingItemPBWorkflowActions"""
 
@@ -123,7 +123,7 @@ class MeetingPBLalouviereWorkflowConditions(MeetingCollegeWorkflowConditions):
 
 
 # ------------------------------------------------------------------------------
-class MeetingItemPBLalouviereWorkflowActions(MeetingItemCollegeWorkflowActions):
+class MeetingItemPBLalouviereWorkflowActions(MeetingItemCommunesWorkflowActions):
     """Adapter that adapts a meeting item implementing IMeetingItem to the
        interface IMeetingItemPBWorkflowActions"""
 
@@ -177,9 +177,9 @@ class MeetingItemPBLalouviereWorkflowActions(MeetingItemCollegeWorkflowActions):
 
 
 # ------------------------------------------------------------------------------
-class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCollegeWorkflowConditions):
+class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowConditions):
     """Adapter that adapts a meeting item implementing IMeetingItem to the
-       interface IMeetingItemCollegeWorkflowConditions"""
+       interface IMeetingItemCommunesWorkflowConditions"""
 
     implements(IMeetingItemPBLalouviereWorkflowConditions)
     security = ClassSecurityInfo()
@@ -242,7 +242,7 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCollegeWorkflowCondit
                                 domain="PloneMeeting",
                                 context=self.context.REQUEST))
         if _checkPermission(ReviewPortalContent, self.context):
-                res = True
+            res = True
         return res
 
     security.declarePublic('mayProposeToN2')
@@ -253,7 +253,7 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCollegeWorkflowCondit
         """
         res = False
         if _checkPermission(ReviewPortalContent, self.context):
-                res = True
+            res = True
         return res
 
     security.declarePublic('mayProposeToSecretaire')
@@ -264,7 +264,7 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCollegeWorkflowCondit
         """
         res = False
         if _checkPermission(ReviewPortalContent, self.context):
-                res = True
+            res = True
         return res
 
     security.declarePublic('mayProposeToPresident')
