@@ -3,19 +3,12 @@
 from collections import OrderedDict
 from Products.PloneMeeting import config as PMconfig
 
+product_globals = globals()
 
 PROJECTNAME = "MeetingCPASLalouviere"
 
-product_globals = globals()
 
-# Dependencies of Products to be installed by quick-installer
-# override in custom configuration
-DEPENDENCIES = []
-
-# Dependend products - not quick-installed - used in testcase
-# override in custom configuration
-PRODUCT_DEPENDENCIES = []
-
+# Roles
 CPASLALOUVIEREROLES = {}
 CPASLALOUVIEREROLES['budgetimpactreviewers'] = 'MeetingBudgetImpactReviewer'
 CPASLALOUVIEREROLES['n1'] = 'MeetingN1'
@@ -23,14 +16,19 @@ CPASLALOUVIEREROLES['n2'] = 'MeetingN2'
 CPASLALOUVIEREROLES['secretaire'] = 'MeetingSecretaire'
 PMconfig.MEETINGROLES.update(CPASLALOUVIEREROLES)
 
-PMconfig.MEETING_GROUP_SUFFIXES = PMconfig.MEETINGROLES.keys()
-#the president will use the default 'MeetingReviewer' role
-
 STYLESHEETS = [{'id': 'meetingcpaslalouviere.css',
                 'title': "MeetingCPASLalouvière CSS styles"}]
 
-CPASLALOUVIEREMEETINGREVIEWERS = OrderedDict([('reviewers', 'proposed_to_president'),
+# group suffixes
+PMconfig.EXTRA_GROUP_SUFFIXES = [
+    {'fct_title': u'secretaire', 'fct_id': u'secretaire', 'fct_orgs': []},
+    {'fct_title': u'n2', 'fct_id': u'n2',  'fct_orgs': []},
+    {'fct_title': u'n1', 'fct_id': u'n1', 'fct_orgs': []},
+]
+
+CPASLALOUVIEREMEETINGREVIEWERS = {
+    'meetingitemcpaslalouviere_workflow': OrderedDict([('reviewers', 'proposed_to_president'),
                                             ('secretaire', 'proposed_to_secretaire'),
                                             ('n2', 'proposed_to_n2'),
-                                            ('n1', 'proposed_to_n1'), ])
-PMconfig.MEETINGREVIEWERS = CPASLALOUVIEREMEETINGREVIEWERS
+                                            ('n1', 'proposed_to_n1'), ])}
+PMconfig.MEETINGREVIEWERS.update(CPASLALOUVIEREMEETINGREVIEWERS)
