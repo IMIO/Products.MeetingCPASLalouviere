@@ -54,7 +54,7 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         # pmCreator1 creates an item with 1 annex and proposes it
         self.changeUser('pmCreator1')
         item1 = self.create('MeetingItem', title='The first item')
-        annex1 = self.addAnnex(item1)
+        self.addAnnex(item1)
         self.addAnnex(item1, relatedTo='item_decision')
         self.do(item1, 'proposeToN1')
         self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
@@ -62,28 +62,25 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the N1 validation level
         self.changeUser('pmN1')
-        self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
+        import ipdb;ipdb.set_trace()
         self.do(item1, 'proposeToN2')
         self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the N2 validation level
         self.changeUser('pmN2')
-        self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
         self.do(item1, 'proposeToSecretaire')
         self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the secretariat validation level
         self.changeUser('pmSecretaire')
-        self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
         self.do(item1, 'proposeToPresident')
         self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
         # the president validation level
         self.changeUser('pmReviewer1')
-        self.failUnless(self.hasPermission('Modify portal content', (item1, annex1)))
         self.do(item1, 'validate')
         self.assertRaises(Unauthorized, self.addAnnex, item1, relatedTo='item_decision')
         self.failIf(self.transitions(item1))  # He may trigger no more action
@@ -97,7 +94,7 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         item2 = self.create('MeetingItem', title='The second item',
                             preferredMeeting=meeting.UID())
         self.do(item2, 'proposeToN1')
-        # pmReviewer1 can not validate the item has not in the same proposing group
+        # pmReviewer1 validates item1 and adds an annex to it
         self.changeUser('pmReviewer1')
         self.failIf(self.hasPermission('Modify portal content', item2))
         # even pmManager can not see/validate an item in the validation queue

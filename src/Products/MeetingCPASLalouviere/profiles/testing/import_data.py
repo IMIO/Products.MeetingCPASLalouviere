@@ -25,10 +25,15 @@ developers.secretaire.append(pmSecretaire)
 developers.n1.append(pmManager)
 developers.n2.append(pmManager)
 
+# to serviceheads that is first reviewer level
+developers.prereviewers = [descr for descr in developers.prereviewers if descr.id != 'pmReviewerLevel1']
+getattr(developers, MEETINGREVIEWERS['meetingitemseraing_workflow'].keys()[-1]).append(pmReviewerLevel1)
+
 data = deepcopy(mc_import_data.data)
 # Meeting configurations -------------------------------------------------------
 # College communal
 collegeMeeting = deepcopy(mc_import_data.collegeMeeting)
+
 collegeMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
 collegeMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
 collegeMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
@@ -53,6 +58,7 @@ collegeMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transitio
 collegeMeeting.itemAdviceStates = ['proposed_to_president', ]
 collegeMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 collegeMeeting.workflowAdaptations = []
+collegeMeeting.useGroupsAsCategories = True
 
 # Conseil communal
 councilMeeting = deepcopy(mc_import_data.councilMeeting)
@@ -71,4 +77,5 @@ councilMeeting.workflowAdaptations = []
 councilMeeting.itemCopyGroupsStates = []
 
 data.meetingConfigs = (collegeMeeting, councilMeeting)
+data.usersOutsideGroups += [pmN1, pmN2, pmSecretaire]
 # ------------------------------------------------------------------------------

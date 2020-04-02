@@ -26,11 +26,11 @@ from AccessControl import Unauthorized
 from DateTime import DateTime
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.PloneMeeting.tests.testAnnexes import testAnnexes as pmta
+from Products.MeetingCommunes.tests.testAnnexes import testAnnexes as mcta
 
 
 
-class testAnnexes(MeetingCPASLalouviereTestCase, pmta):
+class testAnnexes(MeetingCPASLalouviereTestCase, mcta):
     ''' '''
 
 

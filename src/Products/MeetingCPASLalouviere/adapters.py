@@ -30,9 +30,11 @@ from plone import api
 from Products.CMFCore.permissions import ReviewPortalContent
 from Products.CMFCore.utils import _checkPermission
 
-from Products.PloneMeeting.MeetingConfig import MeetingConfig
 from Products.PloneMeeting.adapters import ItemPrettyLinkAdapter
+from Products.PloneMeeting.config import PMMessageFactory as _
+from Products.PloneMeeting.MeetingConfig import MeetingConfig
 from Products.PloneMeeting.model import adaptations
+
 from Products.MeetingCommunes.adapters import MeetingCommunesWorkflowActions
 from Products.MeetingCommunes.adapters import MeetingCommunesWorkflowConditions
 from Products.MeetingCommunes.adapters import MeetingItemCommunesWorkflowActions
@@ -202,10 +204,8 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           that is in the state 'itemcreated'
         """
         res = False
-        if not self.context.getCategory():
-            return No(translate('required_category_ko',
-                                domain="PloneMeeting",
-                                context=self.context.REQUEST))
+        if not self.context.getCategory(theObject=True):
+            return No(_('required_category_ko'))
         # first of all, the use must have the 'Review portal content permission'
         if _checkPermission(ReviewPortalContent, self.context):
             res = True
@@ -222,10 +222,8 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content' and item have category
         """
         res = False
-        if not self.context.getCategory():
-            return No(translate('required_category_ko',
-                                domain="PloneMeeting",
-                                context=self.context.REQUEST))
+        if not self.context.getCategory(theObject=True):
+            return No(_('required_category_ko'))
         if _checkPermission(ReviewPortalContent, self.context):
                 res = True
         return res
@@ -237,10 +235,8 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content' and item have category
         """
         res = False
-        if not self.context.getCategory():
-            return No(translate('required_category_ko',
-                                domain="PloneMeeting",
-                                context=self.context.REQUEST))
+        if not self.context.getCategory(theObject=True):
+            return No(_('required_category_ko'))
         if _checkPermission(ReviewPortalContent, self.context):
             res = True
         return res
@@ -252,6 +248,7 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content'
         """
         res = False
+        import ipdb; ipdb.set_trace()
         if _checkPermission(ReviewPortalContent, self.context):
             res = True
         return res
@@ -315,10 +312,8 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content' and item have category
         """
         res = False
-        if not self.context.getCategory():
-            return No(translate('required_category_ko',
-                                domain="PloneMeeting",
-                                context=self.context.REQUEST))
+        if not self.context.getCategory(theObject=True):
+            return No(_('required_category_ko'))
         if _checkPermission(ReviewPortalContent, self.context):
                 res = True
         return res

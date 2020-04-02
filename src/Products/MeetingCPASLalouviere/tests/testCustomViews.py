@@ -23,9 +23,10 @@
 #
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
+from Products.MeetingCommunes.tests.testCustomViews import testCustomViews as mctcv
 
 
-class testCustomViews(MeetingCPASLalouviereTestCase):
+class testCustomViews(MeetingCPASLalouviereTestCase, mctcv):
     ''' '''
 
 

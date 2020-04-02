@@ -23,9 +23,10 @@
 #
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
+from Products.MeetingCommunes.tests.testColumns import testColumns as mctc
 
 
-class testColumns(MeetingCPASLalouviereTestCase):
+class testColumns(MeetingCPASLalouviereTestCase, mctc):
     ''' '''
 
 

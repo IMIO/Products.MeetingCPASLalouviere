@@ -24,7 +24,6 @@
 import logging
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testMeetingConfig import testMeetingConfig as mctmc
-from Products.PloneMeeting.model.adaptations import performWorkflowAdaptations
 
 
 class testMeetingConfig(MeetingCPASLalouviereTestCase, mctmc):
