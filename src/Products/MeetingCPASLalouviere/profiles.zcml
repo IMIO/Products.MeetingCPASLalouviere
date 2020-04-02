@@ -29,7 +29,7 @@
       description=""
       source="4.0"
       destination="4.1"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_1"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_1.migrate"
       profile="Products.MeetingCPASLalouviere:default" />
 
   <!-- ##/code-section profiles.zcml-bottom -->

@@ -121,22 +121,14 @@ def reorderSkinsLayers(context, site):
     site.portal_setup.runImportStepFromProfile(u'profile-Products.MeetingCPASLalouviere:default', 'skins')
 
 
-def finalizeInstance(context):
-    """
-      Called at the very end of the installation process (after PloneMeeting).
-    """
-    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
-        return
-
-    reorderSkinsLayers(context, context.getSite())
-    reorderCss(context)
-
-
 def reorderCss(context):
     """
        Make sure CSS are correctly reordered in portal_css so things
        work as expected...
     """
+    if isNotMeetingCPASLalouviereProfile(context) and isMeetingCPASllConfigureProfile(context):
+        return
+
     site = context.getSite()
     logStep("reorderCss", context)
     portal_css = site.portal_css

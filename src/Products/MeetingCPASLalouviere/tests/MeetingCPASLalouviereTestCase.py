@@ -38,5 +38,5 @@ class MeetingCPASLalouviereTestCase(MeetingCommunesTestCase, MeetingCPASLalouvie
 
     def setUp(self):
         MeetingCommunesTestCase.setUp(self)
-        self.meetingConfig = getattr(self.tool, 'meeting-config-college')
-        self.meetingConfig2 = getattr(self.tool, 'meeting-config-council')
+        self.meetingConfig = getattr(self.tool, 'meeting-config-bp')
+        self.meetingConfig2 = getattr(self.tool, 'meeting-config-cas')

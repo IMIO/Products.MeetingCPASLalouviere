@@ -29,6 +29,10 @@ developers.n2.append(pmManager)
 # Meeting configurations -------------------------------------------------------
 # College communal
 bpMeeting = deepcopy(mc_import_data.collegeMeeting)
+bpMeeting.id = 'meeting-config-bp'
+bpMeeting.title = 'Bureau Permanent'
+bpMeeting.folderTitle = 'Bureau Permanent'
+bpMeeting.shortName = 'Bureau'
 bpMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
 bpMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
 bpMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
@@ -57,6 +61,10 @@ bpMeeting.useGroupsAsCategories = True
 
 # Conseil communal
 casMeeting = deepcopy(mc_import_data.councilMeeting)
+casMeeting.id = 'meeting-config-cas'
+casMeeting.title = 'Conseil Action Soiale'
+casMeeting.folderTitle = 'Conseil Action Soiale'
+casMeeting.shortName = 'CAS'
 casMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
 casMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
 casMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'

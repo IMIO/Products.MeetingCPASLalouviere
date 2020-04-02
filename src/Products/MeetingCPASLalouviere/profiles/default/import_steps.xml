@@ -19,12 +19,5 @@
    manual coded post-install for MeetingCPASLalouviere
  </import-step>
 
- <import-step
-    id="MeetingCPASLalouviere-finalizeInstance"
-    handler="Products.MeetingCPASLalouviere.setuphandlers.finalizeInstance"
-    title="manual coded finalize Instance for MeetingCPASLalouviere"
-    version="2019-03-11T09:54:43.970458">
-   manual coded post-install for MeetingCPASLalouviere
- </import-step>
 </import-steps>
  
