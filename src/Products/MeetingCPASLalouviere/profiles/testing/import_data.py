@@ -25,24 +25,19 @@ developers.secretaire.append(pmSecretaire)
 developers.n1.append(pmManager)
 developers.n2.append(pmManager)
 
-# to serviceheads that is first reviewer level
-developers.prereviewers = [descr for descr in developers.prereviewers if descr.id != 'pmReviewerLevel1']
-getattr(developers, MEETINGREVIEWERS['meetingitemseraing_workflow'].keys()[-1]).append(pmReviewerLevel1)
 
-data = deepcopy(mc_import_data.data)
 # Meeting configurations -------------------------------------------------------
 # College communal
-collegeMeeting = deepcopy(mc_import_data.collegeMeeting)
-
-collegeMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
-collegeMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
-collegeMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
-collegeMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
-collegeMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
-collegeMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
-collegeMeeting.transitionsForPresentingAnItem = ['proposeToN1', 'proposeToN2', 'proposeToSecretaire',
+bpMeeting = deepcopy(mc_import_data.collegeMeeting)
+bpMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
+bpMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
+bpMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
+bpMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
+bpMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
+bpMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
+bpMeeting.transitionsForPresentingAnItem = ['proposeToN1', 'proposeToN2', 'proposeToSecretaire',
                                                  'proposeToPresident', 'validate', 'present']
-collegeMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transition': 'freeze',
+bpMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transition': 'freeze',
                                                               'item_transition': 'itemfreeze'},
 
                                                              {'meeting_transition': 'decide',
@@ -55,27 +50,27 @@ collegeMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transitio
 
                                                              {'meeting_transition': 'backToCreated',
                                                               'item_transition': 'backToPresented'},)
-collegeMeeting.itemAdviceStates = ['proposed_to_president', ]
-collegeMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
-collegeMeeting.workflowAdaptations = []
-collegeMeeting.useGroupsAsCategories = True
+bpMeeting.itemAdviceStates = ['proposed_to_president', ]
+bpMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
+bpMeeting.workflowAdaptations = []
+bpMeeting.useGroupsAsCategories = True
 
 # Conseil communal
-councilMeeting = deepcopy(mc_import_data.councilMeeting)
-councilMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
-councilMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
-councilMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
-councilMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
-councilMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
-councilMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
-councilMeeting.transitionsForPresentingAnItem = ['proposeToN1', 'proposeToN2', 'proposeToSecretaire',
+casMeeting = deepcopy(mc_import_data.councilMeeting)
+casMeeting.itemWorkflow = 'meetingitemcpaslalouviere_workflow'
+casMeeting.meetingWorkflow = 'meetingcpaslalouviere_workflow'
+casMeeting.itemConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowConditions'
+casMeeting.itemActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingItemPBLalouviereWorkflowActions'
+casMeeting.meetingConditionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowConditions'
+casMeeting.meetingActionsInterface = 'Products.MeetingCPASLalouviere.interfaces.IMeetingPBLalouviereWorkflowActions'
+casMeeting.transitionsForPresentingAnItem = ['proposeToN1', 'proposeToN2', 'proposeToSecretaire',
                                                  'proposeToPresident', 'validate', 'present']
 
-councilMeeting.itemAdviceStates = ['proposed_to_president', ]
-councilMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
-councilMeeting.workflowAdaptations = []
-councilMeeting.itemCopyGroupsStates = []
+casMeeting.itemAdviceStates = ['proposed_to_president', ]
+casMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
+casMeeting.workflowAdaptations = []
+casMeeting.itemCopyGroupsStates = []
 
-data.meetingConfigs = (collegeMeeting, councilMeeting)
+data.meetingConfigs = (bpMeeting, casMeeting)
 data.usersOutsideGroups += [pmN1, pmN2, pmSecretaire]
 # ------------------------------------------------------------------------------

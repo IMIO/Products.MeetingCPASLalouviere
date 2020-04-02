@@ -248,7 +248,6 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content'
         """
         res = False
-        import ipdb; ipdb.set_trace()
         if _checkPermission(ReviewPortalContent, self.context):
             res = True
         return res
