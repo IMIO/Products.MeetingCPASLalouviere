@@ -35,8 +35,8 @@ class MeetingCPASLalouviereTestCase(MeetingCommunesTestCase, MeetingCPASLalouvie
     """Base class for defining MeetingCPASLalouviere test cases."""
 
     layer = MLL_TESTING_PROFILE_FUNCTIONAL
+    cfg1_id = 'meeting-config-bp'
+    cfg2_id = 'meeting-config-cas'
 
     def setUp(self):
         MeetingCommunesTestCase.setUp(self)
-        self.meetingConfig = getattr(self.tool, 'meeting-config-bp')
-        self.meetingConfig2 = getattr(self.tool, 'meeting-config-cas')

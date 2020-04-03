@@ -51,7 +51,7 @@ from zope.i18n import translate
 customWfAdaptations = ('return_to_proposing_group', )
 MeetingConfig.wfAdaptations = customWfAdaptations
 # configure parameters for the returned_to_proposing_group wfAdaptation
-# we keep also 'itemfrozen' and 'itempublished' in case this should be activated for meeting-config-college...
+# we keep also 'presented' and 'itemfrozen' in case this should be activated for meeting-config-bp...
 RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES = ('presented', 'itemfrozen', )
 adaptations.RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES = RETURN_TO_PROPOSING_GROUP_FROM_ITEM_STATES
 RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS = {'meetingitemcpaslalouviere_workflow':
