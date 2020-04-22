@@ -1,18 +1,34 @@
 # -*- coding: utf-8 -*-
 
 from copy import deepcopy
-from Products.MeetingCommunes.profiles.zcpas import import_data as mc_import_data
+from Products.PloneMeeting.profiles import UserDescriptor
+from Products.PloneMeeting.profiles.testing import import_data as pm_import_data
+from Products.MeetingCommunes.profiles.testing import import_data as mc_import_data
 
 data = deepcopy(mc_import_data.data)
 
-# Remove persons -------------------------------------------------
-data.persons = []
+# Inherited users
+pmReviewer1 = deepcopy(pm_import_data.pmReviewer1)
+pmReviewer2 = deepcopy(pm_import_data.pmReviewer2)
+pmReviewerLevel1 = deepcopy(pm_import_data.pmReviewerLevel1)
+pmReviewerLevel2 = deepcopy(pm_import_data.pmReviewerLevel2)
+pmManager = deepcopy(pm_import_data.pmManager)
+# xxx specific to CPAS La louvière
+pmN1 = UserDescriptor('pmN1', [])
+pmN2 = UserDescriptor('pmN2', [])
+pmSecretaire = UserDescriptor('pmSecretaire', [])
 
-# No Users and groups -----------------------------------------------
+developers = data.orgs[0]
+developers.n1.append(pmN1)
+developers.n2.append(pmN2)
+developers.secretaire.append(pmSecretaire)
+developers.n1.append(pmManager)
+developers.n2.append(pmManager)
+
 
 # Meeting configurations -------------------------------------------------------
-# Bureau Permanent
-bpMeeting = deepcopy(mc_import_data.bpMeeting)
+# College communal
+bpMeeting = deepcopy(mc_import_data.collegeMeeting)
 bpMeeting.id = 'meeting-config-bp'
 bpMeeting.title = 'Bureau Permanent'
 bpMeeting.folderTitle = 'Bureau Permanent'
@@ -41,12 +57,10 @@ bpMeeting.onMeetingTransitionItemTransitionToTrigger = ({'meeting_transition': '
 bpMeeting.itemAdviceStates = ['proposed_to_president', ]
 bpMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 bpMeeting.workflowAdaptations = []
-bpMeeting.transitionsToConfirm = []
-bpMeeting.itemBudgetInfosStates = []
-bpMeeting.podTemplates = []
+bpMeeting.useGroupsAsCategories = True
 
-# Conseil de l'Action Sociale
-casMeeting = deepcopy(mc_import_data.casMeeting)
+# Conseil communal
+casMeeting = deepcopy(mc_import_data.councilMeeting)
 casMeeting.id = 'meeting-config-cas'
 casMeeting.title = 'Conseil Action Soiale'
 casMeeting.folderTitle = 'Conseil Action Soiale'
@@ -64,10 +78,7 @@ casMeeting.itemAdviceStates = ['proposed_to_president', ]
 casMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 casMeeting.workflowAdaptations = []
 casMeeting.itemCopyGroupsStates = []
-casMeeting.transitionsToConfirm = []
-casMeeting.itemBudgetInfosStates = []
-casMeeting.podTemplates = []
 
 data.meetingConfigs = (bpMeeting, casMeeting)
-data.usersOutsideGroups += []
+data.usersOutsideGroups += [pmN1, pmN2, pmSecretaire]
 # ------------------------------------------------------------------------------

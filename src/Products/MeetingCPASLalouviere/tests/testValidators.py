@@ -23,10 +23,10 @@
 #
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testValidators import testValidators as pmtv
+from Products.MeetingCommunes.tests.testValidators import testValidators as mctv
 
 
-class testValidators(MeetingCPASLalouviereTestCase, pmtv):
+class testValidators(MeetingCPASLalouviereTestCase, mctv):
     """
         Tests the validators.
     """
