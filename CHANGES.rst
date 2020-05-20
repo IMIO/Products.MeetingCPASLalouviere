@@ -1,7 +1,7 @@
 Products.MeetingCPASLalouviere Changelog
 ========================================
 
-4.1.1rc2 (unreleased)
+4.1.1rc2 (2020-05-20)
 ---------------------
 
 - Fixed missing CHANGES.rst.
