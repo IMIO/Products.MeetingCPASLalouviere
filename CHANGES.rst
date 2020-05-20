@@ -1,7 +1,7 @@
 Products.MeetingCPASLalouviere Changelog
 ========================================
 
-4.1.1rc3 (unreleased)
+4.1.1rc3 (2020-05-20)
 ---------------------
 
 - Changes Manifest.in.
