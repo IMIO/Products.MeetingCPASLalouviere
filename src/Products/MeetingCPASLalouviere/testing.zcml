@@ -3,7 +3,7 @@
            i18n_domain="MeetingCPASLalouviere">
 
     <include file="configure.zcml"/>
-    <include package="Products.PloneMeeting"/>
+    <includeOverrides file="overrides.zcml" />
 
     <genericsetup:registerProfile
         name="testing"
