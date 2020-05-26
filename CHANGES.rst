@@ -4,7 +4,8 @@ Products.MeetingCPASLalouviere Changelog
 4.1.1rc4 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+- Fix overrides.
+  [odelaere]
 
 
 4.1.1rc3 (2020-05-20)
