@@ -9,28 +9,17 @@
 # GNU General Public License (GPL)
 #
 
-__author__ = """Andre NUYENS <andre.nuyens@imio.be>"""
-__docformat__ = 'plaintext'
-
-import os
 import logging
-logger = logging.getLogger('MeetingCPASLalouviere: setuphandlers')
-from plone import api
-from Products.PloneMeeting.exportimport.content import ToolInitializer
+import os
+
 from Products.MeetingCPASLalouviere.config import PROJECTNAME
+from Products.PloneMeeting.exportimport.content import ToolInitializer
+
+logger = logging.getLogger('MeetingCPASLalouviere: setuphandlers')
 
 
 def isNotMeetingCPASLalouviereProfile(context):
     return context.readDataFile("MeetingCPASLalouviere_marker.txt") is None
-
-
-def updateRoleMappings(context):
-    """after workflow changed update the roles mapping. this is like pressing
-    the button 'Update Security Setting' and portal_workflow"""
-    if isNotMeetingCPASLalouviereProfile(context):
-        return
-    wft = api.portal.get_tool('portal_workflow')
-    wft.updateRoleMappings()
 
 
 def postInstall(context):
@@ -38,8 +27,9 @@ def postInstall(context):
     # the right place for your custom code
     if isNotMeetingCPASLalouviereProfile(context):
         return
+    logStep("postInstall", context)
     site = context.getSite()
-    #need to reinstall PloneMeeting after reinstalling MC workflows to re-apply wfAdaptations
+    # need to reinstall PloneMeeting after reinstalling MC workflows to re-apply wfAdaptations
     reinstallPloneMeeting(context, site)
     showHomeTab(context, site)
     reorderSkinsLayers(context, site)
@@ -71,6 +61,9 @@ def initializeTool(context):
         return
 
     logStep("initializeTool", context)
+    # PloneMeeting is no more a dependency to avoid
+    # magic between quickinstaller and portal_setup
+    # so install it manually
     _installPloneMeeting(context)
     return ToolInitializer(context, PROJECTNAME).run()
 
@@ -84,8 +77,7 @@ def reinstallPloneMeeting(context, site):
 
     logStep("reinstallPloneMeeting", context)
     _installPloneMeeting(context)
-    # launch skins step for MeetingCPASLalouviere so MeetingCPASLalouviere skin layers are before PM ones
-    site.portal_setup.runImportStepFromProfile('profile-Products.MeetingCPASLalouviere:default', 'skins')
+
 
 def _installPloneMeeting(context):
     site = context.getSite()
