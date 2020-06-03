@@ -4,7 +4,7 @@ Products.MeetingCPASLalouviere Changelog
 4.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix budget reviewers access.
 
 
 4.1.1 (2020-05-27)
