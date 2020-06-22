@@ -204,8 +204,6 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           that is in the state 'itemcreated'
         """
         res = False
-        if not self.context.getCategory(theObject=True):
-            return No(_('required_category_ko'))
         # first of all, the use must have the 'Review portal content permission'
         if _checkPermission(ReviewPortalContent, self.context):
             res = True
@@ -213,6 +211,10 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
             if self.context.queryState() in ('itemcreated',) and \
                     not self.context.portal_plonemeeting.isManager(self.context):
                 res = False
+        if res is True:
+            msg = self._check_required_data()
+            if msg is not None:
+                res = msg
         return res
 
     security.declarePublic('mayWaitAdvices')
@@ -222,10 +224,12 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content' and item have category
         """
         res = False
-        if not self.context.getCategory(theObject=True):
-            return No(_('required_category_ko'))
         if _checkPermission(ReviewPortalContent, self.context):
                 res = True
+        if res is True:
+            msg = self._check_required_data()
+            if msg is not None:
+                res = msg
         return res
 
     security.declarePublic('mayProposeToN1')
@@ -235,10 +239,12 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content' and item have category
         """
         res = False
-        if not self.context.getCategory(theObject=True):
-            return No(_('required_category_ko'))
         if _checkPermission(ReviewPortalContent, self.context):
             res = True
+        if res is True:
+            msg = self._check_required_data()
+            if msg is not None:
+                res = msg
         return res
 
     security.declarePublic('mayProposeToN2')
@@ -311,10 +317,12 @@ class MeetingItemPBLalouviereWorkflowConditions(MeetingItemCommunesWorkflowCondi
           Check that the user has the 'Review portal content' and item have category
         """
         res = False
-        if not self.context.getCategory(theObject=True):
-            return No(_('required_category_ko'))
         if _checkPermission(ReviewPortalContent, self.context):
                 res = True
+        if res is True:
+            msg = self._check_required_data()
+            if msg is not None:
+                res = msg
         return res
 
 
