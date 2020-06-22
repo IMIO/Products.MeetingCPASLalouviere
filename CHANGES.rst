@@ -1,7 +1,7 @@
 Products.MeetingCPASLalouviere Changelog
 ========================================
 
-4.1.3 (unreleased)
+4.1.3 (2020-06-22)
 ------------------
 
 - Adapted item transitions guards to use `MeetingItemWorkflowConditions._check_required_data`.
