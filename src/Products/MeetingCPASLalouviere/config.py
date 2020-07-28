@@ -21,10 +21,10 @@ STYLESHEETS = [{'id': 'meetingcpaslalouviere.css',
 
 # group suffixes
 PMconfig.EXTRA_GROUP_SUFFIXES = [
-    {'fct_title': u'secretaire', 'fct_id': u'secretaire', 'fct_orgs': []},
-    {'fct_title': u'n2', 'fct_id': u'n2',  'fct_orgs': []},
-    {'fct_title': u'n1', 'fct_id': u'n1', 'fct_orgs': []},
-    {'fct_title': u'budgetimpactreviewers', 'fct_id': u'budgetimpactreviewers', 'fct_orgs': []},
+    {'fct_title': u'secretaire', 'fct_id': u'secretaire', 'fct_orgs': [], 'enabled': True},
+    {'fct_title': u'n2', 'fct_id': u'n2',  'fct_orgs': [], 'enabled': True},
+    {'fct_title': u'n1', 'fct_id': u'n1', 'fct_orgs': [], 'enabled': True},
+    {'fct_title': u'budgetimpactreviewers', 'fct_id': u'budgetimpactreviewers', 'fct_orgs': [], 'enabled': True},
 ]
 
 CPASLALOUVIEREMEETINGREVIEWERS = {
