@@ -86,7 +86,7 @@ msgid "proposeToPresident"
 msgstr "proposer au président"
 
 msgid "proposeToSecretaire"
-msgstr "proposer au secrétaire"
+msgstr "proposer au DG"
 
 #. Default: "Proposed to budget impact reviewer"
 msgid "proposed_to_budgetimpact_reviewer"
@@ -106,7 +106,7 @@ msgstr "proposé au président"
 
 #. Default: "Proposed to secretaire"
 msgid "proposed_to_secretaire"
-msgstr "proposé au secrétaire"
+msgstr "proposé au DG"
 
 msgid "remove"
 msgstr "retirer de la séance"
