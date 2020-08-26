@@ -62,7 +62,7 @@ msgstr "renvoyer au président"
 
 #. Default: "send back"
 msgid "backToProposedToSecretaire"
-msgstr "renvoyer au Secrétaire"
+msgstr "renvoyer au DG"
 
 # Workflow states
 #. Default: "Waiting advices"
