@@ -4,7 +4,8 @@ Products.MeetingCPASLalouviere Changelog
 4.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Change label proposed to secretary to proposed to DG.
+  [odelaere]
 
 
 4.1.3 (2020-06-22)
