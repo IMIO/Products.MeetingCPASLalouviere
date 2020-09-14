@@ -1,4 +1,4 @@
-pmPipeline {
+pmDockerPipeline {
   profileName = 'lalouviere-cpas'
   testSuiteName = 'testlalouvierecpas'
   unitTestParameter = ''
