@@ -1,6 +1,6 @@
-pmDockerPipeline {
-  profileName = 'lalouviere-cpas'
-  testSuiteName = 'testlalouvierecpas'
-  unitTestParameter = ''
-  upstream = 'IMIO-github-Jenkinsfile/Products.MeetingCommunes/master'
-}
+//pmDockerPipeline {
+//  profileName = 'lalouviere-cpas'
+//  testSuiteName = 'testlalouvierecpas'
+//  unitTestParameter = ''
+//  upstream = 'IMIO-github-Jenkinsfile/Products.MeetingCommunes/master'
+//}
