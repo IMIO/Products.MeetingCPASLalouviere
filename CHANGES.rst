@@ -4,7 +4,8 @@ Products.MeetingCPASLalouviere Changelog
 4.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove useless override in pm_updates.
+  [odelaere]
 
 
 4.1.4 (2020-08-26)
