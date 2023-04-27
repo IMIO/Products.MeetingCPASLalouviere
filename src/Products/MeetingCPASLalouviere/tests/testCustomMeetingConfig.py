@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: testMeeting.py
+# File: testCustomMeetingConfig.py
 #
 # Copyright (c) 2007-2012 by CommunesPlone.org
 #
@@ -21,17 +21,23 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
+from datetime import datetime
 
-from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testMeeting import testMeetingType as mctm
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import (
+    MeetingCPASLalouviereTestCase,
+)
+from DateTime import DateTime
+from imio.helpers.cache import cleanRamCacheFor
 
 
-class testMeetingType(MeetingCPASLalouviereTestCase, mctm):
-    """Tests the Meeting class methods."""
+class testCustomMeetingConfig(MeetingCPASLalouviereTestCase):
+    """
+        Tests the MeetingConfig adapted methods
+    """
 
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testMeetingType, prefix='test_pm_'))
+    suite.addTest(makeSuite(testCustomMeetingConfig, prefix='test_'))
     return suite

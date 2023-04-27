@@ -28,16 +28,6 @@ from Products.MeetingCommunes.tests.testWorkflows import testWorkflows as mctw
 
 
 class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
-    """Tests the default workflows implemented in MeetingCPASLalouviere.
-
-       WARNING:
-       The Plone test system seems to be bugged: it does not seem to take into
-       account the write_permission and read_permission tags that are defined
-       on some attributes of the Archetypes model. So when we need to check
-       that a user is not authorized to set the value of a field protected
-       in this way, we do not try to use the accessor to trigger an exception
-       (self.assertRaise). Instead, we check that the user has the permission
-       to do so (getSecurityManager().checkPermission)."""
 
     def test_pm_WholeDecisionProcess(self):
         """
@@ -131,42 +121,6 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.assertEquals(item1.queryState(), 'refused')
         # every items without a decision are automatically accepted
         self.assertEquals(item2.queryState(), 'accepted')
-
-    def test_pm_FreezeMeeting(self):
-        """
-           When we freeze a meeting, every presented items will be frozen
-           too and their state will be set to 'itemfrozen'.  When the meeting
-           come back to 'created', every items will be corrected and set in the
-           'presented' state
-        """
-        # First, define recurring items in the meeting config
-        self.changeUser('pmManager')
-        #create a meeting
-        meeting = self.create('Meeting', date='2007/12/11 09:00:00')
-        #create 2 items and present them to the meeting
-        item1 = self.create('MeetingItem', title='The first item')
-        item2 = self.create('MeetingItem', title='The second item')
-        for item in (item1, item2,):
-            self.presentItem(item)
-        wftool = self.portal.portal_workflow
-        #every presented items are in the 'presented' state
-        self.assertEquals('presented', wftool.getInfoFor(item1, 'review_state'))
-        self.assertEquals('presented', wftool.getInfoFor(item2, 'review_state'))
-        #every items must be in the 'itemfrozen' state if we freeze the meeting
-        self.do(meeting, 'freeze')
-        self.assertEquals('itemfrozen', wftool.getInfoFor(item1, 'review_state'))
-        self.assertEquals('itemfrozen', wftool.getInfoFor(item2, 'review_state'))
-        #when correcting the meeting back to created, the items must be corrected
-        #back to "presented"
-        self.do(meeting, 'backToCreated')
-        #when a point is in 'itemfrozen' it's must place in presented state
-        self.assertEquals('presented', wftool.getInfoFor(item1, 'review_state'))
-        self.assertEquals('presented', wftool.getInfoFor(item2, 'review_state'))
-
-
-    def test_pm_RecurringItemsRespectSortingMethodOnAddItemPrivacy(self):
-            '''No sense...'''
-            pass
 
 
 def test_suite():

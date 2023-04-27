@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: testMeeting.py
+# File: testCustomMeeting.py
 #
 # Copyright (c) 2007-2012 by CommunesPlone.org
 #
@@ -23,15 +23,16 @@
 #
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testMeeting import testMeetingType as mctm
+from Products.MeetingCommunes.tests.testCustomToolPloneMeeting import testCustomToolPloneMeeting as mctct
 
 
-class testMeetingType(MeetingCPASLalouviereTestCase, mctm):
-    """Tests the Meeting class methods."""
+class testCustomToolPloneMeeting(mctct, MeetingCPASLalouviereTestCase):
+    """Tests the ToolPloneMeeting adapted methods."""
 
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testMeetingType, prefix='test_pm_'))
+    suite.addTest(makeSuite(testCustomToolPloneMeeting, prefix='test_'))
     return suite
+

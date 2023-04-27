@@ -23,7 +23,7 @@ msgid "PloneMeeting_label_defaultMeetingItemMotivation"
 msgstr "Valeur par défaut du champ 'Motivation de l'urgence'"
 
 #. Default: "Motivation"
-msgid "PloneMeeting_label_motivation"
+msgid "PloneMeeting_label_emergency_motivation"
 msgstr "Motivation de l'urgence"
 
 # Suffix

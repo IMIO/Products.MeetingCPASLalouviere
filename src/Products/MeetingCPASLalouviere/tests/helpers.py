@@ -22,89 +22,23 @@
 
 from Products.MeetingCommunes.tests.helpers import MeetingCommunesTestingHelpers
 
+
 class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
     '''Override some values of MeetingCommunesTestingHelpers.'''
 
-    TRANSITIONS_FOR_PROPOSING_ITEM_1 = ('proposeToN1',
-                                        'proposeToN2',
-                                        'proposeToSecretaire',
-                                        'proposeToPresident', )
-    TRANSITIONS_FOR_PROPOSING_ITEM_2 = ('proposeToN1',
-                                        'proposeToPresident', )
-    TRANSITIONS_FOR_VALIDATING_ITEM_1 = ('proposeToN1',
-                                         'proposeToN2',
-                                         'proposeToSecretaire',
-                                         'proposeToPresident',
-                                         'validate', )
-    TRANSITIONS_FOR_VALIDATING_ITEM_2 = ('validate', )
-    TRANSITIONS_FOR_PRESENTING_ITEM_1 = ('proposeToN1',
-                                         'proposeToN2',
-                                         'proposeToSecretaire',
-                                         'proposeToPresident',
-                                         'validate',
-                                         'present', )
-    TRANSITIONS_FOR_PRESENTING_ITEM_2 = ('validate', 'present', )
-    TRANSITIONS_FOR_FREEZING_MEETING_1 = TRANSITIONS_FOR_FREEZING_MEETING_2 = ('freeze', )
-    TRANSITIONS_FOR_PUBLISHING_MEETING_1 = TRANSITIONS_FOR_PUBLISHING_MEETING_2 = ('freeze', )
-    TRANSITIONS_FOR_ACCEPTING_ITEMS_1 = ('freeze', 'decide', )
-    TRANSITIONS_FOR_ACCEPTING_ITEMS_2 = ('freeze', 'decide', )
-
-    TRANSITIONS_FOR_DECIDING_MEETING_1 = ('freeze', 'decide', )
-    TRANSITIONS_FOR_DECIDING_MEETING_2 = ('freeze', 'decide', )
-    TRANSITIONS_FOR_CLOSING_MEETING_1 = ('freeze', 'decide', 'close', )
-    TRANSITIONS_FOR_CLOSING_MEETING_2 = ('freeze', 'decide', 'close', )
-    BACK_TO_WF_PATH_1 = BACK_TO_WF_PATH_2 = {
-        # Meeting
-        'created': ('backToDecided',
-                    'backToFrozen',
-                    'backToCreated',),
-        # MeetingItem
-        'itemcreated': ('backToItemFrozen',
-                        'backToPresented',
-                        'backToValidated',
-                        'backToProposedToPresident',
-                        'backToProposedToSecretaire',
-                        'backToProposedToN2',
-                        'backToProposedToN1',
-                        'backToItemCreated'),
-        'proposed_to_n1': ('backToItemFrozen',
-                           'backToPresented',
-                           'backToValidated',
-                           'backToProposedToPresident',
-                           'backToProposedToSecretaire',
-                           'backToProposedToN2',
-                           'backToProposedToN1'),
-        'proposed_to_n2': ('backToItemFrozen',
-                           'backToPresented',
-                           'backToValidated',
-                           'backToProposedToPresident',
-                           'backToProposedToSecretaire',
-                           'backToProposedToN2'),
-        'proposed_to_secretaire': ('backToItemFrozen',
-                                   'backToPresented',
-                                   'backToValidated',
-                                   'backToProposedToPresident',
-                                   'backToProposedToSecretaire'),
-        'proposed_to_president': ('backToItemFrozen',
-                                  'backToPresented',
-                                  'backToValidated',
-                                  'backToProposedToPresident', ),
-        'validated': ('backToItemFrozen',
-                      'backToPresented',
-                      'backToValidated',),
-        'presented': ('backToItemFrozen',
-                      'backToPresented',)}
-
-    WF_STATE_NAME_MAPPINGS = {'itemcreated': 'itemcreated',
-                              'proposed_to_president': 'proposed_to_president',
-                              'proposed': 'proposed_to_president',
-                              'validated': 'validated',
-                              'presented': 'presented'}
-
-
-    WF_ITEM_STATE_NAME_MAPPINGS_1 = WF_ITEM_STATE_NAME_MAPPINGS_2 = {
-        'itemcreated': 'itemcreated',
-        'proposed': 'proposed_to_president',
-        'validated': 'validated',
-        'presented': 'presented',
-        'itemfrozen': 'itemfrozen'}
+    TRANSITIONS_FOR_PROPOSING_ITEM_FIRST_LEVEL_1 = TRANSITIONS_FOR_PROPOSING_ITEM_FIRST_LEVEL_2 = ("proposeToN1",)
+    TRANSITIONS_FOR_PROPOSING_ITEM_1 = TRANSITIONS_FOR_PROPOSING_ITEM_2 = ('proposeToN1',
+                                                                           'proposeToN2',
+                                                                           'proposeToSecretaire',
+                                                                           'proposeToPresident',)
+    TRANSITIONS_FOR_VALIDATING_ITEM_1 = TRANSITIONS_FOR_VALIDATING_ITEM_2 = ('proposeToN1',
+                                                                             'proposeToN2',
+                                                                             'proposeToSecretaire',
+                                                                             'proposeToPresident',
+                                                                             'validate',)
+    TRANSITIONS_FOR_PRESENTING_ITEM_1 = TRANSITIONS_FOR_PRESENTING_ITEM_2 = ('proposeToN1',
+                                                                             'proposeToN2',
+                                                                             'proposeToSecretaire',
+                                                                             'proposeToPresident',
+                                                                             'validate',
+                                                                             'present',)

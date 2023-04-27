@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# File: testMeeting.py
+# File: testCustomUtils.py
 #
-# Copyright (c) 2007-2012 by CommunesPlone.org
+# Copyright (c) 2017 by Imio.be
 #
 # GNU General Public License (GPL)
 #
@@ -22,16 +22,19 @@
 # 02110-1301, USA.
 #
 
+from AccessControl import Unauthorized
+from Products.ExternalMethod.ExternalMethod import manage_addExternalMethod
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testMeeting import testMeetingType as mctm
+from Products.MeetingCommunes.tests.testCustomUtils import testCustomUtils as mctcu
 
 
-class testMeetingType(MeetingCPASLalouviereTestCase, mctm):
-    """Tests the Meeting class methods."""
-
+class testCustomUtils(mctcu, MeetingCPASLalouviereTestCase):
+    """
+        Tests the Extensions/utils methods.
+    """
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testMeetingType, prefix='test_pm_'))
+    suite.addTest(makeSuite(testCustomUtils, prefix='test_'))
     return suite

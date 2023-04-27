@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: testMeeting.py
+# File: testWorkflows.py
 #
 # Copyright (c) 2007-2012 by CommunesPlone.org
 #
@@ -22,16 +22,22 @@
 # 02110-1301, USA.
 #
 
-from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testMeeting import testMeetingType as mctm
+import logging
+
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import (
+    MeetingCPASLalouviereTestCase,
+)
+from Products.MeetingCommunes.tests.testCustomWorkflows import testCustomWorkflows as mctcw
+
+from DateTime import DateTime
 
 
-class testMeetingType(MeetingCPASLalouviereTestCase, mctm):
-    """Tests the Meeting class methods."""
+class testCustomWorkflows(mctcw, MeetingCPASLalouviereTestCase):
+    """Tests the default workflows implemented in PloneMeeting."""
 
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testMeetingType, prefix='test_pm_'))
+    suite.addTest(makeSuite(testCustomWorkflows, prefix='test_'))
     return suite
