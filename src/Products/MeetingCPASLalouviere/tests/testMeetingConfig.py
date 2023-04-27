@@ -22,8 +22,6 @@
 # 02110-1301, USA.
 #
 
-from imio.helpers.cache import cleanRamCacheFor
-from plone import api
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testMeetingConfig import testMeetingConfig as mctmc
 

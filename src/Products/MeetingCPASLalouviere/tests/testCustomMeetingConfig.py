@@ -21,13 +21,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
-from datetime import datetime
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import (
     MeetingCPASLalouviereTestCase,
 )
-from DateTime import DateTime
-from imio.helpers.cache import cleanRamCacheFor
 
 
 class testCustomMeetingConfig(MeetingCPASLalouviereTestCase):

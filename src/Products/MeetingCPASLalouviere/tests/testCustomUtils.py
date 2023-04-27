@@ -22,8 +22,6 @@
 # 02110-1301, USA.
 #
 
-from AccessControl import Unauthorized
-from Products.ExternalMethod.ExternalMethod import manage_addExternalMethod
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testCustomUtils import testCustomUtils as mctcu
 

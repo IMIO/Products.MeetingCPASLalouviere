@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
 
-from Products.MeetingCommunes.tests.testCustomViews import testCustomViews as mctcv
-from Products.MeetingCPASLalouviere.browser.overrides import MLLItemDocumentGenerationHelperView
-from Products.MeetingCPASLalouviere.browser.overrides import MLLMeetingDocumentGenerationHelperView
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import (
     MeetingCPASLalouviereTestCase,
 )
+from Products.MeetingCommunes.tests.testCustomViews import testCustomViews as mctcv
 
 
 class testCustomViews(mctcv, MeetingCPASLalouviereTestCase):

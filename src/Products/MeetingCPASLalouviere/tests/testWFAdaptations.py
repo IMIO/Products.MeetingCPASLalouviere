@@ -22,10 +22,6 @@
 # 02110-1301, USA.
 #
 
-from DateTime import DateTime
-
-from Products.PloneMeeting.model.adaptations import RETURN_TO_PROPOSING_GROUP_CUSTOM_PERMISSIONS
-
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testWFAdaptations import testWFAdaptations as mctwfa
 

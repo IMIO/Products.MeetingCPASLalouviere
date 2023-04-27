@@ -22,14 +22,10 @@
 # 02110-1301, USA.
 #
 
-import logging
-
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import (
     MeetingCPASLalouviereTestCase,
 )
 from Products.MeetingCommunes.tests.testCustomWorkflows import testCustomWorkflows as mctcw
-
-from DateTime import DateTime
 
 
 class testCustomWorkflows(mctcw, MeetingCPASLalouviereTestCase):

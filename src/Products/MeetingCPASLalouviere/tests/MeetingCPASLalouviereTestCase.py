@@ -20,9 +20,10 @@
 # 02110-1301, USA.
 #
 
-from Products.MeetingCommunes.tests.MeetingCommunesTestCase import MeetingCommunesTestCase
 from Products.MeetingCPASLalouviere.testing import MLL_TESTING_PROFILE_FUNCTIONAL
 from Products.MeetingCPASLalouviere.tests.helpers import MeetingCPASLalouviereTestingHelpers
+from Products.MeetingCommunes.tests.MeetingCommunesTestCase import MeetingCommunesTestCase
+
 
 class MeetingCPASLalouviereTestCase(
     MeetingCommunesTestCase, MeetingCPASLalouviereTestingHelpers

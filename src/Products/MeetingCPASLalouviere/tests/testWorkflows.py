@@ -22,9 +22,10 @@
 # 02110-1301, USA.
 #
 
-from AccessControl import Unauthorized
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testWorkflows import testWorkflows as mctw
+
+from AccessControl import Unauthorized
 
 
 class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
