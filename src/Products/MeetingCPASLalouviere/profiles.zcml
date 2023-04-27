@@ -3,7 +3,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="MeetingCPASLalouviere">
 
-  <include package="Products.GenericSetup" file="meta.zcml" />
+  <include package="Products.GenericSetup" file="meta.zcml"/>
 
   <!-- ##code-section profiles.zcml-top #fill in your manual code here -->
   <!-- ##/code-section profiles.zcml-top -->
@@ -14,15 +14,16 @@
       directory="profiles/default"
       description="Extension profile for MeetingCPASLalouviere."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-  
+  />
+
   <!-- ##code-section profiles.zcml-bottom #fill in your manual code here -->
   <genericsetup:registerProfile
-   name="lalouvierecpas"
-   title="PloneMeeting / For CPAS La Louviere"
-   description="PloneMeeting for BP and CAS of La Louviere"
-   provides="Products.GenericSetup.interfaces.EXTENSION"
-   for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
+      name="zlalouvierecpas"
+      title="PloneMeeting / For CPAS La Louviere"
+      directory="profiles/zlalouvierecpas"
+      description="PloneMeeting for BP and CAS of La Louviere"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
 
   <genericsetup:upgradeStep
       title="Go to MeetingCPASLalouviere 4.1"
@@ -30,7 +31,7 @@
       source="4.0"
       destination="4.1"
       handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_1.migrate"
-      profile="Products.MeetingCPASLalouviere:default" />
+      profile="Products.MeetingCPASLalouviere:default"/>
 
   <!-- ##/code-section profiles.zcml-bottom -->
 

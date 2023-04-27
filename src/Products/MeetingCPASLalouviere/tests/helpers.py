@@ -42,3 +42,53 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
                                                                              'proposeToPresident',
                                                                              'validate',
                                                                              'present',)
+    BACK_TO_WF_PATH_1 = BACK_TO_WF_PATH_2 = {
+        # Meeting
+        "created": ("backToDecided", "backToPublished", "backToFrozen", "backToCreated",),
+        # MeetingItem
+        "itemcreated": (
+            "backToItemFrozen",
+            "backToPresented",
+            "backToValidated",
+            "backToProposedToPresident",
+            "backToProposedToSecretaire",
+            "backToProposedToN2",
+            "backToProposedToN1",
+            "backToItemCreated",
+        ),
+        "proposed_to_n1": (
+            "backToItemFrozen",
+            "backToPresented",
+            "backToValidated",
+            "backToProposedToPresident",
+            "backToProposedToSecretaire",
+            "backToProposedToN2",
+            "backToProposedToN1",
+        ),
+        "proposed_to_n2": (
+            "backToItemFrozen",
+            "backToPresented",
+            "backToValidated",
+            "backToProposedToPresident",
+            "backToProposedToSecretaire",
+            "backToProposedToN2",
+        ),
+        "proposed_to_secretaire": (
+            "backToItemFrozen",
+            "backToPresented",
+            "backToValidated",
+            "backToProposedToPresident",
+            "backToProposedToSecretaire",
+        ),
+        "proposed_to_president": ("backToItemFrozen", "backToPresented", "backToValidated", "backToProposedToPresident"),
+        "validated": ("backToItemFrozen", "backToPresented", "backToValidated",),
+    }
+
+    WF_ITEM_STATE_NAME_MAPPINGS_1 = WF_ITEM_STATE_NAME_MAPPINGS_2 = {
+        "itemcreated": "itemcreated",
+        "proposed_first_level": "proposed_to_n1",
+        "proposed": "proposed_to_president",
+        "validated": "validated",
+        "presented": "presented",
+        "itemfrozen": "itemfrozen",
+    }

@@ -16,28 +16,34 @@ pmReviewerLevel1 = deepcopy(pm_import_data.pmReviewerLevel1)
 pmReviewerLevel2 = deepcopy(pm_import_data.pmReviewerLevel2)
 pmManager = deepcopy(pm_import_data.pmManager)
 # xxx specific to CPAS La louvière
-pmN1 = UserDescriptor('pmN1', [])
-pmN2 = UserDescriptor('pmN2', [])
 pmSecretaire = UserDescriptor('pmSecretaire', [])
 
 pmBudgetReviewer1 = UserDescriptor("pmBudgetReviewer1", [])
 pmBudgetReviewer2 = UserDescriptor("pmBudgetReviewer2", [])
 
 developers = data.orgs[0]
+developers.budgetimpactreviewers.append(pmManager)
 developers.budgetimpactreviewers.append(pmBudgetReviewer1)
-developers.n1.append(pmN1)
-developers.n2.append(pmN2)
-developers.secretaire.append(pmSecretaire)
+developers.n1.append(pmReviewerLevel1)
 developers.n1.append(pmManager)
 developers.n2.append(pmManager)
+developers.secretaire.append(pmSecretaire)
+developers.secretaire.append(pmManager)
+developers.president.append(pmReviewer1)
+developers.president.append(pmReviewerLevel2)
+developers.president.append(pmManager)
 
 vendors = data.orgs[1]
 vendors.budgetimpactreviewers.append(pmBudgetReviewer2)
-vendors.n1.append(pmN1)
-vendors.n2.append(pmN2)
-vendors.secretaire.append(pmSecretaire)
+vendors.n1.append(pmReviewerLevel1)
 vendors.n1.append(pmManager)
 vendors.n2.append(pmManager)
+vendors.secretaire.append(pmSecretaire)
+vendors.secretaire.append(pmManager)
+vendors.president.append(pmReviewerLevel2)
+vendors.president.append(pmReviewer2)
+vendors.president.append(pmManager)
+
 # Meeting configurations -------------------------------------------------------
 # College communal
 bpMeeting = deepcopy(mc_import_data.collegeMeeting)
@@ -50,11 +56,14 @@ bpMeeting.itemAdviceStates = ['proposed_to_president', ]
 bpMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 
 # Conseil communal
-casMeeting = deepcopy(bpMeeting)
+casMeeting = deepcopy(mc_import_data.councilMeeting)
 casMeeting.id = 'meeting-config-cas'
 casMeeting.title = 'Conseil Action Sociale'
 casMeeting.folderTitle = 'Conseil Action Sociale'
 casMeeting.shortName = 'CAS'
+casMeeting.itemWFValidationLevels = deepcopy(LLO_ITEM_CPAS_WF_VALIDATION_LEVELS)
+casMeeting.itemAdviceStates = ['proposed_to_president', ]
+casMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 
 data.meetingConfigs = (bpMeeting, casMeeting)
 # data.usersOutsideGroups += [pmN1, pmN2, pmSecretaire]
