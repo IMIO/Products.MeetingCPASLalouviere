@@ -2,7 +2,7 @@
 #
 # File: setuphandlers.py
 #
-# Copyright (c) 2015 by IMIO
+# Copyright (c) 2016 by Imio.be
 # Generator: ArchGenXML Version 2.7
 #            http://plone.org/products/archgenxml
 #
@@ -11,7 +11,7 @@
 
 import logging
 import os
-
+from imio.helpers.catalog import addOrUpdateIndexes
 from Products.MeetingCPASLalouviere.config import PROJECTNAME
 from Products.PloneMeeting.exportimport.content import ToolInitializer
 
@@ -31,6 +31,8 @@ def postInstall(context):
     site = context.getSite()
     # need to reinstall PloneMeeting after reinstalling MC workflows to re-apply wfAdaptations
     reinstallPloneMeeting(context, site)
+    # Add additional indexes
+    addAdditionalIndexes(context, site)
     showHomeTab(context, site)
     reorderSkinsLayers(context, site)
 
@@ -40,14 +42,14 @@ def logStep(method, context):
                 (method, '/'.join(context._profile_path.split(os.sep)[-3:])))
 
 
-def isMeetingCPASllConfigureProfile(context):
-    return context.readDataFile("MeetingCPASll_examples_fr_marker.txt") or \
-           context.readDataFile("MeetingCPASll_tests_marker.txt")
+def isMeetingCPASLalouviereConfigureProfile(context):
+    return context.readDataFile("MeetingCPASLalouviere_lalouviere_marker.txt") or \
+        context.readDataFile("MeetingCPASLalouviere_testing_marker.txt")
 
 
 def installMeetingCPASLalouviere(context):
     """ Run the default profile"""
-    if not isMeetingCPASllConfigureProfile(context):
+    if not isMeetingCPASLalouviereConfigureProfile(context):
         return
     logStep("installMeetingCPASLalouviere", context)
     portal = context.getSite()
@@ -57,7 +59,7 @@ def installMeetingCPASLalouviere(context):
 def initializeTool(context):
     '''Initialises the PloneMeeting tool based on information from the current
        profile.'''
-    if not isMeetingCPASllConfigureProfile(context):
+    if not isMeetingCPASLalouviereConfigureProfile(context):
         return
 
     logStep("initializeTool", context)
@@ -66,6 +68,22 @@ def initializeTool(context):
     # so install it manually
     _installPloneMeeting(context)
     return ToolInitializer(context, PROJECTNAME).run()
+
+
+def addAdditionalIndexes(context, portal):
+    '''
+       Add some specific indexes used by MeetingCPASLalouviere
+    '''
+    if isNotMeetingCPASLalouviereProfile(context):
+        return
+
+    indexInfo = {
+        'getFollowUp': ('FieldIndex', {}),
+    }
+
+    logStep("addAdditionalIndexes", context)
+    # Create or update indexes
+    addOrUpdateIndexes(portal, indexInfo)
 
 
 def reinstallPloneMeeting(context, site):
@@ -103,10 +121,10 @@ def showHomeTab(context, site):
 
 def reorderSkinsLayers(context, site):
     """
-       Re-apply MeetingCPASLalouviere skins.xml step
-       as the reinstallation of MeetingCPASLalouviere and PloneMeeting changes the portal_skins layers order
+       Re-apply MeetingCPASLalouviere skins.xml step as the reinstallation of
+       MeetingCPASLalouviere and PloneMeeting changes the portal_skins layers order
     """
-    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
+    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASLalouviereConfigureProfile(context):
         return
 
     logStep("reorderSkinsLayers", context)
@@ -118,14 +136,18 @@ def reorderCss(context):
        Make sure CSS are correctly reordered in portal_css so things
        work as expected...
     """
-    if isNotMeetingCPASLalouviereProfile(context) and not isMeetingCPASllConfigureProfile(context):
+    if isNotMeetingCPASLalouviereProfile(context) and \
+       not isMeetingCPASLalouviereConfigureProfile(context):
         return
 
     site = context.getSite()
+
     logStep("reorderCss", context)
+
     portal_css = site.portal_css
-    css = ['imio.dashboard.css',
-           'plonemeeting.css',
+    css = ['plonemeeting.css',
+           'meeting.css',
+           'meetingitem.css',
            'meetingcpaslalouviere.css',
            'imioapps.css',
            'plonemeetingskin.css',

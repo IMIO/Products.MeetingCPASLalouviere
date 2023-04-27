@@ -3,6 +3,6 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone">
     <adapter for="Products.PloneMeeting.interfaces.IToolPloneMeeting"
-             factory="Products.MeetingLalouviere.adapters.MLLCustomToolPloneMeeting"
+             factory="Products.MeetingCPASLalouviere.adapters.MLLCustomToolPloneMeeting"
              provides="Products.PloneMeeting.interfaces.IToolPloneMeetingCustom"/>
 </configure>

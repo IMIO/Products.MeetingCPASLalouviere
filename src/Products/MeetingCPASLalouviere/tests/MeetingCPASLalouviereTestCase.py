@@ -35,4 +35,4 @@ class MeetingCPASLalouviereTestCase(
     cfg2_id = 'meeting-config-cas'
 
     def setUp(self):
-        MeetingCommunesTestCase.setUp(self)
+        super(MeetingCPASLalouviereTestCase, self).setUp()
