@@ -109,3 +109,7 @@ msgstr ""
 #. Default: "Description"
 msgid "meeting_item_description"
 msgstr ""
+
+#. Default: "Waiting advices (proposed_to_president)"
+msgid "proposed_to_president_waiting_advices"
+msgstr ""

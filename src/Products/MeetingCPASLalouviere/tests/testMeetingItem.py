@@ -30,6 +30,11 @@ class testMeetingItem(MeetingCPASLalouviereTestCase, mctmi):
     """
         Tests the MeetingItem class methods.
     """
+    def _reviewers_may_edit_itemcreated(self):
+        return True
+
+    def _users_to_remove_for_mailling_list(self):
+        return ["pmBudgetReviewer1", "pmBudgetReviewer2", "pmSecretaire"]
 
 def test_suite():
     from unittest import TestSuite, makeSuite

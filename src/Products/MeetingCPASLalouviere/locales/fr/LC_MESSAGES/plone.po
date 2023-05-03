@@ -117,3 +117,7 @@ msgstr "retiré de la séance"
 
 msgid "validateByBudgetImpactReviewer"
 msgstr "valider les infos budgétaires"
+
+#. Default: "Waiting advices (proposed_to_president)"
+msgid "proposed_to_president_waiting_advices"
+msgstr "Waiting advices (proposé au président)"

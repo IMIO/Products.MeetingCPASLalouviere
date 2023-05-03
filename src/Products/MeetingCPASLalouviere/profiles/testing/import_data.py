@@ -36,13 +36,9 @@ developers.president.append(pmManager)
 vendors = data.orgs[1]
 vendors.budgetimpactreviewers.append(pmBudgetReviewer2)
 vendors.n1.append(pmReviewerLevel1)
-vendors.n1.append(pmManager)
-vendors.n2.append(pmManager)
 vendors.secretaire.append(pmSecretaire)
-vendors.secretaire.append(pmManager)
 vendors.president.append(pmReviewerLevel2)
 vendors.president.append(pmReviewer2)
-vendors.president.append(pmManager)
 
 # Meeting configurations -------------------------------------------------------
 # College communal
