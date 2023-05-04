@@ -12,112 +12,103 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: plone\n"
-"Language-code: fr\n"
-"Language-name: French\n"
-"Preferred-encodings: utf-8 latin1\n"
-"X-is-fallback-for: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+"Domain: DOMAIN\n"
 
 #. Default: "MeetingItemPb"
 msgid "MeetingItemPb"
-msgstr "Point du bureau permanent"
+msgstr ""
 
 #. Default: "Meeting item BP"
 msgid "MeetingItembp"
-msgstr "Point Bureau Permanent"
+msgstr ""
 
 #. Default: "Meeting item CAS"
 msgid "MeetingItemcas"
-msgstr "Point Conseil de l'Action Sociale"
+msgstr ""
 
-# types
+#types
 #. Default: "MeetingPb"
 msgid "MeetingPb"
-msgstr "Bureau permanent"
+msgstr ""
 
 #. Default: "Meeting BP"
 msgid "Meetingbp"
-msgstr "Séance du Bureau Permanent"
+msgstr ""
 
 #. Default: "Meeting CAS"
 msgid "Meetingcas"
-msgstr "Séance du Conseil de l'Action Sociale"
+msgstr ""
 
 # Workflow transitions
 #. Default: "Ask advices"
 msgid "ask_advices_by_itemcreator"
-msgstr "demander les avis"
+msgstr ""
 
-#. Default: "send back"
 msgid "backToProposedToN1"
-msgstr "renvoyer au N+1"
+msgstr ""
 
-#. Default: "send back"
 msgid "backToProposedToN2"
-msgstr "renvoyer au N+2"
+msgstr ""
 
-#. Default: "send back"
 msgid "backToProposedToPresident"
-msgstr "renvoyer au président"
+msgstr ""
 
-#. Default: "send back"
 msgid "backToProposedToSecretaire"
-msgstr "renvoyer au DG"
+msgstr ""
 
 # Workflow states
 #. Default: "Waiting advices"
 msgid "itemcreated_waiting_advices"
-msgstr "en attente des avis"
+msgstr ""
 
 #. Default: "Description"
 msgid "meeting_item_description"
-msgstr "Description dans l'ordre du jour"
+msgstr ""
 
 msgid "proposeToBudgetImpactReviewer"
-msgstr "proposer au correspondant financier"
+msgstr ""
 
 msgid "proposeToN1"
-msgstr "proposer au N+1"
+msgstr ""
 
 msgid "proposeToN2"
-msgstr "proposer au N+2"
+msgstr ""
 
 msgid "proposeToPresident"
-msgstr "proposer au président"
+msgstr ""
 
 msgid "proposeToSecretaire"
-msgstr "proposer au DG"
+msgstr ""
 
 #. Default: "Proposed to budget impact reviewer"
 msgid "proposed_to_budgetimpact_reviewer"
-msgstr "proposé au correspondant financier"
+msgstr ""
 
 #. Default: "Proposed to N+1"
 msgid "proposed_to_n1"
-msgstr "proposé au N+1"
+msgstr ""
 
 #. Default: "Proposed to N+2"
 msgid "proposed_to_n2"
-msgstr "proposé au N+2"
+msgstr ""
 
 #. Default: "Proposed to president"
 msgid "proposed_to_president"
-msgstr "proposé au président"
+msgstr ""
 
 #. Default: "Waiting advices (proposed_to_president)"
 msgid "proposed_to_president_waiting_advices"
-msgstr "en attente des avis (proposé au président)"
+msgstr "Waiting advices (proposed_to_president)"
 
 #. Default: "Proposed to secretaire"
 msgid "proposed_to_secretaire"
-msgstr "proposé au DG"
+msgstr ""
 
 msgid "remove"
-msgstr "retirer de la séance"
+msgstr ""
 
-#. Default: "Removed from meeting"
 msgid "removed"
-msgstr "retiré de la séance"
+msgstr ""
 
 msgid "validateByBudgetImpactReviewer"
-msgstr "valider les infos budgétaires"
+msgstr ""
