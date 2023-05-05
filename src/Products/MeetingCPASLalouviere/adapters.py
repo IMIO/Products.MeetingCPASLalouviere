@@ -41,6 +41,13 @@ from zope.i18n import translate
 
 customWfAdaptations = list(deepcopy(MeetingConfig.wfAdaptations))
 customWfAdaptations.append('propose_to_budget_reviewer')
+# disable not compatible waiting advice wfa
+# customWfAdaptations.remove('waiting_advices_adviser_may_validate')
+# customWfAdaptations.remove('waiting_advices_from_before_last_val_level')
+# customWfAdaptations.remove('waiting_advices_from_every_val_levels')
+# customWfAdaptations.remove('waiting_advices_from_last_val_level')
+# customWfAdaptations.remove('waiting_advices_given_advices_required_to_validate')
+# customWfAdaptations.remove('waiting_advices_given_and_signed_advices_required_to_validate')
 MeetingConfig.wfAdaptations = tuple(customWfAdaptations)
 
 class LLMeetingConfig(CustomMeetingConfig):
@@ -184,7 +191,7 @@ class LLMeetingConfig(CustomMeetingConfig):
                     },
                 ),
                 proposed_to_director,
-                # Items in state 'proposed_to_dg'
+                # Items in state 'proposed_to_secretaire'
                 (
                     "searchproposedtodg",
                     {
@@ -199,7 +206,7 @@ class LLMeetingConfig(CustomMeetingConfig):
                             {
                                 "i": "review_state",
                                 "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["proposed_to_dg"],
+                                "v": ["proposed_to_secretaire"],
                             },
                         ],
                         "sort_on": u"modified",
