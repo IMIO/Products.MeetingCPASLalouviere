@@ -16,7 +16,10 @@ pmReviewerLevel1 = deepcopy(pm_import_data.pmReviewerLevel1)
 pmReviewerLevel2 = deepcopy(pm_import_data.pmReviewerLevel2)
 pmManager = deepcopy(pm_import_data.pmManager)
 # xxx specific to CPAS La louvière
+pmN1 = UserDescriptor('pmN1', [])
+pmN2 = UserDescriptor('pmN2', [])
 pmSecretaire = UserDescriptor('pmSecretaire', [])
+pmPresident = UserDescriptor('pmPresident', [])
 
 pmBudgetReviewer1 = UserDescriptor("pmBudgetReviewer1", [])
 pmBudgetReviewer2 = UserDescriptor("pmBudgetReviewer2", [])
@@ -25,13 +28,16 @@ developers = data.orgs[0]
 developers.budgetimpactreviewers.append(pmManager)
 developers.budgetimpactreviewers.append(pmBudgetReviewer1)
 developers.n1.append(pmReviewerLevel1)
-developers.n1.append(pmManager)
+developers.n1.append(pmN1)
+developers.n2.append(pmN2)
+developers.n2.append(pmManager)
 developers.n2.append(pmManager)
 developers.secretaire.append(pmSecretaire)
 developers.secretaire.append(pmManager)
 developers.president.append(pmReviewer1)
 developers.president.append(pmReviewerLevel2)
 developers.president.append(pmManager)
+developers.president.append(pmPresident)
 
 vendors = data.orgs[1]
 vendors.budgetimpactreviewers.append(pmBudgetReviewer2)
@@ -62,5 +68,4 @@ casMeeting.itemAdviceStates = ['proposed_to_president', ]
 casMeeting.itemAdviceEditStates = ['proposed_to_president', 'validated']
 
 data.meetingConfigs = (bpMeeting, casMeeting)
-# data.usersOutsideGroups += [pmN1, pmN2, pmSecretaire]
 # ------------------------------------------------------------------------------

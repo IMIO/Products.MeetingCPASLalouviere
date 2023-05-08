@@ -33,7 +33,7 @@ from Products.PloneMeeting.model.adaptations import _addIsolatedState
 
 from AccessControl import ClassSecurityInfo
 from AccessControl.class_init import InitializeClass
-from Products.Archetypes.utils import OrderedDict
+from collections import OrderedDict
 from collective.contact.plonegroup.utils import get_all_suffixes
 from zope.interface import implements
 from zope.i18n import translate
@@ -62,290 +62,128 @@ class LLMeetingConfig(CustomMeetingConfig):
         super(LLMeetingConfig, self)._extraSearchesInfo(infos)
         cfg = self.getSelf()
         itemType = cfg.getItemTypeName()
-        proposed_to_director = (
-            "searchproposedtodirector",
-            {
-                "subFolderId": "searches_items",
-                "active": True,
-                "query": [
-                    {
-                        "i": "portal_type",
-                        "o": "plone.app.querystring.operation.selection.is",
-                        "v": [itemType, ],
-                    },
-                    {
-                        "i": "review_state",
-                        "o": "plone.app.querystring.operation.selection.is",
-                        "v": ["proposed_to_director"],
-                    },
-                ],
-                "sort_on": u"modified",
-                "sort_reversed": True,
-                "showNumberOfItems": True,
-                "tal_condition": "python:tool.userIsAmong(['directors'])",
-                "roles_bypassing_talcondition": ["Manager", ],
-            },
-        )
-        extra_infos = []
-        if 'council' in cfg.getId():
-            extra_infos = [
-                proposed_to_director,
-            ]
-        elif 'college' in cfg.getId():
-            extra_infos = [
-                (
-                    "searchproposedtobudgetreviewer",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["proposed_to_budget_reviewer"],
-                            },
-                        ],
-                        "sort_on": u"modified",
-                        "sort_reversed": True,
-                        "showNumberOfItems": True,
-                        "tal_condition": "",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                (
-                    "searchproposedtoservicehead",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["proposed_to_servicehead"],
-                            },
-                        ],
-                        "sort_on": u"modified",
-                        "sort_reversed": True,
-                        "showNumberOfItems": True,
-                        "tal_condition":
-                            "python:tool.userIsAmong(['serviceheads', 'officemanagers', 'divisionheads', 'directors'])",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                (
-                    "searchproposedtoofficemanager",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["proposed_to_officemanager"],
-                            },
-                        ],
-                        "sort_on": u"modified",
-                        "sort_reversed": True,
-                        "showNumberOfItems": True,
-                        "tal_condition": "python:tool.userIsAmong(['officemanagers', 'divisionheads', 'directors'])",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                (
-                    "searchproposedtodivisionhead",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["proposed_to_divisionhead"],
-                            },
-                        ],
-                        "sort_on": u"modified",
-                        "sort_reversed": True,
-                        "showNumberOfItems": True,
-                        "tal_condition": "python:tool.userIsAmong(['divisionheads', 'directors'])",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                proposed_to_director,
-                # Items in state 'proposed_to_secretaire'
-                (
-                    "searchproposedtodg",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["proposed_to_secretaire"],
-                            },
-                        ],
-                        "sort_on": u"modified",
-                        "sort_reversed": True,
-                        "showNumberOfItems": True,
-                        "tal_condition": "python: tool.isManager(cfg)",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                # Items in state 'proposed_to_alderman'
-                (
-                    "searchproposedtoalderman",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["proposed_to_alderman"],
-                            },
-                        ],
-                        "sort_on": u"modified",
-                        "sort_reversed": True,
-                        "showNumberOfItems": True,
-                        "tal_condition": "python:tool.userIsAmong(['alderman'])",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                (
-                    "searchItemsTofollow_up_yes",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [
-                                    "accepted",
-                                    "refused",
-                                    "delayed",
-                                    "accepted_but_modified",
-                                ],
-                            },
-                            {
-                                "i": "getFollowUp",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["follow_up_yes", ],
-                            },
-                        ],
-                        "sort_on": u"created",
-                        "sort_reversed": True,
-                        "showNumberOfItems": False,
-                        "tal_condition": "",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                # Items to follow provider but not to print in Dashboard'
-                (
-                    "searchItemsProvidedFollowUpButNotToPrint",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [
-                                    "accepted",
-                                    "refused",
-                                    "delayed",
-                                    "accepted_but_modified",
-                                ],
-                            },
-                            {
-                                "i": "getFollowUp",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["follow_up_provided_not_printed", ],
-                            },
-                        ],
-                        "sort_on": u"created",
-                        "sort_reversed": True,
-                        "showNumberOfItems": False,
-                        "tal_condition": "",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-                # Items to follow provider and to print
-                (
-                    "searchItemsProvidedFollowUp",
-                    {
-                        "subFolderId": "searches_items",
-                        "active": True,
-                        "query": [
-                            {
-                                "i": "portal_type",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [itemType, ],
-                            },
-                            {
-                                "i": "review_state",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": [
-                                    "accepted",
-                                    "refused",
-                                    "delayed",
-                                    "accepted_but_modified",
-                                ],
-                            },
-                            {
-                                "i": "getFollowUp",
-                                "o": "plone.app.querystring.operation.selection.is",
-                                "v": ["follow_up_provided", ],
-                            },
-                        ],
-                        "sort_on": u"created",
-                        "sort_reversed": True,
-                        "showNumberOfItems": False,
-                        "tal_condition": "",
-                        "roles_bypassing_talcondition": ["Manager", ],
-                    },
-                ),
-            ]
+        extra_infos = [
+            (
+                "searchproposedtobudgetreviewer",
+                {
+                    "subFolderId": "searches_items",
+                    "active": True,
+                    "query": [
+                        {
+                            "i": "portal_type",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": [itemType, ],
+                        },
+                        {
+                            "i": "review_state",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": ["proposed_to_budget_reviewer"],
+                        },
+                    ],
+                    "sort_on": u"modified",
+                    "sort_reversed": True,
+                    "showNumberOfItems": True,
+                    "tal_condition": "",
+                    "roles_bypassing_talcondition": ["Manager", ],
+                },
+            ),
+            (
+                "searchproposedton1",
+                {
+                    "subFolderId": "searches_items",
+                    "active": True,
+                    "query": [
+                        {
+                            "i": "portal_type",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": [itemType, ],
+                        },
+                        {
+                            "i": "review_state",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": ["proposed_to_n1"],
+                        },
+                    ],
+                    "sort_on": u"modified",
+                    "sort_reversed": True,
+                    "showNumberOfItems": True,
+                    "tal_condition": "python:tool.userIsAmong(['n1', 'n2', 'secretaire'])",
+                    "roles_bypassing_talcondition": ["Manager", ],
+                },
+            ),
+            (
+                "searchproposedton2",
+                {
+                    "subFolderId": "searches_items",
+                    "active": True,
+                    "query": [
+                        {
+                            "i": "portal_type",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": [itemType, ],
+                        },
+                        {
+                            "i": "review_state",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": ["proposed_to_n2"],
+                        },
+                    ],
+                    "sort_on": u"modified",
+                    "sort_reversed": True,
+                    "showNumberOfItems": True,
+                    "tal_condition": "python:tool.userIsAmong(['n2', 'secretaire'])",
+                    "roles_bypassing_talcondition": ["Manager", ],
+                },
+            ),
+            (
+                "searchproposedtosecretaire",
+                {
+                    "subFolderId": "searches_items",
+                    "active": True,
+                    "query": [
+                        {
+                            "i": "portal_type",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": [itemType, ],
+                        },
+                        {
+                            "i": "review_state",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": ["proposed_to_secretaire"],
+                        },
+                    ],
+                    "sort_on": u"modified",
+                    "sort_reversed": True,
+                    "showNumberOfItems": True,
+                    "tal_condition": "python:tool.userIsAmong(['secretaire'])",
+                    "roles_bypassing_talcondition": ["Manager", ],
+                },
+            ),
+            (
+                "searchproposedtopresident",
+                {
+                    "subFolderId": "searches_items",
+                    "active": True,
+                    "query": [
+                        {
+                            "i": "portal_type",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": [itemType, ],
+                        },
+                        {
+                            "i": "review_state",
+                            "o": "plone.app.querystring.operation.selection.is",
+                            "v": ["proposed_to_president"],
+                        },
+                    ],
+                    "sort_on": u"modified",
+                    "sort_reversed": True,
+                    "showNumberOfItems": True,
+                    "tal_condition": "python:tool.userIsAmong(['president'])",
+                    "roles_bypassing_talcondition": ["Manager", ],
+                },
+            ),
+        ]
         infos.update(OrderedDict(extra_infos))
         return infos
 
@@ -354,7 +192,11 @@ class LLMeetingConfig(CustomMeetingConfig):
            used after reviewers levels, this break the _highestReviewerLevel and other
            related hierarchic level functionalities.'''
         reviewers = [
-            ('president', ['proposed_to_president', ]),
+            ('president', ['proposed_to_president',
+                           'proposed_to_secretaire',
+                           'proposed_to_n2',
+                           'proposed_to_n1',
+                           ]),
             ('secretaire',
              ['proposed_to_secretaire',
               'proposed_to_n2',

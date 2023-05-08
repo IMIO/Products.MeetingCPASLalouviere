@@ -318,6 +318,7 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         self.assertEqual(self.transitions(item),
                          ['backToProposedToSecretaire', 'validate'])
 
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
