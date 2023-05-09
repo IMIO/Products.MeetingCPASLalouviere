@@ -24,7 +24,9 @@
 #
 # ------------------------------------------------------------------------------
 from copy import deepcopy
-from Products.MeetingCommunes.adapters import CustomToolPloneMeeting, CustomMeetingConfig
+from Products.MeetingCommunes.adapters import CustomToolPloneMeeting, CustomMeetingConfig, \
+    MeetingItemCommunesWorkflowActions
+from Products.MeetingCommunes.interfaces import IMeetingItemCommunesWorkflowActions
 from Products.PloneMeeting.interfaces import IToolPloneMeetingCustom, IMeetingConfigCustom
 from Products.PloneMeeting.model import adaptations
 from Products.PloneMeeting.MeetingConfig import MeetingConfig
@@ -245,6 +247,17 @@ class MLLCustomToolPloneMeeting(CustomToolPloneMeeting):
                 itemWorkflow=itemWorkflow)
             return True
         return False
+
+
+class MeetingItemMLLWorkflowActions(MeetingItemCommunesWorkflowActions):
+    '''Adapter that adapts a meeting item implementing IMeetingItem to the
+       interface IMeetingItemCommunesWorkflowActions'''
+
+    implements(IMeetingItemCommunesWorkflowActions)
+    security = ClassSecurityInfo()
+
+    def doProposeToBudgetImpactReviewer(self, stateChange):
+        pass
 
 
 InitializeClass(MLLCustomToolPloneMeeting)

@@ -58,24 +58,24 @@ class testMeetingConfig(MeetingCPASLalouviereTestCase, mctmc):
         cfg.updatePersonalLabels(personal_labels=['personal-label'], modified_since_days=0)
         self.assertEqual(
             sorted(item1_labeling.storage['personal-label']),
-            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmReviewer1', 'pmReviewerLevel1',
-             'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
         self.assertEqual(
             sorted(item2_labeling.storage['personal-label']),
-            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmReviewer1', 'pmReviewerLevel1',
-             'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
         # method takes into account users able to see the items
         # when item is proposed, powerobserver1 may not see it...
         self.proposeItem(item1)
         cfg.updatePersonalLabels(personal_labels=['personal-label'], modified_since_days=0)
         self.assertEqual(
             sorted(item1_labeling.storage['personal-label']),
-            ['pmCreator1', 'pmCreator1b', 'pmManager', 'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2',
-             'pmSecretaire'])
+            ['pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire'])
         self.assertEqual(
             sorted(item2_labeling.storage['personal-label']),
-            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmReviewer1', 'pmReviewerLevel1',
-             'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
 
         # test that only items older than given days are updated
         self.proposeItem(item2)
@@ -85,8 +85,8 @@ class testMeetingConfig(MeetingCPASLalouviereTestCase, mctmc):
         # still olf value for item2
         self.assertEqual(
             sorted(item2_labeling.storage['personal-label']),
-            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmReviewer1', 'pmReviewerLevel1',
-             'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
 
 
 def test_suite():

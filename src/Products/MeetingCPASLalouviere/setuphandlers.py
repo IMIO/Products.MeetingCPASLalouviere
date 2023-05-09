@@ -32,7 +32,6 @@ def postInstall(context):
     # need to reinstall PloneMeeting after reinstalling MC workflows to re-apply wfAdaptations
     reinstallPloneMeeting(context, site)
     # Add additional indexes
-    addAdditionalIndexes(context, site)
     showHomeTab(context, site)
     reorderSkinsLayers(context, site)
 
@@ -68,22 +67,6 @@ def initializeTool(context):
     # so install it manually
     _installPloneMeeting(context)
     return ToolInitializer(context, PROJECTNAME).run()
-
-
-def addAdditionalIndexes(context, portal):
-    '''
-       Add some specific indexes used by MeetingCPASLalouviere
-    '''
-    if isNotMeetingCPASLalouviereProfile(context):
-        return
-
-    indexInfo = {
-        'getFollowUp': ('FieldIndex', {}),
-    }
-
-    logStep("addAdditionalIndexes", context)
-    # Create or update indexes
-    addOrUpdateIndexes(portal, indexInfo)
 
 
 def reinstallPloneMeeting(context, site):

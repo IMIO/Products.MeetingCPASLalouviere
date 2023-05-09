@@ -24,9 +24,12 @@
 
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testSearches import testSearches as mcts
+from Products.PloneMeeting.tests.PloneMeetingTestCase import pm_logger
 
 from Products.CMFCore.permissions import ModifyPortalContent
+from collective.compoundcriterion.interfaces import ICompoundCriterionFilter
 from imio.helpers.cache import cleanRamCacheFor
+from zope.component import getAdapter
 
 
 class testSearches(MeetingCPASLalouviereTestCase, mcts):
@@ -59,7 +62,17 @@ class testSearches(MeetingCPASLalouviereTestCase, mcts):
             self.assertEqual(res.length, 1)
             self.assertEqual(res[0].UID, developersItem.UID())
 
+    def test_pm_SearchItemsToCorrectToValidateOfHighestHierarchicLevel(self):
+        pass
 
+    def test_pm_SearchAllItemsToValidateOfHighestHierarchicLevel(self):
+        pass
+
+    def test_pm_SearchItemsToValidateOfHighestHierarchicLevel(self):
+        pass
+
+    def test_pm_SearchItemsToValidateOfHighestHierarchicLevelReturnsEveryLevels(self):
+        pass
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()

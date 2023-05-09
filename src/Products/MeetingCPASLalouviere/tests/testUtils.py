@@ -39,6 +39,9 @@ class testUtils(MeetingCPASLalouviereTestCase, mctu):
                 u'M. PMReviewer One <pmreviewer1@plonemeeting.org>',
                 u'M. Power Observer1 <powerobserver1@plonemeeting.org>',
                 u'Site administrator <siteadmin@plonemeeting.org>',
+                u'pmN1 <user@plonemeeting.org>',
+                u'pmN1 <user@plonemeeting.org>',
+                u'pmPresident <user@plonemeeting.org>',
                 u'pmSecretaire <user@plonemeeting.org>']
 
     def _modify_permission_mail_recipents(self):
@@ -48,6 +51,9 @@ class testUtils(MeetingCPASLalouviereTestCase, mctu):
                 u'M. PMReviewer Level Two <pmreviewerlevel2@plonemeeting.org>',
                 u'M. PMReviewer One <pmreviewer1@plonemeeting.org>',
                 u'Site administrator <siteadmin@plonemeeting.org>',
+                u'pmN1 <user@plonemeeting.org>',
+                u'pmN1 <user@plonemeeting.org>',
+                u'pmPresident <user@plonemeeting.org>',
                 u'pmSecretaire <user@plonemeeting.org>']
 
 def test_suite():

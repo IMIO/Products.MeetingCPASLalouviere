@@ -34,7 +34,7 @@ class testMeetingItem(MeetingCPASLalouviereTestCase, mctmi):
         return True
 
     def _users_to_remove_for_mailling_list(self):
-        return ["pmBudgetReviewer1", "pmBudgetReviewer2", "pmSecretaire"]
+        return ["pmBudgetReviewer1", "pmBudgetReviewer2", "pmSecretaire", "pmN1", "pmN2", "pmPresident"]
 
 def test_suite():
     from unittest import TestSuite, makeSuite

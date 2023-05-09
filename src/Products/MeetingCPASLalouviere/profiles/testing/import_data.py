@@ -10,11 +10,11 @@ from Products.MeetingCPASLalouviere.config import LLO_ITEM_CPAS_WF_VALIDATION_LE
 data = deepcopy(mc_import_data.data)
 
 # Inherited users
-pmReviewer1 = deepcopy(pm_import_data.pmReviewer1)
-pmReviewer2 = deepcopy(pm_import_data.pmReviewer2)
-pmReviewerLevel1 = deepcopy(pm_import_data.pmReviewerLevel1)
-pmReviewerLevel2 = deepcopy(pm_import_data.pmReviewerLevel2)
-pmManager = deepcopy(pm_import_data.pmManager)
+pmReviewer1 = pm_import_data.pmReviewer1
+pmReviewer2 = pm_import_data.pmReviewer2
+pmReviewerLevel1 = pm_import_data.pmReviewerLevel1
+pmReviewerLevel2 = pm_import_data.pmReviewerLevel2
+pmManager = pm_import_data.pmManager
 # xxx specific to CPAS La louvière
 pmN1 = UserDescriptor('pmN1', [])
 pmN2 = UserDescriptor('pmN2', [])
