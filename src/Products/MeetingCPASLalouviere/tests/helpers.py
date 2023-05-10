@@ -92,3 +92,8 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
         "presented": "presented",
         "itemfrozen": "itemfrozen",
     }
+
+    def _enablePrevalidation(self, cfg, enable_extra_suffixes=False):
+        if self._testMethodName in ('test_pm_WFA_waiting_advices_with_prevalidation',):
+            super(MeetingCPASLalouviereTestingHelpers, self)._enablePrevalidation(cfg, enable_extra_suffixes)
+        cfg.at_post_edit_script()
