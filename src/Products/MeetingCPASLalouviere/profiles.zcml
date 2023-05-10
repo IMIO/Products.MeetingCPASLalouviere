@@ -28,9 +28,9 @@
   <genericsetup:upgradeStep
       title="Go to MeetingCPASLalouviere 4.1"
       description=""
-      source="4.0"
-      destination="4.1"
-      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4_1.migrate"
+      source="4.1.1rc1"
+      destination="4200"
+      handler="Products.MeetingCPASLalouviere.migrations.migrate_to_4200.migrate"
       profile="Products.MeetingCPASLalouviere:default"/>
 
   <!-- ##/code-section profiles.zcml-bottom -->
