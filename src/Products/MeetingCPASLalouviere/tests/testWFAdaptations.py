@@ -49,6 +49,11 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
                 'backTo_proposed_to_secretaire_from_waiting_advices',
                 'backTo_validated_from_waiting_advices']
 
+    def _item_validation_shortcuts_inactive(self):
+        '''Test when 'item_validation_shortcuts' is inactive.'''
+        self._enable_mc_Prevalidation(self.meetingConfig)
+        super(testWFAdaptations, self)._item_validation_shortcuts_inactive()
+
     def test_pm_WFA_availableWFAdaptations(self):
         '''Test what are the available wfAdaptations.
            This way, if we add a wfAdaptations, the test will 'break' until it is adapted...'''

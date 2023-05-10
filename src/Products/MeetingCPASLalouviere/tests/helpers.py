@@ -97,3 +97,7 @@ class MeetingCPASLalouviereTestingHelpers(MeetingCommunesTestingHelpers):
         if self._testMethodName in ('test_pm_WFA_waiting_advices_with_prevalidation',):
             super(MeetingCPASLalouviereTestingHelpers, self)._enablePrevalidation(cfg, enable_extra_suffixes)
         cfg.at_post_edit_script()
+
+    def _enable_mc_Prevalidation(self, cfg, enable_extra_suffixes=False):
+        self._setUpDefaultItemWFValidationLevels(cfg)
+        super(MeetingCPASLalouviereTestingHelpers, self)._enablePrevalidation(cfg, enable_extra_suffixes)
