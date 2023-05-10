@@ -102,10 +102,10 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
             self.changeUser('pmCreator1')
             self.do(item, 'goTo_returned_to_proposing_group_proposed_to_n1')
             self.failIf(self.hasPermission(ModifyPortalContent, item))
-            self.changeUser('pmReviewerLevel1')
+            self.changeUser('pmN1')
             self.do(item, 'goTo_returned_to_proposing_group_proposed_to_n2')
             self.failIf(self.hasPermission(ModifyPortalContent, item))
-            self.changeUser('pmManager')
+            self.changeUser('pmN2')
             self.do(item, 'goTo_returned_to_proposing_group_proposed_to_secretaire')
 
         self.changeUser('pmManager')
