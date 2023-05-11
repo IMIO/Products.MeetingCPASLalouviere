@@ -6,7 +6,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 4.2.0a2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Update access right of extra searches.
+  [odelaere]
 
 
 4.2.0a1 (2023-05-11)
