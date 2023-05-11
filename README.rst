@@ -1,4 +1,1 @@
-Products.MeetingCPASLalouviere
-==============================
-
-'Products.MeetingCPASLalouviere' is a custom profile for 'Products.MeetingCommunes'.
+Check 'docs/README.txt'
