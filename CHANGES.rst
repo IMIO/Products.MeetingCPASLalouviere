@@ -1,9 +1,11 @@
 Products.MeetingCPASLalouviere Changelog
 ========================================
 
-4.1.5 (unreleased)
+4.2.0a1 (2023-05-11)
 ------------------
 
+- migration to 4.2.
+  [odelaere]
 - Remove useless override in pm_updates.
   [odelaere]
 
