@@ -4,7 +4,7 @@ Products.MeetingCPASLalouviere Changelog
 The Products.MeetingCommunes version must be the same as the Products.PloneMeeting version
 
 4.2.0a1 (2023-05-11)
-------------------
+--------------------
 
 - migration to 4.2.
   [odelaere]

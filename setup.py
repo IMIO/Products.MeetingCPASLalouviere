@@ -4,7 +4,7 @@ version = "4.2.0a1"
 
 setup(name='Products.MeetingCPASLalouviere',
       version=version,
-      description=u"PloneMeeting profile for CPAS of La Louviere.",
+      description="PloneMeeting profile for CPAS of La Louviere.",
       long_description=open("README.rst").read() + "\n" + open("CHANGES.rst").read(),
       classifiers=[
           "Environment :: Web Environment",
