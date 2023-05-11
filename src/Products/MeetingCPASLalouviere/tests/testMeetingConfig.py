@@ -22,29 +22,71 @@
 # 02110-1301, USA.
 #
 
-from imio.helpers.cache import cleanRamCacheFor
-from plone import api
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testMeetingConfig import testMeetingConfig as mctmc
+
+from AccessControl import Unauthorized
+from DateTime import DateTime
+from ftw.labels.interfaces import ILabeling
 
 
 class testMeetingConfig(MeetingCPASLalouviereTestCase, mctmc):
     '''Call testMeetingConfig tests.'''
 
-    def test_pm_call_searchItemsToPrevalidate(self):
-        '''No sense...'''
-        pass
-
     def test_pm_UpdatePersonalLabels(self):
-        """ """
-        # remove extra users from their groups to not break test
-        for extra_user_id in ['pmN1', 'pmN2', 'pmSecretaire']:
-            user = api.user.get(extra_user_id)
-            # remove from every groups, bypass Plone groups (including virtual)
-            for group_id in [user_group_id for user_group_id in user.getGroups() if '_' in user_group_id]:
-                api.group.remove_user(groupname=group_id, username=extra_user_id)
-        cleanRamCacheFor('Products.PloneMeeting.ToolPloneMeeting._users_groups_value')
-        super(testMeetingConfig, self).test_pm_UpdatePersonalLabels()
+        """Test the 'updatePersonalLabels' method that will activate a personal label
+           on every existing items that were not modified for a given number of days."""
+        cfg = self.meetingConfig
+        # custom cleanup for profiles having extra roles
+        self._removeUsersFromEveryGroups(self._usersToRemoveFromGroupsForUpdatePersonalLabels())
+        # do not consider observers group as it changes too often from one WF to another...
+        self._removePrincipalFromGroups('pmReviewer1', [self.developers_observers])
+        self._removePrincipalFromGroups('pmObserver1', [self.developers_observers])
+        self.changeUser('pmManager')
+        item1 = self.create('MeetingItem')
+        item2 = self.create('MeetingItem')
+        # only for Managers
+        self.assertRaises(Unauthorized, cfg.updatePersonalLabels)
+        self.changeUser('siteadmin')
+        # by default, it only updates items not modified for 30 days
+        # so calling it will change nothing
+        cfg.updatePersonalLabels(personal_labels=['personal-label'])
+        item1_labeling = ILabeling(item1)
+        item2_labeling = ILabeling(item2)
+        self.assertEqual(item1_labeling.storage, {})
+        self.assertEqual(item2_labeling.storage, {})
+        cfg.updatePersonalLabels(personal_labels=['personal-label'], modified_since_days=0)
+        self.assertEqual(
+            sorted(item1_labeling.storage['personal-label']),
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
+        self.assertEqual(
+            sorted(item2_labeling.storage['personal-label']),
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
+        # method takes into account users able to see the items
+        # when item is proposed, powerobserver1 may not see it...
+        self.proposeItem(item1)
+        cfg.updatePersonalLabels(personal_labels=['personal-label'], modified_since_days=0)
+        self.assertEqual(
+            sorted(item1_labeling.storage['personal-label']),
+            ['pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire'])
+        self.assertEqual(
+            sorted(item2_labeling.storage['personal-label']),
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
+
+        # test that only items older than given days are updated
+        self.proposeItem(item2)
+        item2.setModificationDate(DateTime() - 50)
+        item2.reindexObject()
+        cfg.updatePersonalLabels(personal_labels=['personal-label'], modified_since_days=30)
+        # still olf value for item2
+        self.assertEqual(
+            sorted(item2_labeling.storage['personal-label']),
+            ['budgetimpacteditor', 'pmCreator1', 'pmCreator1b', 'pmManager', 'pmN1', 'pmN2', 'pmPresident',
+             'pmReviewer1', 'pmReviewerLevel1', 'pmReviewerLevel2', 'pmSecretaire', 'powerobserver1'])
 
 
 def test_suite():

@@ -22,9 +22,6 @@
 # 02110-1301, USA.
 #
 
-from AccessControl import Unauthorized
-from DateTime import DateTime
-
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 from Products.MeetingCommunes.tests.testAnnexes import testAnnexes as mcta
 

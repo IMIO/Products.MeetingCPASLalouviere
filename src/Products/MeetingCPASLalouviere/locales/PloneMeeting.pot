@@ -45,7 +45,7 @@ msgid "PloneMeeting_label_defaultMeetingItemMotivation"
 msgstr ""
 
 #. Default: "Motivation"
-msgid "PloneMeeting_label_motivation"
+msgid "PloneMeeting_label_emergency_motivation"
 msgstr ""
 
 #. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."

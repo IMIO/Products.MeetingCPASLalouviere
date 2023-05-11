@@ -20,18 +20,14 @@
 # 02110-1301, USA.
 #
 
-from Products.MeetingCommunes.tests.MeetingCommunesTestCase import MeetingCommunesTestCase
 from Products.MeetingCPASLalouviere.testing import MLL_TESTING_PROFILE_FUNCTIONAL
 from Products.MeetingCPASLalouviere.tests.helpers import MeetingCPASLalouviereTestingHelpers
+from Products.MeetingCommunes.tests.MeetingCommunesTestCase import MeetingCommunesTestCase
 
-# monkey patch the MeetingConfig.wfAdaptations again because it is done in
-# adapters.py but overrided by Products.MeetingCommunes here in the tests...
-from Products.PloneMeeting.MeetingConfig import MeetingConfig
-from Products.MeetingCPASLalouviere.adapters import customWfAdaptations
 
-MeetingConfig.wfAdaptations = customWfAdaptations
-
-class MeetingCPASLalouviereTestCase(MeetingCommunesTestCase, MeetingCPASLalouviereTestingHelpers):
+class MeetingCPASLalouviereTestCase(
+    MeetingCommunesTestCase, MeetingCPASLalouviereTestingHelpers
+):
     """Base class for defining MeetingCPASLalouviere test cases."""
 
     layer = MLL_TESTING_PROFILE_FUNCTIONAL
@@ -39,4 +35,4 @@ class MeetingCPASLalouviereTestCase(MeetingCommunesTestCase, MeetingCPASLalouvie
     cfg2_id = 'meeting-config-cas'
 
     def setUp(self):
-        MeetingCommunesTestCase.setUp(self)
+        super(MeetingCPASLalouviereTestCase, self).setUp()

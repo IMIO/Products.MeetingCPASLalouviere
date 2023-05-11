@@ -104,6 +104,10 @@ msgstr "proposé au N+2"
 msgid "proposed_to_president"
 msgstr "proposé au président"
 
+#. Default: "Waiting advices (proposed_to_president)"
+msgid "proposed_to_president_waiting_advices"
+msgstr "en attente des avis (proposé au président)"
+
 #. Default: "Proposed to secretaire"
 msgid "proposed_to_secretaire"
 msgstr "proposé au DG"
