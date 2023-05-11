@@ -8,6 +8,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 
 - Update access right of extra searches.
   [odelaere]
+- Update dashboard collection migrations.
+  [odelaere]
 
 
 4.2.0a1 (2023-05-11)

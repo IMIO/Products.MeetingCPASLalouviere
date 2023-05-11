@@ -151,28 +151,10 @@ class Migrate_To_4200(MCMigrate_To_4200):
 
     def update_wf_states_and_transitions(self):
         self.updateWFStatesAndTransitions(
-            query={'portal_type': ('MeetingItemCouncil',)},
+            query={'portal_type': ('MeetingItemPb', 'MeetingItemcas'),
+                   "review_state": "proposed_to_budgetimpact_reviewer"},
             review_state_mappings={
-                'item_in_committee': 'itemfrozen',
-                'item_in_council': 'itempublished',
-            },
-            transition_mappings={
-                'setItemInCommittee': 'itemfreeze',
-                'setItemInCouncil': 'itempublish',
-            },
-            # will be done by next step in migration
-            update_local_roles=False)
-
-        self.updateWFStatesAndTransitions(
-            related_to="Meeting",
-            query={'portal_type': ('MeetingCouncil',)},
-            review_state_mappings={
-                'in_committee': 'frozen',
-                'in_council': 'decided',
-            },
-            transition_mappings={
-                'setInCommittee': 'freeze',
-                'setInCouncil': 'decide',
+                'proposed_to_budgetimpact_reviewer': 'proposed_to_budget_reviewer',
             },
             # will be done by next step in migration
             update_local_roles=False)
@@ -188,15 +170,17 @@ class Migrate_To_4200(MCMigrate_To_4200):
 
     def post_migration_fixtures(self):
         logger.info("Adapting todo searches ...")
-        self.reinstall(profiles=[u'profile-Products.MeetingCPASLalouviere:default'],
-                       ignore_dependencies=True,
-                       dependency_strategy=DEPENDENCY_STRATEGY_NEW)
         for cfg in self.tool.objectValues('MeetingConfig'):
             cfg_dashboard_path = "portal_plonemeeting/{}/searches/searches_items/".format(cfg.getId())
             to_dashboard_ids = ["searchallitemstoadvice",
                                 "searchallitemsincopy",
-                                "searchitemstovalidate",
-                                "searchitemstocorrect"]
+                                "searchitemstocorrect",
+                                "searchproposedtobudgetreviewer",
+                                "searchproposedton1",
+                                "searchproposedton2",
+                                "searchproposedtosecretaire",
+                                "searchproposedtopresident",
+                                ]
             searches = [self.catalog.resolve_path(cfg_dashboard_path + id) for id in to_dashboard_ids]
             cfg.setToDoListSearches(tuple([search.UID() for search in searches if search is not None]))
 
@@ -205,6 +189,9 @@ class Migrate_To_4200(MCMigrate_To_4200):
             extra_omitted=[]):
         self._remove_old_dashboardcollection()
         super(Migrate_To_4200, self).run(extra_omitted=extra_omitted)
+        self.reinstall(profiles=[profile_name],
+                       ignore_dependencies=True,
+                       dependency_strategy=DEPENDENCY_STRATEGY_NEW)
         self.post_migration_fixtures()
         logger.info('Done migrating to MeetingCPASLalouviere 4200...')
 
