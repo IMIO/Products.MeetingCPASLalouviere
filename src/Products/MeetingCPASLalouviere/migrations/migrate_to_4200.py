@@ -148,6 +148,10 @@ class Migrate_To_4200(MCMigrate_To_4200):
             review_state_mappings={
                 'proposed_to_budgetimpact_reviewer': 'proposed_to_budget_reviewer',
             },
+            transition_mappings={
+                'proposeToBudgetImpactReviewer': 'proposeToBudgetImpactReviewer',
+                'validateByBudgetImpactReviewer': 'backTo_itemcreated_from_proposed_to_budget_reviewer',
+            },
             # will be done by next step in migration
             update_local_roles=False)
 
