@@ -51,3 +51,23 @@ msgstr ""
 #. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
 msgid "config_default_meetingitem_motivation_descr"
 msgstr ""
+
+#. Default: "Items proposed to budget"
+msgid "searchproposedtobudgetreviewer"
+msgstr ""
+
+#. Default: "Items proposed to N+1"
+msgid "searchproposedton1"
+msgstr "Points proposés au N+1"
+
+#. Default: "Items proposed to N+2"
+msgid "searchproposedton2"
+msgstr "Points proposés au N+2"
+
+#. Default: "Items proposed to ceo"
+msgid "searchproposedtosecretaire"
+msgstr "Points proposés au DG"
+
+#. Default: "Items proposed to president"
+msgid "searchproposedtopresident"
+msgstr "Points proposés au Président"

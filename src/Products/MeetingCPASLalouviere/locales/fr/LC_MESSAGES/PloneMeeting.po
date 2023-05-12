@@ -59,3 +59,7 @@ msgstr "Président"
 #. Default: "Secretaire"
 msgid "secretaire"
 msgstr "Secrétaire"
+
+#. Default: "Items proposed to ceo"
+msgid "searchproposedtobudgetreviewer"
+msgstr "Points proposés au référent budgétaire"

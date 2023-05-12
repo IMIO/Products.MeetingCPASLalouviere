@@ -24,33 +24,25 @@ class Migrate_To_4200(MCMigrate_To_4200):
             used_item_attr.append("votesResult")
             cfg.setUsedItemAttributes(tuple(used_item_attr))
             cfg.setWorkflowAdaptations(LLO_APPLYED_CPAS_WFA)
-            cfg.setDashboardItemsListingsFilters(
-                self.replace_in_list("c24", "c31", cfg.getDashboardItemsListingsFilters()))
-            cfg.setDashboardMeetingAvailableItemsFilters(
-                self.replace_in_list("c24", "c31", cfg.getDashboardMeetingAvailableItemsFilters()))
-            cfg.setDashboardMeetingLinkedItemsFilters(
-                self.replace_in_list("c24", "c31", cfg.getDashboardMeetingLinkedItemsFilters()))
-
-            cfg.setWorkflowAdaptations(LLO_APPLYED_CPAS_WFA)
             # replace action and review_state column by async actions
             self.updateColumns(to_replace={'actions': 'async_actions',
                                            'review_state': 'review_state_title',})
-            cfg.setItemBudgetInfosStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
-                                                              u'proposed_to_budget_reviewer',
-                                                              cfg.getItemBudgetInfosStates())
-                                         )
-            cfg.setItemAdviceStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
-                                                         u'proposed_to_budget_reviewer',
-                                                         cfg.getItemAdviceStates())
-                                    )
-            cfg.setItemAdviceViewStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
-                                                             u'proposed_to_budget_reviewer',
-                                                             cfg.getItemAdviceViewStates())
-                                        )
-            cfg.setItemAdviceEditStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
-                                                             u'proposed_to_budget_reviewer',
-                                                             cfg.getItemAdviceEditStates())
-                                        )
+            # cfg.setItemBudgetInfosStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
+            #                                                   u'proposed_to_budget_reviewer',
+            #                                                   cfg.getItemBudgetInfosStates())
+            #                              )
+            # cfg.setItemAdviceStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
+            #                                              u'proposed_to_budget_reviewer',
+            #                                              cfg.getItemAdviceStates())
+            #                         )
+            # cfg.setItemAdviceViewStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
+            #                                                  u'proposed_to_budget_reviewer',
+            #                                                  cfg.getItemAdviceViewStates())
+            #                             )
+            # cfg.setItemAdviceEditStates(self.replace_in_list(u'proposed_to_budgetimpact_reviewer',
+            #                                                  u'proposed_to_budget_reviewer',
+            #                                                  cfg.getItemAdviceEditStates())
+            #                             )
             cfg.setUseVotes(True)
             cfg.setVotesResultTALExpr(
                 "python: item.getPollType() == 'no_vote' and '' or '<p>&nbsp;</p>' + pm_utils.print_votes(item)")
