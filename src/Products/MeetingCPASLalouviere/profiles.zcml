@@ -26,7 +26,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
 
   <genericsetup:upgradeStep
-      title="Go to MeetingCPASLalouviere 4.1"
+      title="Go to MeetingCPASLalouviere 4200"
       description=""
       source="4.1.1rc1"
       destination="4200"
