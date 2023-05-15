@@ -58,16 +58,36 @@ msgstr ""
 
 #. Default: "Items proposed to N+1"
 msgid "searchproposedton1"
-msgstr "Points proposés au N+1"
+msgstr ""
 
 #. Default: "Items proposed to N+2"
 msgid "searchproposedton2"
-msgstr "Points proposés au N+2"
+msgstr ""
 
 #. Default: "Items proposed to ceo"
 msgid "searchproposedtosecretaire"
-msgstr "Points proposés au DG"
+msgstr ""
 
 #. Default: "Items proposed to president"
 msgid "searchproposedtopresident"
-msgstr "Points proposés au Président"
+msgstr ""
+
+#. Default: "Proposed to budget impact reviewer"
+msgid "icon_help_proposed_to_budget_reviewer"
+msgstr ""
+
+#. Default: "Items proposed to n+1"
+msgid "searchproposedton1"
+msgstr ""
+
+#. Default: "Items proposed to n+2"
+msgid "searchproposedton2"
+msgstr ""
+
+#. Default: "Items proposed to ceo"
+msgid "searchproposedtosecretaire"
+msgstr ""
+
+#. Default: "Items proposed to president"
+msgid "searchproposedtopresident"
+msgstr ""

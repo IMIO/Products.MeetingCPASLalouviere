@@ -8,6 +8,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 
 - Fix proposed_to_budgetimpact_reviewer transition_mappings.
   [odelaere]
+- Added missing icon and translation.
+  [odelaere]
 
 
 4.2.0a2 (2023-05-12)

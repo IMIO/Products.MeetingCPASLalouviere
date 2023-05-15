@@ -60,6 +60,26 @@ msgstr "Président"
 msgid "secretaire"
 msgstr "Secrétaire"
 
-#. Default: "Items proposed to ceo"
+#. Default: "Items proposed to budget"
 msgid "searchproposedtobudgetreviewer"
 msgstr "Points proposés au référent budgétaire"
+
+#. Default: "Proposed to budget impact reviewer"
+msgid "icon_help_proposed_to_budget_reviewer"
+msgstr "Proposé au correspondant financier"
+
+#. Default: "Items proposed to n+1"
+msgid "searchproposedton1"
+msgstr "Points proposés au N+1"
+
+#. Default: "Items proposed to n+2"
+msgid "searchproposedton2"
+msgstr "Points proposés au N+2"
+
+#. Default: "Items proposed to ceo"
+msgid "searchproposedtosecretaire"
+msgstr "Points proposés au Secrétaire"
+
+#. Default: "Items proposed to president"
+msgid "searchproposedtopresident"
+msgstr "Points proposés au Président"

@@ -89,7 +89,7 @@ msgid "proposeToSecretaire"
 msgstr "proposer au DG"
 
 #. Default: "Proposed to budget impact reviewer"
-msgid "proposed_to_budgetimpact_reviewer"
+msgid "proposed_to_budget_reviewer"
 msgstr "proposé au correspondant financier"
 
 #. Default: "Proposed to N+1"

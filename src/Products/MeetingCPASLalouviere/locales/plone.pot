@@ -46,7 +46,7 @@ msgid "proposed_to_n1"
 msgstr ""
 
 #. Default: "Proposed to budget impact reviewer"
-msgid "proposed_to_budgetimpact_reviewer"
+msgid "proposed_to_budget_reviewer"
 msgstr ""
 
 #. Default: "Proposed to N+2"
