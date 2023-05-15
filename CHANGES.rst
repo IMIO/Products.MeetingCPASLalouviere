@@ -3,7 +3,7 @@ Products.MeetingCPASLalouviere Changelog
 
 The Products.MeetingCommunes version must be the same as the Products.PloneMeeting version
 
-4.2.0a3 (unreleased)
+4.2.0a3 (2023-05-15)
 --------------------
 
 - Fix proposed_to_budgetimpact_reviewer transition_mappings.
