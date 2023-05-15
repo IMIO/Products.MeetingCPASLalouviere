@@ -11,6 +11,8 @@ import logging
 
 logger = logging.getLogger('MeetingCPASLalouviere')
 
+# TODO patch item to use emergencyMotivation instead of motivation
+# TODO patch groups to use president instead of reviewers
 
 class Migrate_To_4200(MCMigrate_To_4200):
 
@@ -22,6 +24,10 @@ class Migrate_To_4200(MCMigrate_To_4200):
         for cfg in self.tool.objectValues('MeetingConfig'):
             used_item_attr = list(cfg.getUsedItemAttributes())
             used_item_attr.append("votesResult")
+
+            if "cas" in cfg.getId():
+                used_item_attr.append("emergencyMotivation")
+
             cfg.setUsedItemAttributes(tuple(used_item_attr))
             cfg.setWorkflowAdaptations(LLO_APPLYED_CPAS_WFA)
             # replace action and review_state column by async actions
