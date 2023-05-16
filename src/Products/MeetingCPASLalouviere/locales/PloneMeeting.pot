@@ -40,14 +40,6 @@ msgstr ""
 msgid "secretaire"
 msgstr ""
 
-#. Default: "Default value for the 'motivation' field"
-msgid "PloneMeeting_label_defaultMeetingItemMotivation"
-msgstr ""
-
-#. Default: "Motivation"
-msgid "PloneMeeting_label_emergency_motivation"
-msgstr ""
-
 #. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
 msgid "config_default_meetingitem_motivation_descr"
 msgstr ""
@@ -90,4 +82,8 @@ msgstr ""
 
 #. Default: "Items proposed to president"
 msgid "searchproposedtopresident"
+msgstr ""
+
+#. Default: "Emergency Motivation"
+msgid "MeetingCPASLalouviere_label_emergencyMotivation"
 msgstr ""

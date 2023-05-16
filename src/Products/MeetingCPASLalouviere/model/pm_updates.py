@@ -1,8 +1,8 @@
-from Products.PloneMeeting.MeetingItem import MeetingItem
-
 from Products.Archetypes.atapi import RichWidget
 from Products.Archetypes.atapi import Schema
 from Products.Archetypes.atapi import TextField
+from Products.PloneMeeting.MeetingItem import MeetingItem
+from Products.PloneMeeting.config import WriteDecision
 
 
 def update_item_schema(baseSchema):
@@ -12,6 +12,7 @@ def update_item_schema(baseSchema):
         TextField(
             name='emergencyMotivation',
             widget=RichWidget(
+                rows=15,
                 condition="python: here.attribute_is_used('emergencyMotivation')",
                 label='emergencyMotivation',
                 label_msgid='MeetingCPASLalouviere_label_emergencyMotivation',
@@ -37,6 +38,6 @@ MeetingItem.schema = update_item_schema(MeetingItem.schema)
 # because we have potentially applied some schema adaptations (see above).
 # Class registering includes generation of accessors and mutators, for
 # example, so this is why we need to do it again now.
-from Products.PloneMeeting.config import registerClasses, WriteDecision
+from Products.PloneMeeting.config import registerClasses
 
 registerClasses()

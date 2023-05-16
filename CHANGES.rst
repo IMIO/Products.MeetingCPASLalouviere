@@ -10,6 +10,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
   [odelaere]
 - Use legacy reviewers suffix.
   [odelaere]
+- Added emergencyMotivation field.
+  [odelaere]
 
 
 4.2.0a3 (2023-05-15)

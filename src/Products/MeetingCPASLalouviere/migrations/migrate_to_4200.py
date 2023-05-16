@@ -12,7 +12,6 @@ import logging
 logger = logging.getLogger('MeetingCPASLalouviere')
 
 # TODO patch item to use emergencyMotivation instead of motivation
-# TODO patch groups to use president instead of reviewers
 
 class Migrate_To_4200(MCMigrate_To_4200):
 

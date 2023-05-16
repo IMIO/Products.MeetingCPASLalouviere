@@ -18,14 +18,6 @@ msgstr ""
 "Preferred-encodings: utf-8 latin1\n"
 "X-is-fallback-for: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
-#. Default: "Default value for the 'motivation' field"
-msgid "PloneMeeting_label_defaultMeetingItemMotivation"
-msgstr "Valeur par défaut du champ 'Motivation de l'urgence'"
-
-#. Default: "Motivation"
-msgid "PloneMeeting_label_emergency_motivation"
-msgstr "Motivation de l'urgence"
-
 # Suffix
 #. Default: "budget impact reviewers"
 msgid "budgetimpactreviewers"
@@ -83,3 +75,7 @@ msgstr "Points proposés au Secrétaire"
 #. Default: "Items proposed to president"
 msgid "searchproposedtopresident"
 msgstr "Points proposés au Président"
+
+#. Default: "Emergency Motivation"
+msgid "MeetingCPASLalouviere_label_emergencyMotivation"
+msgstr "Motivation de l'urgence"
