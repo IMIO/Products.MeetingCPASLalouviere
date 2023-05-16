@@ -11,7 +11,6 @@ data = deepcopy(mc_import_data.data)
 
 # Inherited users
 pmReviewer1 = pm_import_data.pmReviewer1
-pmReviewer2 = pm_import_data.pmReviewer2
 pmReviewerLevel1 = pm_import_data.pmReviewerLevel1
 pmReviewerLevel2 = pm_import_data.pmReviewerLevel2
 pmManager = pm_import_data.pmManager
