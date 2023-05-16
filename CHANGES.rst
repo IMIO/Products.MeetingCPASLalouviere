@@ -6,7 +6,10 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 4.2.0a4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Fix custom searches filters.
+  [odelaere]
+- Use legacy reviewers suffix.
+  [odelaere]
 
 
 4.2.0a3 (2023-05-15)

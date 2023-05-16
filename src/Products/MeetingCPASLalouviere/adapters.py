@@ -105,11 +105,16 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_n1"],
                         },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
+                        },
                     ],
                     "sort_on": u"modified",
                     "sort_reversed": True,
                     "showNumberOfItems": True,
-                    "tal_condition": "python:tool.userIsAmong(['n1', 'n2', 'secretaire', 'president'])",
+                    "tal_condition": "python:tool.userIsAmong(['n1', 'n2', 'secretaire', 'reviewers'])",
                     "roles_bypassing_talcondition": ["Manager", ],
                 },
             ),
@@ -129,11 +134,16 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_n2"],
                         },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
+                        },
                     ],
                     "sort_on": u"modified",
                     "sort_reversed": True,
                     "showNumberOfItems": True,
-                    "tal_condition": "python:tool.userIsAmong(['n2', 'secretaire', 'president'])",
+                    "tal_condition": "python:tool.userIsAmong(['n2', 'secretaire', 'reviewers'])",
                     "roles_bypassing_talcondition": ["Manager", ],
                 },
             ),
@@ -153,11 +163,16 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_secretaire"],
                         },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
+                        },
                     ],
                     "sort_on": u"modified",
                     "sort_reversed": True,
                     "showNumberOfItems": True,
-                    "tal_condition": "python:tool.userIsAmong(['secretaire', 'president'])",
+                    "tal_condition": "python:tool.userIsAmong(['secretaire', 'reviewers'])",
                     "roles_bypassing_talcondition": ["Manager", ],
                 },
             ),
@@ -177,11 +192,16 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_president"],
                         },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
+                        },
                     ],
                     "sort_on": u"modified",
                     "sort_reversed": True,
                     "showNumberOfItems": True,
-                    "tal_condition": "python:tool.userIsAmong(['president'])",
+                    "tal_condition": "python:tool.userIsAmong(['reviewers'])",
                     "roles_bypassing_talcondition": ["Manager", ],
                 },
             ),
@@ -194,7 +214,7 @@ class LLMeetingConfig(CustomMeetingConfig):
            used after reviewers levels, this break the _highestReviewerLevel and other
            related hierarchic level functionalities.'''
         reviewers = [
-            ('president', ['proposed_to_president',
+            ('reviewers', ['proposed_to_president',
                            'proposed_to_secretaire',
                            'proposed_to_n2',
                            'proposed_to_n1',
