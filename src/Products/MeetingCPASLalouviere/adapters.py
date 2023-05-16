@@ -105,6 +105,11 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_n1"],
                         },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
+                        },
                     ],
                     "sort_on": u"modified",
                     "sort_reversed": True,
@@ -128,6 +133,11 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "i": "review_state",
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_n2"],
+                        },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
                         },
                     ],
                     "sort_on": u"modified",
@@ -153,6 +163,11 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_secretaire"],
                         },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
+                        },
                     ],
                     "sort_on": u"modified",
                     "sort_reversed": True,
@@ -176,6 +191,11 @@ class LLMeetingConfig(CustomMeetingConfig):
                             "i": "review_state",
                             "o": "plone.app.querystring.operation.selection.is",
                             "v": ["proposed_to_president"],
+                        },
+                        {
+                            'i': 'CompoundCriterion',
+                            'o': 'plone.app.querystring.operation.compound.is',
+                            'v': ['items-of-my-groups']
                         },
                     ],
                     "sort_on": u"modified",
