@@ -97,7 +97,7 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.do(item1, 'proposeToPresident')
         self.failIf(self.transitions(item1))  # He may trigger no more action
         self.failIf(self.hasPermission('PloneMeeting: Add annex', item1))
-        # the president validation level
+        # the reviewers validation level
         self.changeUser('pmPresident')
         self._check_users_can_modify(item1)
         self.do(item1, 'validate')

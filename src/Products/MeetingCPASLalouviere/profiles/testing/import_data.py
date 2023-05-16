@@ -33,17 +33,15 @@ developers.n2.append(pmN2)
 developers.n2.append(pmManager)
 developers.secretaire.append(pmSecretaire)
 developers.secretaire.append(pmManager)
-developers.president.append(pmReviewer1)
-developers.president.append(pmReviewerLevel2)
-developers.president.append(pmManager)
-developers.president.append(pmPresident)
+developers.reviewers.append(pmReviewer1)
+developers.reviewers.append(pmReviewerLevel2)
+developers.reviewers.append(pmManager)
+developers.reviewers.append(pmPresident)
 
 vendors = data.orgs[1]
 vendors.budgetimpactreviewers.append(pmBudgetReviewer2)
 vendors.n1.append(pmReviewerLevel1)
 vendors.secretaire.append(pmSecretaire)
-vendors.president.append(pmReviewerLevel2)
-vendors.president.append(pmReviewer2)
 
 # Meeting configurations -------------------------------------------------------
 # College communal

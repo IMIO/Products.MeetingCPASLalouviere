@@ -120,7 +120,6 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         return [self.developers_n1,
                 self.developers_n2,
                 self.developers_secretaire,
-                self.developers_president,
                 self.developers_reviewers]
 
     def test_pm_WFA_pre_validation(self):
@@ -323,6 +322,22 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         self.assertEqual(self.transitions(item),
                          ['backToProposedToSecretaire', 'validate'])
 
+    def _no_validation_active(self):
+        '''Test when no item validation levels are enabled,
+           item is created in state "validated".'''
+        item = self.create('MeetingItem')
+        self.assertEqual(item.query_state(), 'validated')
+        # disabled item validation levels does not have access
+        # adding decision annex may be adapted
+        creators_roles = ['Reader']
+        if item.may_add_annex_decision(self.meetingConfig, item.query_state()):
+            creators_roles.append('Contributor')
+        self.assertEqual(item.__ac_local_roles__[self.developers_creators], creators_roles)
+        self.assertEqual(item.__ac_local_roles__[self.developers_n1], creators_roles)
+        self.assertEqual(item.__ac_local_roles__[self.developers_n2], creators_roles)
+        self.assertEqual(item.__ac_local_roles__[self.developers_secretaire], creators_roles)
+        self.assertEqual(item.__ac_local_roles__[self.developers_reviewers], creators_roles)
+        self.assertEqual(item.__ac_local_roles__[self.developers_observers], ['Reader'])
 
 def test_suite():
     from unittest import TestSuite, makeSuite
