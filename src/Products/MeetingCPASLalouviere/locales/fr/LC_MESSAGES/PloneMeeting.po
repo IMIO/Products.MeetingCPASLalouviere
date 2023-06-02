@@ -54,7 +54,7 @@ msgstr "Secrétaire"
 
 #. Default: "Items proposed to budget"
 msgid "searchproposedtobudgetreviewer"
-msgstr "Points proposés au référent budgétaire"
+msgstr "Points proposés au correspondant financier"
 
 #. Default: "Proposed to budget impact reviewer"
 msgid "icon_help_proposed_to_budget_reviewer"
