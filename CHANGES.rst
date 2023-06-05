@@ -6,7 +6,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 4.2.0a7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Fix AttributeError: onTransitionFieldTransforms/transition.
+  [odelaere]
 
 
 4.2.0a6 (2023-06-05)
