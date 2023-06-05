@@ -208,6 +208,8 @@ class Migrate_To_4200(MCMigrate_To_4200):
                 setattr(cfg, state_attr, tuple(values))
             # transition_attrs
             for tr_attr in tr_attrs:
+                if "/" in tr_attr:
+                    continue
                 values = getattr(cfg, tr_attr)
                 for original, replacement in transition_mappings.items():
                     values = replace_in_list(values, original, replacement)
