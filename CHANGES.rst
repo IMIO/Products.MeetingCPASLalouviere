@@ -3,7 +3,7 @@ Products.MeetingCPASLalouviere Changelog
 
 The Products.MeetingCommunes version must be the same as the Products.PloneMeeting version
 
-4.2.0a5 (unreleased)
+4.2.0a5 (2023-06-05)
 --------------------
 
 - Added migration content from motivation to emergencyMotivation.
