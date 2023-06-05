@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = "4.2.0a7"
+version = "4.2.0a8.dev0"
 
 setup(name='Products.MeetingCPASLalouviere',
       version=version,
