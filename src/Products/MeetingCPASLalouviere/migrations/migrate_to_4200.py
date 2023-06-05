@@ -3,11 +3,20 @@ from datetime import datetime
 
 from DateTime import DateTime
 from Products.GenericSetup.tool import DEPENDENCY_STRATEGY_NEW
+from imio.pyutils.utils import replace_in_list
 from plone import api
 from Products.MeetingCommunes.migrations.migrate_to_4200 import Migrate_To_4200 as MCMigrate_To_4200
 from Products.MeetingCPASLalouviere.config import LLO_APPLYED_CPAS_WFA
 from Products.MeetingCPASLalouviere.config import LLO_ITEM_CPAS_WF_VALIDATION_LEVELS
 import logging
+
+from Products.PloneMeeting.content.meeting import IMeeting
+from Products.PloneMeeting.MeetingConfig import ITEM_WF_STATE_ATTRS
+from Products.PloneMeeting.MeetingConfig import ITEM_WF_TRANSITION_ATTRS
+from Products.PloneMeeting.MeetingConfig import MEETING_WF_STATE_ATTRS
+from Products.PloneMeeting.MeetingConfig import MEETING_WF_TRANSITION_ATTRS
+from Products.PloneMeeting.utils import reindex_object
+from Products.ZCatalog.ProgressHandler import ZLogHandler
 
 logger = logging.getLogger('MeetingCPASLalouviere')
 
@@ -165,6 +174,83 @@ class Migrate_To_4200(MCMigrate_To_4200):
             },
             # will be done by next step in migration
             update_local_roles=False)
+
+    # override to avoid AttributeError: powerObservers/item_states
+    def updateWFStatesAndTransitions(self,
+                                     related_to='MeetingItem',
+                                     query={},
+                                     review_state_mappings={},
+                                     transition_mappings={},
+                                     update_local_roles=False):
+        """Update for given p_brains the workflow_history keys 'review_state' and 'action'
+           depending on given p_review_state_mappings and p_action_mappings.
+           Update also various parameters of the MeetingConfig
+           that are using states and transitions."""
+        logger.info(
+            'Updating workflow states/transitions changes for elements of type "%s"...'
+            % query or related_to)
+
+        # MeetingConfigs
+        state_attrs = ITEM_WF_STATE_ATTRS if related_to == 'MeetingItem' else MEETING_WF_STATE_ATTRS
+        tr_attrs = ITEM_WF_TRANSITION_ATTRS if related_to == 'MeetingItem' else MEETING_WF_TRANSITION_ATTRS
+        for cfg in self.tool.objectValues('MeetingConfig'):
+            # state_attrs
+            for state_attr in state_attrs:
+                if "/" in state_attr:
+                    continue
+                values = getattr(cfg, state_attr)
+                for original, replacement in review_state_mappings.items():
+                    values = replace_in_list(values, original, replacement)
+                    # try also to replace a value like 'Meeting.frozen'
+                    original = '%s.%s' % (related_to, original)
+                    replacement = '%s.%s' % (related_to, replacement)
+                    values = replace_in_list(values, original, replacement)
+                setattr(cfg, state_attr, tuple(values))
+            # transition_attrs
+            for tr_attr in tr_attrs:
+                values = getattr(cfg, tr_attr)
+                for original, replacement in transition_mappings.items():
+                    values = replace_in_list(values, original, replacement)
+                    # try also to replace a value like 'Meeting.freeze'
+                    original = '%s.%s' % (related_to, original)
+                    replacement = '%s.%s' % (related_to, replacement)
+                    values = replace_in_list(values, original, replacement)
+                setattr(cfg, tr_attr, tuple(values))
+
+        # workflow_history
+        # manage query if not given
+        if not query:
+            if related_to == 'MeetingItem':
+                query = {'meta_type': 'MeetingItem'}
+            else:
+                query = {'object_provides': IMeeting.__identifier__}
+        brains = self.portal.portal_catalog(**query)
+        pghandler = ZLogHandler(steps=1000)
+        pghandler.init('Updating workflow_history', len(brains))
+        i = 0
+        objsToUpdate = []
+        for brain in brains:
+            i += 1
+            pghandler.report(i)
+            itemOrMeeting = brain.getObject()
+            for wf_name, events in itemOrMeeting.workflow_history.items():
+                for event in events:
+                    if event['review_state'] in review_state_mappings:
+                        event['review_state'] = review_state_mappings[event['review_state']]
+                        itemOrMeeting.workflow_history._p_changed = True
+                        objsToUpdate.append(itemOrMeeting)
+                    if event['action'] in transition_mappings:
+                        event['action'] = transition_mappings[event['action']]
+                        itemOrMeeting.workflow_history._p_changed = True
+                        # not necessary if just an action changed?
+                        # objsToUpdate.append(itemOrMeeting)
+        # update fixed objects
+        if update_local_roles:
+            for obj in objsToUpdate:
+                obj.update_local_roles()
+                # use reindex_object and pass some no_idxs because
+                # calling reindexObject will update modified
+                reindex_object(obj, no_idxs=['SearchableText', 'Title', 'Description'])
 
     def _remove_old_dashboardcollection(self):
         for cfg in self.tool.objectValues('MeetingConfig'):
