@@ -11,9 +11,16 @@ import logging
 
 logger = logging.getLogger('MeetingCPASLalouviere')
 
-# TODO patch item to use emergencyMotivation instead of motivation
-
 class Migrate_To_4200(MCMigrate_To_4200):
+
+    def _swap_motivation_emergencyMotivation(self):
+        logger.info('Migrating content from motivation to emergencyMotivation ...')
+        catalog = api.portal.get_tool('portal_catalog')
+        for brain in catalog(meta_type=("MeetingItem")):
+            item = brain.getObject()
+            if item.getMotivation():
+                item.setEmergencyMotivation(item.getMotivation())
+                item.setMotivation("")
 
     def _applyMeetingConfig_fixtures(self):
         logger.info('applying meetingconfig fixtures...')
@@ -23,9 +30,7 @@ class Migrate_To_4200(MCMigrate_To_4200):
         for cfg in self.tool.objectValues('MeetingConfig'):
             used_item_attr = list(cfg.getUsedItemAttributes())
             used_item_attr.append("votesResult")
-
-            if "cas" in cfg.getId():
-                used_item_attr.append("emergencyMotivation")
+            used_item_attr.append("emergencyMotivation")
 
             cfg.setUsedItemAttributes(tuple(used_item_attr))
             cfg.setWorkflowAdaptations(LLO_APPLYED_CPAS_WFA)
@@ -143,6 +148,7 @@ class Migrate_To_4200(MCMigrate_To_4200):
 
     def _hook_after_meeting_to_dx(self):
         self._applyMeetingConfig_fixtures()
+        self._swap_motivation_emergencyMotivation()
         self._adaptWFHistoryForItemsAndMeetings()
         self.update_wf_states_and_transitions()
 

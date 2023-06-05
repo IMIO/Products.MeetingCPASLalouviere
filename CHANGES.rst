@@ -6,6 +6,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 4.2.0a5 (unreleased)
 --------------------
 
+- Added migration content from motivation to emergencyMotivation.
+  [odelaere]
 - Fix searchproposedtobudgetreviewer label.
   [odelaere]
 

@@ -97,7 +97,6 @@ LLO_ITEM_CPAS_WF_VALIDATION_LEVELS = (
 
 LLO_APPLYED_CPAS_WFA = (
     "accepted_but_modified",
-    "pre_accepted",
     "refused",
     "delayed",
     "removed",
