@@ -70,7 +70,7 @@ msgstr "Points proposés au N+2"
 
 #. Default: "Items proposed to ceo"
 msgid "searchproposedtosecretaire"
-msgstr "Points proposés au Secrétaire"
+msgstr "Points proposés au DG"
 
 #. Default: "Items proposed to president"
 msgid "searchproposedtopresident"

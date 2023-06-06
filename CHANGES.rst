@@ -6,7 +6,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 4.2.0a8 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- SUP-30699. Adapt translation.
+  [aduchene]
 
 
 4.2.0a7 (2023-06-05)
