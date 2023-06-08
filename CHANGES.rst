@@ -8,6 +8,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 
 - SUP-30699. Adapt translation.
   [aduchene]
+- SUP-30700. Adapt LLO_WAITING_ADVICES_FROM_STATES.
+  [aduchene]
 
 
 4.2.0a7 (2023-06-05)
