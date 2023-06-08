@@ -3,7 +3,7 @@ Products.MeetingCPASLalouviere Changelog
 
 The Products.MeetingCommunes version must be the same as the Products.PloneMeeting version
 
-4.2.0a8 (unreleased)
+4.2.0a8 (2023-06-08)
 --------------------
 
 - SUP-30699. Adapt translation.
