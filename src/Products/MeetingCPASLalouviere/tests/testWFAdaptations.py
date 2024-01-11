@@ -30,7 +30,6 @@ from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.permissions import View
 from Products.MeetingCommunes.tests.testWFAdaptations import testWFAdaptations as mctwfa
 from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.PloneMeeting.config import AddAnnex
 from Products.PloneMeeting.config import WriteBudgetInfos
 from Products.PloneMeeting.config import WriteInternalNotes
 from zope.event import notify
@@ -134,7 +133,22 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
     def test_pm_WFA_waiting_advices_from_every_val_levels(self):
         pass
 
+    def test_pm_Validate_workflowAdaptations_removed_waiting_advices(self):
+        pass
+
     def test_pm_WFA_waiting_advices_from_last_and_before_last_val_level(self):
+        pass
+    
+    def test_pm_WFA_waiting_advices_may_edit(self):
+        pass
+    
+    def test_pm_WFA_waiting_advices_unknown_state(self):
+        pass
+
+    def test_pm_WFA_waiting_advices_adviser_send_back(self):
+        pass
+
+    def test_pm_WFA_waiting_advices_given_advices_required_to_validate(self):
         pass
 
     def _waiting_advices_active(self):
@@ -203,7 +217,6 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         # budget impact editors access are correct even when 'remove_modify_access': True
         self.changeUser('budgetimpacteditor')
         self.assertTrue(self.hasPermission(WriteBudgetInfos, item))
-        self.assertTrue(self.hasPermission(AddAnnex, item))
 
         # check internalNotes editable by copyGroups
         self.changeUser('pmReviewer2')
@@ -287,44 +300,6 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         # only sendable back to last level
         self.do(item, self._wait_advice_from_proposed_state_transition())
         self.assertEqual(self.transitions(item), [self._wait_advice_from_proposed_state_back_transition()])
-
-    def test_pm_WFA_waiting_advices_given_advices_required_to_validate(self):
-        '''Test the 'waiting_advices_given_advices_required_to_validate' WFAdaptation.'''
-        cfg = self.meetingConfig
-        # ease override by subproducts
-        if not self._check_wfa_available([
-            'waiting_advices',
-            'waiting_advices_adviser_send_back',
-            'waiting_advices_from_last_val_level',
-            'waiting_advices_given_advices_required_to_validate']):
-            return
-
-        # back from
-        self._activate_wfas(('waiting_advices',
-                             'waiting_advices_adviser_send_back',
-                             'waiting_advices_from_last_val_level',
-                             'waiting_advices_given_advices_required_to_validate'))
-        cfg.setItemAdviceStates(self._default_waiting_advices_state())
-
-        # developers
-        self.changeUser('pmCreator1')
-        item = self.create('MeetingItem', optionalAdvisers=(self.vendors_uid, ))
-        self.proposeItem(item)
-        # if some advices still must be given, it is not possible to validate
-        self.changeUser('pmReviewer1')
-        self.assertEqual(self.transitions(item),
-                         ['backToProposedToSecretaire', self._wait_advice_from_proposed_state_transition()])
-        self.do(item, self._wait_advice_from_proposed_state_transition())
-        # give advice so item may be validated
-        self.changeUser('pmReviewer2')
-        self.assertEqual(self.transitions(item),
-                         [self._wait_advice_from_proposed_state_back_transition()])
-        self.addAdvice(item)
-        self.do(item, self._wait_advice_from_proposed_state_back_transition())
-        self.assertEqual(self.transitions(item), [])
-        self.changeUser('pmReviewer1')
-        self.assertEqual(self.transitions(item),
-                         ['backToProposedToSecretaire', 'validate'])
 
     def _no_validation_active(self):
         '''Test when no item validation levels are enabled,

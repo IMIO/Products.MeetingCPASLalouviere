@@ -73,6 +73,7 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.failIf(self.hasPermission("PloneMeeting: Add annex", item1))
         self.changeUser("pmBudgetReviewer1")
         self._check_users_can_modify(item1)
+        self.assertTrue(self.hasPermission("PloneMeeting: Add annex", item1))
         self.do(item1, "backTo_itemcreated_from_proposed_to_budget_reviewer")
         self.assertEqual("itemcreated", item1.query_state())
         self.changeUser("pmCreator1")
@@ -137,8 +138,7 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.assertEquals(item2.query_state(), 'itemfrozen')
         self.assertListEqual(self.transitions(item2),
                              ['accept', 'accept_but_modify', 'backToPresented', 'delay', 'postpone_next_meeting',
-                              'pre_accept', 'refuse',
-                              'remove', 'return_to_proposing_group'])
+                              'refuse', 'remove', 'return_to_proposing_group'])
         self.do(meeting, 'close')
         self.assertEquals(item1.query_state(), 'refused')
         # every items without a decision are automatically accepted
