@@ -21,15 +21,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
+from collective.contact.plonegroup.utils import get_all_suffixes
+from collective.contact.plonegroup.utils import get_plone_group_id
+from collective.contact.plonegroup.utils import select_org_for_function
 from copy import deepcopy
-
-from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
+from Products.CMFCore.permissions import DeleteObjects
+from Products.CMFCore.permissions import ModifyPortalContent
+from Products.CMFCore.permissions import View
 from Products.MeetingCommunes.tests.testWFAdaptations import testWFAdaptations as mctwfa
-
-from Products.CMFCore.permissions import ModifyPortalContent, DeleteObjects, View
-from Products.PloneMeeting.config import WriteBudgetInfos, WriteInternalNotes
-
-from collective.contact.plonegroup.utils import select_org_for_function, get_all_suffixes, get_plone_group_id
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
+from Products.PloneMeeting.config import AddAnnex
+from Products.PloneMeeting.config import WriteBudgetInfos
+from Products.PloneMeeting.config import WriteInternalNotes
 from zope.event import notify
 from zope.i18n import translate
 from zope.lifecycleevent import ObjectModifiedEvent
@@ -200,6 +203,7 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         # budget impact editors access are correct even when 'remove_modify_access': True
         self.changeUser('budgetimpacteditor')
         self.assertTrue(self.hasPermission(WriteBudgetInfos, item))
+        self.assertTrue(self.hasPermission(AddAnnex, item))
 
         # check internalNotes editable by copyGroups
         self.changeUser('pmReviewer2')

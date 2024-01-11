@@ -23,22 +23,23 @@
 # 02110-1301, USA.
 #
 # ------------------------------------------------------------------------------
-from copy import deepcopy
-from Products.MeetingCommunes.adapters import CustomToolPloneMeeting, CustomMeetingConfig, \
-    MeetingItemCommunesWorkflowActions
-from Products.MeetingCommunes.interfaces import IMeetingItemCommunesWorkflowActions
-from Products.PloneMeeting.interfaces import IToolPloneMeetingCustom, IMeetingConfigCustom
-from Products.PloneMeeting.model import adaptations
-from Products.PloneMeeting.MeetingConfig import MeetingConfig
-from Products.PloneMeeting.model.adaptations import _addIsolatedState
-
-
 from AccessControl import ClassSecurityInfo
 from AccessControl.class_init import InitializeClass
 from collections import OrderedDict
 from collective.contact.plonegroup.utils import get_all_suffixes
-from zope.interface import implements
+from copy import deepcopy
+from Products.MeetingCommunes.adapters import CustomMeetingConfig
+from Products.MeetingCommunes.adapters import CustomToolPloneMeeting
+from Products.MeetingCommunes.adapters import MeetingItemCommunesWorkflowActions
+from Products.MeetingCommunes.interfaces import IMeetingItemCommunesWorkflowActions
+from Products.PloneMeeting.config import AddAnnex
+from Products.PloneMeeting.interfaces import IMeetingConfigCustom
+from Products.PloneMeeting.interfaces import IToolPloneMeetingCustom
+from Products.PloneMeeting.MeetingConfig import MeetingConfig
+from Products.PloneMeeting.model import adaptations
+from Products.PloneMeeting.model.adaptations import _addIsolatedState
 from zope.i18n import translate
+from zope.interface import implements
 
 
 customWfAdaptations = list(deepcopy(MeetingConfig.wfAdaptations))
@@ -265,6 +266,8 @@ class MLLCustomToolPloneMeeting(CustomToolPloneMeeting):
                 back_transition_title=translate("validateByBudgetImpactReviewer", "plone"),
                 # back_transition_icon=None
                 itemWorkflow=itemWorkflow)
+            state = itemWorkflow.states["proposed_to_budget_reviewer"]
+            state.permission_roles[AddAnnex] = state.permission_roles[AddAnnex] + ("Editor", )
             return True
         return False
 

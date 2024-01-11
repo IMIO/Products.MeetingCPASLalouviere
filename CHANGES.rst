@@ -3,10 +3,12 @@ Products.MeetingCPASLalouviere Changelog
 
 The Products.MeetingCommunes version must be the same as the Products.PloneMeeting version
 
-4.2.0a9 (unreleased)
+4.2.0 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Fixed issue with budgetreviewer that could not add annex when item was
+  in proposed_to_budgetreviewer state.
+  [aduchene]
 
 
 4.2.0a8 (2023-06-08)
