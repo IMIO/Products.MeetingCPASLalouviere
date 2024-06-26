@@ -30,15 +30,16 @@
 
 
 #portal-globalnav li a {
-    color:black;
+    color: #0069b3 !important;
+    border-right: 0.1em solid #bdbdbd !important;
 }
 
-#portal-header #portal-globalnav .selected a:hover {
-    color: #1DBADF;
-}
+/* #portal-header #portal-globalnav .selected a, #portal-globalnav a:hover {
+    background: rgba(4, 179, 219, 0) none repeat scroll 0 0 !important;
+} */
 
-#portal-globalnav a:hover, #portal-header #portal-globalnav .selected a {
-    color: #1DBADF;
+#portal-globalnav li a {
+   padding: 1.9em 1em !important;
 }
 
 /* </dtml-with> */
