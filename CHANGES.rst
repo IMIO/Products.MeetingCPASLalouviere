@@ -8,7 +8,8 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
 
 - Fixed tests.
   [gbastien]
-
+- Moved back logo and CSS customizations into profile.
+  [gbastien]
 
 4.2.0 (2024-01-11)
 ------------------
