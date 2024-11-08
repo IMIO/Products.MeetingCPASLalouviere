@@ -83,7 +83,3 @@ msgstr ""
 #. Default: "Items proposed to president"
 msgid "searchproposedtopresident"
 msgstr ""
-
-#. Default: "Emergency Motivation"
-msgid "MeetingCPASLalouviere_label_emergencyMotivation"
-msgstr ""

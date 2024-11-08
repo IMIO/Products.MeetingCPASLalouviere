@@ -10,6 +10,9 @@ The Products.MeetingCommunes version must be the same as the Products.PloneMeeti
   [gbastien]
 - Moved back logo and CSS customizations into profile.
   [gbastien]
+- Removed field `MeetingItem.emergencyMotivation` that was moved
+  to `Products.PloneMeeting`.
+  [gbastien]
 
 4.2.0 (2024-01-11)
 ------------------

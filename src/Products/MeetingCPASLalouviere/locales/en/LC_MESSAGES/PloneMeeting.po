@@ -14,14 +14,6 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#. Default: "Default value for the 'motivation' field"
-msgid "PloneMeeting_label_defaultMeetingItemMotivation"
-msgstr ""
-
-#. Default: "Motivation"
-msgid "PloneMeeting_label_emergency_motivation"
-msgstr ""
-
 # Suffix
 #. Default: "budget impact reviewers"
 msgid "budgetimpactreviewers"
@@ -36,6 +28,10 @@ msgstr ""
 msgid "directors"
 msgstr ""
 
+#. Default: "Proposed to budget impact reviewer"
+msgid "icon_help_proposed_to_budget_reviewer"
+msgstr ""
+
 # Suffix
 msgid "n1"
 msgstr ""
@@ -48,6 +44,26 @@ msgstr ""
 # Suffix
 #. Default: "reviewers"
 msgid "reviewers"
+msgstr ""
+
+#. Default: "Items proposed to budget"
+msgid "searchproposedtobudgetreviewer"
+msgstr ""
+
+#. Default: "Items proposed to n+1"
+msgid "searchproposedton1"
+msgstr ""
+
+#. Default: "Items proposed to n+2"
+msgid "searchproposedton2"
+msgstr ""
+
+#. Default: "Items proposed to president"
+msgid "searchproposedtopresident"
+msgstr ""
+
+#. Default: "Items proposed to ceo"
+msgid "searchproposedtosecretaire"
 msgstr ""
 
 # Suffix

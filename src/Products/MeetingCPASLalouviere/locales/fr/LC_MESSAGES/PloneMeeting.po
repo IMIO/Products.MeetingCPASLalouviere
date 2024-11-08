@@ -32,6 +32,10 @@ msgstr "Définissez ici le texte prédéfini qui sera présent dans le champ 'Mo
 msgid "directors"
 msgstr "directeur"
 
+#. Default: "Proposed to budget impact reviewer"
+msgid "icon_help_proposed_to_budget_reviewer"
+msgstr "Proposé au correspondant financier"
+
 # Suffix
 #. Default: "N+1"
 msgid "n1"
@@ -47,18 +51,9 @@ msgstr "N+2"
 msgid "reviewers"
 msgstr "Président"
 
-# Suffix
-#. Default: "Secretaire"
-msgid "secretaire"
-msgstr "Secrétaire"
-
 #. Default: "Items proposed to budget"
 msgid "searchproposedtobudgetreviewer"
 msgstr "Points proposés au correspondant financier"
-
-#. Default: "Proposed to budget impact reviewer"
-msgid "icon_help_proposed_to_budget_reviewer"
-msgstr "Proposé au correspondant financier"
 
 #. Default: "Items proposed to n+1"
 msgid "searchproposedton1"
@@ -68,14 +63,15 @@ msgstr "Points proposés au N+1"
 msgid "searchproposedton2"
 msgstr "Points proposés au N+2"
 
-#. Default: "Items proposed to ceo"
-msgid "searchproposedtosecretaire"
-msgstr "Points proposés au DG"
-
 #. Default: "Items proposed to president"
 msgid "searchproposedtopresident"
 msgstr "Points proposés au Président"
 
-#. Default: "Emergency Motivation"
-msgid "MeetingCPASLalouviere_label_emergencyMotivation"
-msgstr "Motivation de l'urgence"
+#. Default: "Items proposed to ceo"
+msgid "searchproposedtosecretaire"
+msgstr "Points proposés au DG"
+
+# Suffix
+#. Default: "Secretaire"
+msgid "secretaire"
+msgstr "Secrétaire"
