@@ -309,10 +309,10 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         self.assertEqual(item.__ac_local_roles__[self.developers_reviewers], creators_roles)
         self.assertEqual(item.__ac_local_roles__[self.developers_observers], ['Reader'])
 
-    def test_pm_Validate_workflowAdaptations_removed_return_to_proposing_group_with_all_validations():
+    def test_pm_Validate_workflowAdaptations_removed_return_to_proposing_group_with_all_validations(self):
         pass
 
-    def test_pm_WFA_return_to_proposing_group_with_all_validations():
+    def test_pm_WFA_return_to_proposing_group_with_all_validations(self):
         pass
 
 
