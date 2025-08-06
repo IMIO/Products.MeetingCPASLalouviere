@@ -14,14 +14,13 @@ pmReviewer1 = pm_import_data.pmReviewer1
 pmReviewerLevel1 = pm_import_data.pmReviewerLevel1
 pmReviewerLevel2 = pm_import_data.pmReviewerLevel2
 pmManager = pm_import_data.pmManager
-# xxx specific to CPAS La louvière
-pmN1 = UserDescriptor('pmN1', [])
-pmN2 = UserDescriptor('pmN2', [])
-pmSecretaire = UserDescriptor('pmSecretaire', [])
-pmPresident = UserDescriptor('pmPresident', [])
-
-pmBudgetReviewer1 = UserDescriptor("pmBudgetReviewer1", [])
-pmBudgetReviewer2 = UserDescriptor("pmBudgetReviewer2", [])
+# xxx specific to CPASLaLouviere
+pmN1 = UserDescriptor('pmN1', [], email="pmn1@plonemeeting.org")
+pmN2 = UserDescriptor('pmN2', [], email="pmn2@plonemeeting.org")
+pmSecretaire = UserDescriptor('pmSecretaire', [], email="pmsecretaire@plonemeeting.org")
+pmPresident = UserDescriptor('pmPresident', [], email="pmpresident@plonemeeting.org")
+pmBudgetReviewer1 = UserDescriptor("pmBudgetReviewer1", [], email="pmbudgetreviewer1@plonemeeting.org")
+pmBudgetReviewer2 = UserDescriptor("pmBudgetReviewer2", [], email="pmbudgetreviewer2@plonemeeting.org")
 
 developers = data.orgs[0]
 developers.budgetimpactreviewers.append(pmManager)
