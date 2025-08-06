@@ -2,33 +2,13 @@
 #
 # File: testWorkflows.py
 #
-# Copyright (c) 2007-2010 by PloneGov
-#
 # GNU General Public License (GPL)
 #
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-# 02110-1301, USA.
-#
-
-from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
-from Products.MeetingCommunes.tests.testWorkflows import testWorkflows as mctw
-
-from AccessControl import Unauthorized
-from Products.MeetingCPASLalouviere.config import LLO_APPLYED_CPAS_WFA
 
 from Products.CMFCore.permissions import ModifyPortalContent
+from Products.MeetingCommunes.tests.testWorkflows import testWorkflows as mctw
+from Products.MeetingCPASLalouviere.config import LLO_APPLYED_CPAS_WFA
+from Products.MeetingCPASLalouviere.tests.MeetingCPASLalouviereTestCase import MeetingCPASLalouviereTestCase
 
 
 class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
@@ -118,8 +98,8 @@ class testWorkflows(MeetingCPASLalouviereTestCase, mctw):
         self.failIf(self.hasPermission('Modify portal content', item2))
         self.changeUser('pmManager')
         # pmManager inserts item1 into the meeting and publishes it
-        managerAnnex = self.addAnnex(item1)
-        self.portal.restrictedTraverse('@@delete_givenuid')(managerAnnex.UID())
+        annex = self.addAnnex(item1)
+        self.portal.restrictedTraverse('@@delete_givenuid')(annex.UID())
         self.do(item1, 'present')
         self.changeUser('pmManager')
         self.do(meeting, 'freeze')
