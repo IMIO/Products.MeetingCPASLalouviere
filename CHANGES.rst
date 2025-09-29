@@ -1,7 +1,6 @@
-Products.MeetingCPASLalouviere Changelog
-====================================
 
-The Products.MeetingCommunes version must be the same as the Products.PloneMeeting version
+Products.MeetingCPASLalouviere Changelog
+========================================
 
 4.2.1 (unreleased)
 ------------------
