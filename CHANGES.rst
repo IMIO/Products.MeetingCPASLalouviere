@@ -2,7 +2,7 @@
 Products.MeetingCPASLalouviere Changelog
 ========================================
 
-4.2.1 (unreleased)
+4.2.1 (2025-09-29)
 ------------------
 
 - Fixed tests.
