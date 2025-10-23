@@ -46,78 +46,78 @@ msgstr "Séance du Conseil de l'Action Sociale"
 # Workflow transitions
 #. Default: "Ask advices"
 msgid "ask_advices_by_itemcreator"
-msgstr "demander les avis"
+msgstr "Demander les avis"
 
 #. Default: "send back"
 msgid "backToProposedToN1"
-msgstr "renvoyer au N+1"
+msgstr "Renvoyer au N+1"
 
 #. Default: "send back"
 msgid "backToProposedToN2"
-msgstr "renvoyer au N+2"
+msgstr "Renvoyer au N+2"
 
 #. Default: "send back"
 msgid "backToProposedToPresident"
-msgstr "renvoyer au président"
+msgstr "Renvoyer au président"
 
 #. Default: "send back"
 msgid "backToProposedToSecretaire"
-msgstr "renvoyer au DG"
+msgstr "Renvoyer au DG"
 
 # Workflow states
 #. Default: "Waiting advices"
 msgid "itemcreated_waiting_advices"
-msgstr "en attente des avis"
+msgstr "En attente des avis"
 
 #. Default: "Description"
 msgid "meeting_item_description"
 msgstr "Description dans l'ordre du jour"
 
 msgid "proposeToBudgetImpactReviewer"
-msgstr "proposer au correspondant financier"
+msgstr "Proposer au correspondant financier"
 
 msgid "proposeToN1"
-msgstr "proposer au N+1"
+msgstr "Proposer au N+1"
 
 msgid "proposeToN2"
-msgstr "proposer au N+2"
+msgstr "Proposer au N+2"
 
 msgid "proposeToPresident"
-msgstr "proposer au président"
+msgstr "Proposer au président"
 
 msgid "proposeToSecretaire"
-msgstr "proposer au DG"
+msgstr "Proposer au DG"
 
 #. Default: "Proposed to budget impact reviewer"
 msgid "proposed_to_budget_reviewer"
-msgstr "proposé au correspondant financier"
+msgstr "Proposé au correspondant financier"
 
 #. Default: "Proposed to N+1"
 msgid "proposed_to_n1"
-msgstr "proposé au N+1"
+msgstr "Proposé au N+1"
 
 #. Default: "Proposed to N+2"
 msgid "proposed_to_n2"
-msgstr "proposé au N+2"
+msgstr "Proposé au N+2"
 
 #. Default: "Proposed to president"
 msgid "proposed_to_president"
-msgstr "proposé au président"
+msgstr "Proposé au président"
 
 #. Default: "Waiting advices (proposed_to_president)"
 msgid "proposed_to_president_waiting_advices"
-msgstr "en attente des avis (proposé au président)"
+msgstr "En attente des avis (proposé au président)"
 
 #. Default: "Proposed to secretaire"
 msgid "proposed_to_secretaire"
-msgstr "proposé au DG"
+msgstr "Proposé au DG"
 
 msgid "remove"
-msgstr "retirer de la séance"
+msgstr "Retirer de la séance"
 
 #. Default: "Removed from meeting"
 msgid "removed"
-msgstr "retiré de la séance"
+msgstr "Retiré de la séance"
 
 msgid "validateByBudgetImpactReviewer"
-msgstr "valider les infos budgétaires"
+msgstr "Valider les infos budgétaires"

@@ -5,8 +5,8 @@ Products.MeetingCPASLalouviere Changelog
 4.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Use capitalized translations for WF transitions and states.
+  [gbastien]
 
 4.2.1 (2025-09-29)
 ------------------

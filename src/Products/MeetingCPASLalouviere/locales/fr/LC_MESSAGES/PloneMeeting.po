@@ -21,7 +21,7 @@ msgstr ""
 # Suffix
 #. Default: "budget impact reviewers"
 msgid "budgetimpactreviewers"
-msgstr "correspondants financier"
+msgstr "Correspondants financiers"
 
 #. Default: "Define here some predefined text that will be present in field 'motivation' every time a user creates a new item."
 msgid "config_default_meetingitem_motivation_descr"
@@ -30,11 +30,11 @@ msgstr "Définissez ici le texte prédéfini qui sera présent dans le champ 'Mo
 # Suffix
 #. Default: "directors"
 msgid "directors"
-msgstr "directeur"
+msgstr "Directeurs"
 
 #. Default: "Proposed to budget impact reviewer"
 msgid "icon_help_proposed_to_budget_reviewer"
-msgstr "Proposé au correspondant financier"
+msgstr "Proposé aux correspondants financiers"
 
 # Suffix
 #. Default: "N+1"
@@ -49,19 +49,19 @@ msgstr "N+2"
 # Suffix
 #. Default: "reviewers"
 msgid "reviewers"
-msgstr "Président"
+msgstr "Présidents"
 
 #. Default: "Items proposed to budget"
 msgid "searchproposedtobudgetreviewer"
-msgstr "Points proposés au correspondant financier"
+msgstr "Points proposés aux correspondants financiers"
 
 #. Default: "Items proposed to n+1"
 msgid "searchproposedton1"
-msgstr "Points proposés au N+1"
+msgstr "Points proposés aux N+1"
 
 #. Default: "Items proposed to n+2"
 msgid "searchproposedton2"
-msgstr "Points proposés au N+2"
+msgstr "Points proposés aux N+2"
 
 #. Default: "Items proposed to president"
 msgid "searchproposedtopresident"
