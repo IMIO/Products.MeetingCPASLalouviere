@@ -62,6 +62,7 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
              'meetingmanager_correct_closed_meeting',
              'no_decide',
              'no_freeze',
+             'no_meeting',
              'no_publication',
              'only_creator_may_delete',
              'postpone_next_meeting',
@@ -79,6 +80,7 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
              'removed_and_duplicated',
              'return_to_proposing_group',
              'return_to_proposing_group_with_all_validations',
+             'return_to_proposing_group_with_before_last_validation',
              'return_to_proposing_group_with_last_validation',
              'reviewers_take_back_validated_item',
              'transfered',
@@ -308,6 +310,13 @@ class testWFAdaptations(MeetingCPASLalouviereTestCase, mctwfa):
         self.assertEqual(item.__ac_local_roles__[self.developers_secretaire], creators_roles)
         self.assertEqual(item.__ac_local_roles__[self.developers_reviewers], creators_roles)
         self.assertEqual(item.__ac_local_roles__[self.developers_observers], ['Reader'])
+
+    def test_pm_Validate_workflowAdaptations_removed_return_to_proposing_group_with_before_last_validation(self):
+        '''Before last validation level is "proposed_to_secretaire" and not "proposed_to_n1".'''
+        self.WF_ITEM_STATE_NAME_MAPPINGS_1 = self.WF_ITEM_STATE_NAME_MAPPINGS_2 = dict(
+            self.WF_ITEM_STATE_NAME_MAPPINGS_1, proposed_first_level='proposed_to_secretaire')
+        super(testWFAdaptations, self).\
+            test_pm_Validate_workflowAdaptations_removed_return_to_proposing_group_with_before_last_validation()
 
     def test_pm_Validate_workflowAdaptations_removed_return_to_proposing_group_with_all_validations(self):
         pass

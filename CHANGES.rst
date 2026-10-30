@@ -7,6 +7,9 @@ Products.MeetingCPASLalouviere Changelog
 
 - Use capitalized translations for WF transitions and states.
   [gbastien]
+- Fixed tests, new WFAdaptations `no_meeting` and
+  `return_to_proposing_group_with_before_last_validation`.
+  [gbastien]
 
 4.2.1 (2025-09-29)
 ------------------
